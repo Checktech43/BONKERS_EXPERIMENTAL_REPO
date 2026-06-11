@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://bxifje32utmqh"]
+
+[ext_resource type="Script" uid="uid://d0tiwtb3n3lyh" path="res://MenuScripts/main_menu_buttons.gd" id="1_tt5f1"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=2073516649]
+script = ExtResource("1_tt5f1")
+
+[node name="Control" type="Control" parent="." unique_id=198918126]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -574.5
+offset_top = -323.0
+offset_right = 574.5
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cosmetics" type="Button" parent="Control" unique_id=1161218905]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.90800005
+anchor_top = 0.50200003
+anchor_right = 0.90800005
+anchor_bottom = 0.50200003
+offset_left = -89.792114
+offset_top = -25.292023
+offset_right = 90.207886
+offset_bottom = 24.707977
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Cosmetics"
+
+[node name="Settings" type="Button" parent="Control" unique_id=1368580002]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89900005
+anchor_top = 0.294
+anchor_right = 0.89900005
+anchor_bottom = 0.294
+offset_left = -67.45105
+offset_top = -25.923996
+offset_right = 112.54895
+offset_bottom = 34.076004
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="Quit" type="Button" parent="Control" unique_id=873071173]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.90400004
+anchor_top = 0.711
+anchor_right = 0.90400004
+anchor_bottom = 0.711
+offset_left = -90.196045
+offset_top = -25.30603
+offset_right = 89.803955
+offset_bottom = 24.69397
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="Play" type="MenuButton" parent="Control" unique_id=1347345704]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -121.0
+offset_right = 108.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 45
+text = "Play"
+item_count = 2
+popup/item_0/text = "Host Game"
+popup/item_0/id = 0
+popup/item_1/text = "Join Game"
+popup/item_1/id = 1
+
+[node name="HostButton" type="Button" parent="Control/Play" unique_id=810145442]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16100001
+anchor_top = 0.88400006
+anchor_right = 0.16100001
+anchor_bottom = 0.88400006
+offset_left = 183.74101
+offset_top = -77.908005
+offset_right = 345.74103
+offset_bottom = -34.908005
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="Control/Play" unique_id=1504483615]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36100003
+anchor_top = 0.882
+anchor_right = 0.36100003
+anchor_bottom = 0.882
+offset_left = 138.94098
+offset_top = -32.734
+offset_right = 300.94098
+offset_bottom = 10.265999
+theme_override_font_sizes/font_size = 25
+text = "Join Game"
+
+[node name="Join" type="Button" parent="Control/Play" unique_id=918928382]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 45.0
+offset_right = 374.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 25
+text = "Join Game"
+
+[node name="TextEdit" type="TextEdit" parent="Control/Play/Join" unique_id=456602207]
+layout_mode = 0
+offset_top = 34.695
+offset_right = 235.0
+offset_bottom = 68.695
+placeholder_text = "Enter Lobby ID"
+
+[connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_cosmetics"]
+[connection signal="pressed" from="Control/Settings" to="." method="_on_pressing_settings"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_pressing_quit"]
+[connection signal="pressed" from="Control/Play/HostButton" to="." method="_on_pressing_host"]
+[connection signal="pressed" from="Control/Play/JoinButton" to="." method="_on_pressing_join"]
+[connection signal="pressed" from="Control/Play/Join" to="." method="_on_pressing_join"]

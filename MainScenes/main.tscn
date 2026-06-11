@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://shshvj6ldc0o"]
+
+[ext_resource type="Script" uid="uid://mcbbfpd3ffh0" path="res://Scripts/main.gd" id="1_hptm8"]
+[ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="2_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cl2sh3gaoi4ji" path="res://Scenes/mutiplayer_hud.tscn" id="3_6iyac"]
+[ext_resource type="Script" uid="uid://b7nf02lqn6xlh" path="res://Scripts/all_players.gd" id="5_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Maps/grass.tscn" id="10_5rjnf"]
+[ext_resource type="Script" uid="uid://eco64ciyc6ag" path="res://Scripts/map.gd" id="10_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cwm8w35h1fst" path="res://MainScenes/lobby.tscn" id="10_dc6gi"]
+[ext_resource type="PackedScene" uid="uid://ctau1fv0jjl81" path="res://Scenes/cards_menu.tscn" id="12_fdnlq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e0an3"]
+sky_top_color = Color(2.4065375e-07, 0.5078389, 0.56269175, 1)
+sky_horizon_color = Color(0.5306388, 0.64984846, 0.65456164, 1)
+ground_horizon_color = Color(0.5306388, 0.64984846, 0.65456164, 1)
+
+[sub_resource type="Sky" id="Sky_p5pve"]
+sky_material = SubResource("ProceduralSkyMaterial_e0an3")
+
+[sub_resource type="Environment" id="Environment_urblq"]
+background_mode = 2
+sky = SubResource("Sky_p5pve")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e0an3"]
+size = Vector3(1545.1, 1.9, 2471)
+
+[node name="Main" type="Node3D" unique_id=1461552637 node_paths=PackedStringArray("hud", "card_menu")]
+script = ExtResource("1_hptm8")
+player_scene = ExtResource("2_d1ilt")
+hud = NodePath("MutiplayerHud")
+card_menu = NodePath("Control")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800759605]
+environment = SubResource("Environment_urblq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=808293291]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=897863849]
+_spawnable_scenes = PackedStringArray("uid://cxgyhh5t4xncf")
+spawn_path = NodePath("../Players")
+
+[node name="ActionPhaseTimer" type="Timer" parent="." unique_id=1081101857]
+process_callback = 0
+wait_time = 3.0
+one_shot = true
+
+[node name="DeathPlane" type="Area3D" parent="." unique_id=1616572989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.800002, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.100002, 0)
+shape = SubResource("BoxShape3D_e0an3")
+
+[node name="MutiplayerHud" parent="." unique_id=594535370 instance=ExtResource("3_6iyac")]
+mouse_filter = 2
+
+[node name="LobbyCode" type="Label" parent="MutiplayerHud" unique_id=1130166971]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 321.0
+offset_right = 43.0
+offset_bottom = 344.0
+
+[node name="Button" type="Button" parent="MutiplayerHud/LobbyCode" unique_id=689407621]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 44.0
+offset_right = 140.0
+offset_bottom = 75.0
+text = "Copy ID"
+
+[node name="VictoryTimer" type="Timer" parent="." unique_id=539655774]
+wait_time = 4.0
+one_shot = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1612360976]
+transform = Transform3D(0.7071068, -0.32978517, 0.6254932, 0, 0.88458097, 0.46638668, -0.7071068, -0.32978517, 0.6254932, 20, 10, 20)
+current = true
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1257683726]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=746354692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1000011, 0)
+shape = SubResource("BoxShape3D_e0an3")
+
+[node name="Players" type="Node3D" parent="." unique_id=1043772275]
+script = ExtResource("5_jkdf5")
+
+[node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671]
+script = ExtResource("10_d1ilt")
+loaded_map = ExtResource("10_5rjnf")
+
+[node name="Lobby" parent="CurrentMap" unique_id=1003242740 instance=ExtResource("10_dc6gi")]
+
+[node name="EndOfGameDelay" type="Timer" parent="." unique_id=1503792707]
+wait_time = 2.0
+one_shot = true
+
+[node name="Control" parent="." unique_id=1923754249 instance=ExtResource("12_fdnlq")]
+visible = false
+
+[node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=1188206546]
+_spawnable_scenes = PackedStringArray("uid://cceu2uumlp16x", "uid://bwq5io572fslc")
+spawn_path = NodePath("../CurrentMap")
+
+[connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]
+[connection signal="change_game_state" from="." to="Players" method="_on_change_game_state"]
+[connection signal="restart" from="." to="Players" method="_on_restart"]
+[connection signal="restart" from="." to="CurrentMap" method="_on_game_reset"]
+[connection signal="timeout" from="ActionPhaseTimer" to="." method="_on_finishing_action_phase"]
+[connection signal="timeout" from="ActionPhaseTimer" to="Players" method="_on_action_phase_end"]
+[connection signal="timeout" from="ActionPhaseTimer" to="CurrentMap" method="_on_round_end"]
+[connection signal="body_entered" from="DeathPlane" to="." method="_on_something_fell"]
+[connection signal="button_down" from="MutiplayerHud/LobbyCode/Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="VictoryTimer" to="." method="_on_victory_timeout"]
+[connection signal="timeout" from="VictoryTimer" to="MutiplayerHud" method="_on_victory_timeout"]
+[connection signal="all_players_ready" from="Players" to="." method="_on_all_players_ready"]
+[connection signal="players_message" from="CurrentMap" to="Players" method="_telaport_players"]
+[connection signal="timeout" from="EndOfGameDelay" to="." method="_check_for_winners"]

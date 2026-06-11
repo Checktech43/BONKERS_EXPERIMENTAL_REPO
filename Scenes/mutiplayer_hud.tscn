@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cl2sh3gaoi4ji"]
+
+[ext_resource type="Script" uid="uid://bl12qrsorccok" path="res://MenuScripts/hud.gd" id="1_cdxng"]
+
+[node name="MutiplayerHud" type="CanvasLayer" unique_id=6198616]
+script = ExtResource("1_cdxng")
+
+[node name="RoundLabel" type="Label" parent="." unique_id=1580215517]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 8.0
+offset_right = 149.0
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 69
+text = "Round: 1"
+horizontal_alignment = 1
+
+[node name="EndGamePanel" type="Control" parent="." unique_id=1778385541]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -108.5
+offset_right = 233.0
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Victory" type="Label" parent="EndGamePanel" unique_id=295325631]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -57.0
+offset_right = 233.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 83
+text = "Player Wins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="EndGamePanel" unique_id=1711572946]
+visible = false
+layout_mode = 0
+offset_left = 112.0
+offset_top = 170.0
+offset_right = 350.0
+offset_bottom = 227.0
+text = "Play agian"
+
+[connection signal="button_down" from="EndGamePanel/Button" to="." method="_on_rematch"]

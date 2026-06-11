@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://0f382ud8ncym"]
+
+[ext_resource type="Script" uid="uid://cx8hk7f8hkhct" path="res://Scripts/spade_projectile.gd" id="1_03k1y"]
+[ext_resource type="PackedScene" uid="uid://ctohnvimsngk5" path="res://Scenes/spadeModel_bonkers.glb" id="1_jidha"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qb7s"]
+size = Vector3(1.0453014, 0.9604492, 1.3524888)
+
+[node name="SpadeProjectile" type="RigidBody3D" unique_id=1492339659 groups=["spade"]]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+contact_monitor = true
+script = ExtResource("1_03k1y")
+
+[node name="Spade" parent="." unique_id=2105384823 groups=["spade"] instance=ExtResource("1_jidha")]
+transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=569326198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.026486397, -0.01977539, 0.19393307)
+shape = SubResource("BoxShape3D_4qb7s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

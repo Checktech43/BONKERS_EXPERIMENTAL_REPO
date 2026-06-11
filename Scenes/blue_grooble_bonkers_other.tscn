@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bglxhn3imofw3"]
+
+[ext_resource type="PackedScene" uid="uid://cdh1rmin1s1su" path="res://Skins/blue_grooble.glb" id="1_hs2je"]
+
+[sub_resource type="Animation" id="Animation_wqcvm"]
+resource_name = "blue_groobleAction"
+length = 0.625
+tracks/0/type = "position_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("blue_grooble")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.2, 1, 0, 0, 0, 0.23333333, 1, 0, -0.17634039, 0, 0.26666668, 1, 0, -0.3190163, 0, 0.3, 1, 0, -0.36313844, 0, 0.33333334, 1, 0, -0.3889329, 0, 0.36666667, 1, 0, -0.39843613, 0, 0.4, 1, 0, -0.40183017, 0, 0.43333334, 1, 0, -0.39799088, 0, 0.46666667, 1, 0, -0.38582674, 0, 0.5, 1, 0, -0.36427882, 0, 0.53333336, 1, 0, -0.33856034, 0, 0.56666666, 1, 0, -0.31596982, 0, 0.6, 1, 0, -0.30067775, 0, 0.625, 1, 0, -0.2939006, 0)
+tracks/1/type = "scale_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("blue_grooble")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.2, 1, 1, 1, 1, 0.23333333, 1, 1.1419992, 0.8161688, 1.1419992, 0.26666668, 1, 1.2667798, 0.6788813, 1.2667798, 0.3, 1, 1.3196833, 0.6529983, 1.3196833, 0.33333334, 1, 1.3506116, 0.6378668, 1.3506116, 0.36666667, 1, 1.3620062, 0.632292, 1.3620062, 0.4, 1, 1.3660756, 0.630301, 1.3660756, 0.43333334, 1, 1.3614722, 0.63255316, 1.3614722, 0.46666667, 1, 1.3468871, 0.6396889, 1.3468871, 0.5, 1, 1.3210506, 0.6523294, 1.3210506, 0.53333336, 1, 1.2902136, 0.6674164, 1.2902136, 0.56666666, 1, 1.263127, 0.6806684, 1.263127, 0.6, 1, 1.2447914, 0.68963903, 1.2447914, 0.625, 1, 1.2366654, 0.69361466, 1.2366654)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2tpi"]
+_data = {
+&"blue_groobleAction": SubResource("Animation_wqcvm")
+}
+
+[node name="blue_grooble_bonkers" unique_id=1747189670 instance=ExtResource("1_hs2je")]
+
+[node name="blue_grooble" parent="." index="0" unique_id=669506184]
+transform = Transform3D(1.2366654, 0, 0, 0, 0.69361466, 0, 0, 0, 1.2366654, 0, -0.2939006, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=2118882993]
+libraries/ = SubResource("AnimationLibrary_s2tpi")

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cwm8w35h1fst"]
+
+[ext_resource type="Script" uid="uid://ci818j3cuogqb" path="res://Scripts/lobby.gd" id="1_pfjfr"]
+[ext_resource type="PackedScene" uid="uid://d0s2pmyctqiav" path="res://Scenes/map_selection.tscn" id="3_2avy7"]
+
+[node name="Lobby" type="Node3D" unique_id=1003242740]
+script = ExtResource("1_pfjfr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=665664289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, -7, -3.349)
+use_collision = true
+size = Vector3(20, 11.45813, 20)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=534789498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.182579, 0)
+operation = 2
+size = Vector3(18, 7.2460938, 18)
+
+[node name="LobbyMenu" type="CanvasLayer" parent="." unique_id=311810566]
+
+[node name="Start" type="Button" parent="LobbyMenu" unique_id=774443804]
+offset_left = 424.0
+offset_top = 490.0
+offset_right = 741.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 50
+text = "Start Game"
+
+[node name="LobbyCode" type="Label" parent="LobbyMenu" unique_id=2112024778]
+offset_left = 3.0
+offset_top = 321.0
+offset_right = 43.0
+offset_bottom = 344.0
+
+[node name="Button" type="Button" parent="LobbyMenu/LobbyCode" unique_id=1545577286]
+visible = false
+layout_mode = 0
+offset_left = -2.0
+offset_top = 44.0
+offset_right = 140.0
+offset_bottom = 75.0
+text = "Copy ID"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyMenu" unique_id=993193037]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckButton" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1003993930]
+layout_mode = 2
+
+[node name="CheckButton2" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=753007176]
+layout_mode = 2
+
+[node name="MapSelection" parent="." unique_id=2026862486 instance=ExtResource("3_2avy7")]
+
+[connection signal="pressed" from="LobbyMenu/Start" to="." method="_on_start_pressed"]

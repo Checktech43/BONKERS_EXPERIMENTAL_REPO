@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cwtx7ngmig6fs"]
+
+[ext_resource type="Script" uid="uid://cpvxgy3nipyvd" path="res://MenuScripts/cosmetics_change.gd" id="1_cnot8"]
+[ext_resource type="PackedScene" uid="uid://cdh1rmin1s1su" path="res://Skins/blue_grooble.glb" id="1_ulqje"]
+
+[node name="Cosmetics" type="Node3D" unique_id=1564814120]
+script = ExtResource("1_cnot8")
+
+[node name="Skin" type="Node3D" parent="." unique_id=314565368]
+
+[node name="blue_grooble" parent="Skin" unique_id=2122239279 instance=ExtResource("1_ulqje")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Hat" type="Node3D" parent="." unique_id=1919807497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0400758, 0)
+
+[node name="Beard" type="Node3D" parent="." unique_id=792454538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29835445, -0.84757924)
+
+[node name="Glasses" type="Node3D" parent="." unique_id=148859357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2155025, -0.94048357)
+
+[node name="Other" type="Node3D" parent="." unique_id=1135675289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1198158)

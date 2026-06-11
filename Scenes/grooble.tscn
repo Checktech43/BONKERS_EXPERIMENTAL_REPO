@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://cxgyhh5t4xncf"]
+
+[ext_resource type="Script" uid="uid://dxh3egv5pkn7f" path="res://Scripts/playerPhysics.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_fgg3u"]
+[ext_resource type="PackedScene" uid="uid://ch132iji7lbwy" path="res://Assets/Arrow/source/arrow_Bonkers.glb" id="3_sweqy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4flbx"]
+bounce = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation:y")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Blue" type="RigidBody3D" unique_id=1792406894]
+physics_material_override = SubResource("PhysicsMaterial_4flbx")
+contact_monitor = true
+script = ExtResource("1_onrkg")
+cosmmetics_scene = ExtResource("2_fgg3u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1632624704]
+shape = SubResource("BoxShape3D_onrkg")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1308929247]
+replication_config = SubResource("SceneReplicationConfig_onrkg")
+
+[node name="arrow_Bonkers" type="Node3D" parent="." unique_id=183194121]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.245, 0, 0, -0.85999995)
+rotation_edit_mode = 2
+
+[node name="arrow_Bonkers" parent="arrow_Bonkers" unique_id=477219635 instance=ExtResource("3_sweqy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+rotation_edit_mode = 2
+
+[node name="WeaponSpawn" type="Node3D" parent="." unique_id=1418959906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.7415586)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=163404397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055807948, 1.4804586, 3)
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=1388191860]
+
+[node name="Cloths" type="Node3D" parent="." unique_id=495836116]
+
+[node name="Cosmetics" parent="Cloths" unique_id=1564814120 instance=ExtResource("2_fgg3u")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

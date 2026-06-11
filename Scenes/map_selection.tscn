@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0s2pmyctqiav"]
+
+[ext_resource type="Script" uid="uid://cev2kdsbdoq2" path="res://MenuScripts/map_selection.gd" id="1_vh24d"]
+[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Maps/grass.tscn" id="2_3qh5j"]
+[ext_resource type="PackedScene" uid="uid://bwq5io572fslc" path="res://Maps/temple.tscn" id="3_spraa"]
+
+[node name="MapSelection" type="CanvasLayer" unique_id=1685315093]
+script = ExtResource("1_vh24d")
+maps = Array[PackedScene]([ExtResource("2_3qh5j"), ExtResource("3_spraa")])
+
+[node name="Button" type="Button" parent="." unique_id=225416907]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -748.0
+offset_top = 128.0
+offset_right = -661.0
+offset_bottom = 274.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "<="
+
+[node name="Button2" type="Button" parent="." unique_id=1502687879]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -445.0
+offset_top = 134.0
+offset_right = -359.0
+offset_bottom = 259.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 60
+text = "=>"
+
+[node name="Map" parent="." unique_id=1966486156 instance=ExtResource("2_3qh5j")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 5, 0)
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Button2" to="." method="_on_button_2_button_down"]

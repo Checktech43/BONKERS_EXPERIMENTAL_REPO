@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cmcp3ndv5j0s2"]
+
+[ext_resource type="Script" uid="uid://broabvgv4jmnn" path="res://Scripts/hammer.gd" id="1_7mb5m"]
+[ext_resource type="PackedScene" uid="uid://blgwrg1gdiyo" path="res://Assets/Animations/HammerBonk_Animation/source/hammer_animation.glb" id="2_7mb5m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnip4"]
+size = Vector3(3.8707275, 0.8904991, 10.231437)
+
+[node name="Hammer" unique_id=1403400369 groups=["hammer"] instance=ExtResource("2_7mb5m")]
+script = ExtResource("1_7mb5m")
+
+[node name="Hammer" parent="." index="0" unique_id=1508777533 groups=["hammer"]]
+
+[node name="Rigidbody" type="RigidBody3D" parent="Hammer" index="0" unique_id=16741640 groups=["hammer"]]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.4200108, 0)
+gravity_scale = 0.0
+freeze = true
+contact_monitor = true
+max_contacts_reported = 20
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hammer/Rigidbody" index="0" unique_id=2112528995 groups=["hammer"]]
+transform = Transform3D(1.000001, 0, 0, 0, 1.0000005, 0, 0, 0, 1.000001, 0.04095387, 0.29459214, 0.026948929)
+shape = SubResource("BoxShape3D_qnip4")

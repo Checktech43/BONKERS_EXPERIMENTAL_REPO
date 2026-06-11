@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dic6dlxpnk0t"]
+
+[ext_resource type="Texture2D" uid="uid://0oemgsvlcukd" path="res://Assets/Groobles/blue_grooble/textures/blue_grooble_face.png" id="1_if1eq"]
+[ext_resource type="Script" uid="uid://bq0iimoq24lle" path="res://MenuScripts/choose_skin.gd" id="1_pde4e"]
+[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_jtlmq"]
+[ext_resource type="Texture2D" uid="uid://ip3c25nvt5wp" path="res://Assets/Groobles/green_grooble/textures/green_grooble_face.png" id="2_pde4e"]
+[ext_resource type="Texture2D" uid="uid://ciqyqwl7ofotm" path="res://Assets/Groobles/red_grooble/textures/red_grooble_face.png" id="3_f7pl1"]
+[ext_resource type="Script" uid="uid://b2kj2u3282hgs" path="res://MenuScripts/change_skin.gd" id="3_rvh67"]
+[ext_resource type="PackedScene" uid="uid://cdh1rmin1s1su" path="res://Skins/blue_grooble.glb" id="4_h1e6v"]
+[ext_resource type="Texture2D" uid="uid://c261a6f71rl3q" path="res://Assets/Groobles/yellow_grooble/textures/yellow_grooble_face.png" id="4_rvh67"]
+[ext_resource type="PackedScene" uid="uid://c7r2l08dyt4yc" path="res://Skins/green_grooble.glb" id="6_jtlmq"]
+[ext_resource type="PackedScene" uid="uid://b7la620x8mgqs" path="res://Skins/red_grooble_blend.glb" id="8_b113j"]
+[ext_resource type="PackedScene" uid="uid://4ld67818h7xg" path="res://Skins/yellow_grooble_bonkers.glb" id="10_susy7"]
+
+[node name="WrodrobeHud" type="CanvasLayer" unique_id=419607438]
+script = ExtResource("1_pde4e")
+cosmetices_scene = ExtResource("2_jtlmq")
+
+[node name="CubeSelect" type="HFlowContainer" parent="." unique_id=1738386045]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -431.0
+offset_top = -96.0
+offset_right = 430.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="blue_grooble" type="Button" parent="CubeSelect" unique_id=901833812]
+layout_mode = 2
+icon = ExtResource("1_if1eq")
+script = ExtResource("3_rvh67")
+skin = ExtResource("4_h1e6v")
+
+[node name="green_grooble" type="Button" parent="CubeSelect" unique_id=544022183]
+layout_mode = 2
+icon = ExtResource("2_pde4e")
+script = ExtResource("3_rvh67")
+skin = ExtResource("6_jtlmq")
+
+[node name="red_grooble_blend" type="Button" parent="CubeSelect" unique_id=427069201]
+layout_mode = 2
+icon = ExtResource("3_f7pl1")
+script = ExtResource("3_rvh67")
+skin = ExtResource("8_b113j")
+
+[node name="yellow_grooble_bonkers" type="Button" parent="CubeSelect" unique_id=935485568]
+layout_mode = 2
+icon = ExtResource("4_rvh67")
+script = ExtResource("3_rvh67")
+skin = ExtResource("10_susy7")
+
+[node name="Button" type="Button" parent="." unique_id=225497795]
+offset_left = 954.0
+offset_top = 565.0
+offset_right = 1071.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 25
+text = "Return"
+
+[connection signal="pressed" from="CubeSelect/blue_grooble" to="CubeSelect" method="_on_button_pressed"]
+[connection signal="pressed" from="CubeSelect/green_grooble" to="CubeSelect" method="_on_button_pressed"]
+[connection signal="pressed" from="CubeSelect/red_grooble_blend" to="CubeSelect" method="_on_button_pressed"]
+[connection signal="pressed" from="CubeSelect/yellow_grooble_bonkers" to="CubeSelect" method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_return"]

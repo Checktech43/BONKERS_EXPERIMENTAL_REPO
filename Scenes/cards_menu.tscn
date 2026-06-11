@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://ctau1fv0jjl81"]
+
+[ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://MenuScripts/cards_menu.gd" id="1_6crrv"]
+
+[node name="Control" type="Control" unique_id=1923754249]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6crrv")
+
+[node name="JackSpades" type="Button" parent="." unique_id=588109701]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -121.0
+offset_right = -68.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Gives a projectile to shoot at enemies. (Fire with Right Click)"
+text = "Jack of Spades"
+autowrap_mode = 2
+
+[node name="QueenHearts" type="Button" parent="." unique_id=732476067]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -121.0
+offset_right = 59.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Gives a single use hammer. Enemies bonked with the hammer will take more knockback for one turn."
+text = "Queen of Hearts"
+autowrap_mode = 2
+
+[node name="TwoClubs" type="Button" parent="." unique_id=125598863]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 96.0
+offset_top = -121.0
+offset_right = 184.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Two of Clubs"
+autowrap_mode = 2
+
+[node name="AceDiamonds" type="Button" parent="." unique_id=1007067228]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -121.0
+offset_right = -192.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Become immovable for one turn."
+text = "Ace of Diamonds"
+autowrap_mode = 2
+
+[connection signal="pressed" from="JackSpades" to="." method="_on_jack_spades_pressed"]
+[connection signal="pressed" from="QueenHearts" to="." method="_on_queen_hearts_pressed"]
+[connection signal="pressed" from="QueenHearts" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="TwoClubs" to="." method="_on_two_clubs_pressed"]
+[connection signal="pressed" from="AceDiamonds" to="." method="_on_ace_diamonds_pressed"]
