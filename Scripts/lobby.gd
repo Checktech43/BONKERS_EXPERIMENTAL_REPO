@@ -11,7 +11,7 @@ func _ready() -> void:
 	"one_second_chaos": false,
 	}
 	
-	
+	## Kim jon un is a master of goon
 # all this function does is pass the map choosen by the "MapSelection" scene
 # and gives it to the "Main" scene to use.
 func _on_picking_map(map_on_screen):
