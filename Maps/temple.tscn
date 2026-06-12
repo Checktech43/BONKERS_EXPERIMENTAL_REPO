@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bwq5io572fslc"]
 
-[ext_resource type="PackedScene" uid="uid://duk7xs17xwj62" path="res://Assets/Maps/second_map/source/temple.glb" id="1_5eyw8"]
+[ext_resource type="PackedScene" uid="uid://8pd0tfomwh5j" path="res://Assets/Maps/dust_temple_map/source/temple.glb" id="1_5eyw8"]
 [ext_resource type="Script" uid="uid://bn3p1qg58u646" path="res://Scripts/size_of_map.gd" id="1_5s0s7"]
-[ext_resource type="PackedScene" uid="uid://b6dw41xslg2ya" path="res://Assets/Maps/second_map/source/rocks.glb" id="2_ktr65"]
+[ext_resource type="PackedScene" uid="uid://cv76vaybrw0fi" path="res://Assets/Maps/dust_temple_map/source/rocks.glb" id="2_ktr65"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s0s7"]
 size = Vector3(20, 1.815918, 20)

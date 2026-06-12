@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://x10smyls3ipw"
+path="res://.godot/imported/Player 2 Joining Sound FX ver 2.mp3-63ff8713fdbbaae80b9d367f550c5e44.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/soundfx/unused_soundfx/Player 2 Joining Sound FX ver 2.mp3"
+dest_files=["res://.godot/imported/Player 2 Joining Sound FX ver 2.mp3-63ff8713fdbbaae80b9d367f550c5e44.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

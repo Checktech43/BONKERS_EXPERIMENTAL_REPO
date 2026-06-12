@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdy5gamdr7fjq"]
+[gd_scene format=3 uid="uid://bdy5gamdr7fjq"]
 
 [ext_resource type="Script" uid="uid://bj1e07p26mdlg" path="res://MenuScripts/Town.gd" id="1_qhv8w"]
 [ext_resource type="PackedScene" uid="uid://dic6dlxpnk0t" path="res://Scenes/wrodrobe_hud.tscn" id="1_x76ya"]
 [ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_cqbca"]
 [ext_resource type="PackedScene" uid="uid://bxifje32utmqh" path="res://Scenes/main_menu.tscn" id="2_fjvj7"]
-[ext_resource type="PackedScene" uid="uid://dh47uldmfyl2p" path="res://Assets/Maps/main_menu_map/source/main_menu_map.glb" id="6_ewk3l"]
-[ext_resource type="PackedScene" uid="uid://ci5oxa5i0pf2j" path="res://Assets/Groobles/yellow_grooble/source/yellow_grooble_bonkers.glb" id="7_jmloc"]
+[ext_resource type="PackedScene" uid="uid://ccbtxsxoyiofn" path="res://Assets/Maps/main_menu_map/source/main_menu_map.glb" id="6_ewk3l"]
+[ext_resource type="PackedScene" uid="uid://cey6h15jta155" path="res://Assets/Groobles/yellow_grooble/source/yellow_grooble_bonkers.glb" id="7_jmloc"]
 [ext_resource type="PackedScene" uid="uid://c7r2l08dyt4yc" path="res://Skins/green_grooble.glb" id="7_qhv8w"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1tjfs"]
@@ -21,7 +21,7 @@ sky = SubResource("Sky_chj36")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Town" type="Node3D" node_paths=PackedStringArray("main_menu_buttons", "Change_skin_hud", "camera")]
+[node name="Town" type="Node3D" unique_id=1087023566 node_paths=PackedStringArray("main_menu_buttons", "Change_skin_hud", "camera")]
 script = ExtResource("1_qhv8w")
 main_menu_buttons = NodePath("MainMenu")
 Change_skin_hud = NodePath("WrodrobeHud")
@@ -29,31 +29,31 @@ camera = NodePath("Camera3D")
 camera_offset_for_customisation = Vector3(0, 1, -5)
 defalut_camera_offset = Vector3(0, 2, -10)
 
-[node name="Cosmetics" parent="." instance=ExtResource("2_cqbca")]
+[node name="Cosmetics" parent="." unique_id=1745468065 instance=ExtResource("2_cqbca")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=995922594]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_energy = 0.117
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=993479919]
 environment = SubResource("Environment_0cbdn")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1162152686]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.17001629, 1.3746719, -10.406788)
 current = true
 fov = 32.2
 
-[node name="green_grooble_bonkers" parent="." instance=ExtResource("7_qhv8w")]
+[node name="green_grooble_bonkers" parent="." unique_id=75849069 instance=ExtResource("7_qhv8w")]
 transform = Transform3D(0.44693634, 0, -0.2241604, 0, 0.5, 0, 0.2241604, 0, 0.44693634, -6.105421, -0.07753801, 9.867853)
 
-[node name="WrodrobeHud" parent="." instance=ExtResource("1_x76ya")]
+[node name="WrodrobeHud" parent="." unique_id=1410998986 instance=ExtResource("1_x76ya")]
 visible = false
 
-[node name="MainMenu" parent="." instance=ExtResource("2_fjvj7")]
+[node name="MainMenu" parent="." unique_id=1445356742 instance=ExtResource("2_fjvj7")]
 
-[node name="main_menu_map" parent="." instance=ExtResource("6_ewk3l")]
+[node name="main_menu_map" parent="." unique_id=1870501493 instance=ExtResource("6_ewk3l")]
 transform = Transform3D(-2.360415e-08, 0, 0.54, 0, 0.54, 0, -0.54, 0, -2.360415e-08, 0.029662132, -0.45295143, 12.903017)
 
-[node name="yellow_grooble_bonkers" parent="." instance=ExtResource("7_jmloc")]
+[node name="yellow_grooble_bonkers" parent="." unique_id=929927725 instance=ExtResource("7_jmloc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.926216, 0.9595804, 2.9496956)
