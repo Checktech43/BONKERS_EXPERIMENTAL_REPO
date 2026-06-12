@@ -4,10 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dic6dlxpnk0t" path="res://Scenes/wrodrobe_hud.tscn" id="1_x76ya"]
 [ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_cqbca"]
 [ext_resource type="PackedScene" uid="uid://bxifje32utmqh" path="res://Scenes/main_menu.tscn" id="2_fjvj7"]
-[ext_resource type="PackedScene" uid="uid://ccbtxsxoyiofn" path="res://Assets/Maps/main_menu_map/source/main_menu_map.glb" id="6_ewk3l"]
 [ext_resource type="PackedScene" uid="uid://cey6h15jta155" path="res://Assets/Groobles/yellow_grooble/source/yellow_grooble_bonkers.glb" id="7_jmloc"]
 [ext_resource type="PackedScene" uid="uid://c7r2l08dyt4yc" path="res://Skins/green_grooble.glb" id="7_qhv8w"]
+[ext_resource type="PackedScene" uid="uid://bruvsfh1lhaa4" path="res://Assets/Maps/main_menu_map/source/main_menu_islandglb.glb" id="8_kj8yl"]
 [ext_resource type="PackedScene" uid="uid://d1sab8et6jwqp" path="res://Assets/Groobles/red_grooble/source/red_grooble_blend.glb" id="8_ljcrg"]
+[ext_resource type="PackedScene" uid="uid://cmyuyabeu21tv" path="res://Assets/Maps/main_menu_map/source/main_menu_skybox.glb" id="9_4m8r7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1tjfs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,11 +57,14 @@ visible = false
 
 [node name="MainMenu" parent="." unique_id=1005224056 instance=ExtResource("2_fjvj7")]
 
-[node name="main_menu_map" parent="." unique_id=1541791215 instance=ExtResource("6_ewk3l")]
-transform = Transform3D(-2.360415e-08, 0, 0.54, 0, 0.54, 0, -0.54, 0, -2.360415e-08, 0.029662132, -0.45295143, 12.903017)
-
 [node name="yellow_grooble_bonkers" parent="." unique_id=1157871373 instance=ExtResource("7_jmloc")]
 transform = Transform3D(0.26473016, 0, -0.42416734, 0, 0.5, 0, 0.42416734, 0, 0.26473016, -2.975151, -0.02157259, 13.661828)
 
 [node name="red_grooble_blend" parent="." unique_id=668155945 instance=ExtResource("8_ljcrg")]
 transform = Transform3D(0.4420583, 0, -0.2336332, 0, 0.5, 0, 0.2336332, 0, 0.4420583, 3.173914, 4.7683716e-07, 2.6597757)
+
+[node name="main_menu_islandglb" parent="." unique_id=228130201 instance=ExtResource("8_kj8yl")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0.04816246, -0.47117925, 6.8660965)
+
+[node name="main_menu_skybox" parent="." unique_id=916547694 instance=ExtResource("9_4m8r7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2495384, 0, -12.211515)
