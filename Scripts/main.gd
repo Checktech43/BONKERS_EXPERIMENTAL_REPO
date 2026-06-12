@@ -130,7 +130,7 @@ func _on_finishing_action_phase():
 func _on_victory_timeout() -> void:
 	for player in $Players.get_children():
 		if player != null && is_multiplayer_authority():
-			player.get_child(3).public_visibility = false
+			player.get_node("MultiplayerSynchronizer").public_visibility = false
 			remove_player(player.name.to_int())
 
 ### I don't think this does anything

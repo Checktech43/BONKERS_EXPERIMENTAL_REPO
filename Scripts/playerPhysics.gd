@@ -14,6 +14,7 @@ var locked_in_target_dir : Vector3
 var planning : bool = true # planning makes it so that you can't get ready twice
 var random : bool = false
 var playing_game : bool = false
+var can_jump : bool = false
 
 ### other stuff
 var is_pointing_at_floor : Dictionary
@@ -22,6 +23,7 @@ var is_pointing_at_floor : Dictionary
 var data : Dictionary = {"name" : "Jombom", "colour" : Color.BLUE}
 var cosmmetics : Node3D
 signal is_ready
+var weapon
 var has_weapon = true
 var knockback_multiplier = 1
 
@@ -30,7 +32,18 @@ var knockback_multiplier = 1
 @export var cosmmetics_scene : PackedScene
 @onready var spring_arm = $SpringArm3D
 
+@export var is_ghost := false:
+	set(value):
+		is_ghost = value
+
+		set_collision_layer_value(2, !value)
+		set_collision_layer_value(3, value)
+		set_collision_mask_value(2, !value)
+
 var target_yaw = 0
+
+var spade: PackedScene = load("res://Scenes/spade_projectile.tscn")
+var hammer: PackedScene = load("res://Scenes/hammer.tscn")
 
 func _ready() -> void:
 	$arrow_Bonkers.visible = false
@@ -106,13 +119,20 @@ func _input(event):
 		change_arrow_size()
 	if event.is_action_pressed("escape"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if event.is_action_pressed("jump") and is_multiplayer_authority() and can_jump:
+		jump()
 	if event.is_action_pressed("weapon") and has_weapon and is_multiplayer_authority():
-		spawn_weapon.rpc()
+		spawn_weapon.rpc(weapon.resource_path)
 		
 		
 func push():
 	var forward = -transform.basis.z
 	apply_force(forward * locked_in_power)
+
+func jump():
+	apply_central_force(Vector3(0, 70, 0) * 10)
+	can_jump = false
+
 
 # Let the other clients control there cube.
 func _enter_tree():
@@ -158,12 +178,14 @@ func change_arrow_size():
 
 
 	
-@rpc("authority", "call_local")
-func spawn_weapon():
-	var current_weapon = load("res://hammer.tscn").instantiate()
-	$WorldEnvironment.add_child(current_weapon)
+@rpc("any_peer", "call_local")
+func spawn_weapon(weapon_id: String):
+	var scene = load(weapon_id)
+	var current_weapon = scene.instantiate()
+	add_child(current_weapon)
 	current_weapon.global_position = $WeaponSpawn.global_position
-	current_weapon.rotation.y = rotation.y # I have no idea how degrees work, so spades come out at an angle :/
+	current_weapon.rotation.y = rotation.y
+	has_weapon = false
 	
 func recieve_knockback(direction: Vector3, force: float):
 	var final_force = force * knockback_multiplier
