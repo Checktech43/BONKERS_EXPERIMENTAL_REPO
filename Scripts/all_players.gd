@@ -1,6 +1,6 @@
 extends Node
 
-
+## This is a sample edit
 
 var number_of_cubes_ready : int = 0
 signal all_players_ready
