@@ -1,6 +1,6 @@
 extends Node
 
-
+## This is a sample edit
 
 var number_of_cubes_ready : int = 0
 signal all_players_ready
@@ -13,7 +13,6 @@ func _count_ready_players():
 	number_of_cubes_ready += 1
 	if number_of_cubes_ready == get_children().size():
 		number_of_cubes_ready = 0
-		# bombaclat
 		all_players_ready.emit()
 		
 

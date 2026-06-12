@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ccbtxsxoyiofn" path="res://Assets/Maps/main_menu_map/source/main_menu_map.glb" id="6_ewk3l"]
 [ext_resource type="PackedScene" uid="uid://cey6h15jta155" path="res://Assets/Groobles/yellow_grooble/source/yellow_grooble_bonkers.glb" id="7_jmloc"]
 [ext_resource type="PackedScene" uid="uid://c7r2l08dyt4yc" path="res://Skins/green_grooble.glb" id="7_qhv8w"]
+[ext_resource type="PackedScene" uid="uid://bruvsfh1lhaa4" path="res://Assets/Maps/main_menu_map/source/main_menu_islandglb.glb" id="8_kj8yl"]
+[ext_resource type="PackedScene" uid="uid://d1sab8et6jwqp" path="res://Assets/Groobles/red_grooble/source/red_grooble_blend.glb" id="8_ljcrg"]
+[ext_resource type="PackedScene" uid="uid://cmyuyabeu21tv" path="res://Assets/Maps/main_menu_map/source/main_menu_skybox.glb" id="9_4m8r7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1tjfs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
