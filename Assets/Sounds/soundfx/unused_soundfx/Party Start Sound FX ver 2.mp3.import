@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqg42y0y67457"
+path="res://.godot/imported/Party Start Sound FX ver 2.mp3-8344783f1388abcbcd9d5ad016e91da7.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/soundfx/unused_soundfx/Party Start Sound FX ver 2.mp3"
+dest_files=["res://.godot/imported/Party Start Sound FX ver 2.mp3-8344783f1388abcbcd9d5ad016e91da7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
