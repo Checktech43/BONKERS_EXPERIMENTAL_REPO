@@ -16,6 +16,7 @@ var random : bool = false
 var playing_game : bool = false
 var can_jump : bool = false
 
+
 ### other stuff
 var is_pointing_at_floor : Dictionary
 @export var animation_player: AnimationPlayer 
@@ -45,7 +46,14 @@ var target_yaw = 0
 var spade: PackedScene = load("res://Scenes/spade_projectile.tscn")
 var hammer: PackedScene = load("res://Scenes/hammer.tscn")
 
+### ai related variables
+@export var is_ai = true
+@export_enum("Braindead", "Somewhat Competent", "Actually Kind of Good", "Older Brother") var ai_level: int
+
 func _ready() -> void:
+	if is_ai:
+		$SpringArm3D/Camera3D.current = false
+		
 	$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
 	$arrow_Bonkers.basis.z.z = -power / 2
@@ -58,13 +66,19 @@ func _ready() -> void:
 		
 		
 func _unhandled_input(event: InputEvent) -> void:
-	if !playing_game: return
-	if event is InputEventMouseMotion and planning:
+	if !playing_game:
+		return
+	if event is InputEventMouseMotion and planning and !is_ai:
 		target_yaw -= event.relative.x * mouse_sensitivity
-		#rotation.y = target_yaw
 
 
 func _physics_process(delta: float) -> void:
+	if is_ai:
+		$RayCast3D.rotation.y += 360 * delta
+		if $RayCast3D.rotation.y > 99999:
+			$RayCast3D.rotation.y = 0 # this is to prevent the game from crashing if the raycast rotates for too long
+	
+	
 	if planning and is_multiplayer_authority():
 		target_dir = (target - global_position).normalized()
 		rotation.y = lerp_angle(
@@ -96,6 +110,53 @@ func _process(state):
 		random = false
 	target_dir = (target - global_position).normalized()
 	
+	if is_ai:
+		pass
+		#print("IM HERE")
+	
+	if is_ai and planning and $"..".get_child_count() > 1:
+		#print("REACHING FAR ACROSS THESE NEW FRONTIERS")
+		cpu_logic()
+		
+	
+	
+func cpu_logic():
+	if ai_level == 0:
+		rotation.y = randi_range(0, 360)
+		player_is_ready()
+		if playing_game:
+			$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
+	
+	
+	
+	
+	### the ai uses a constantly rotating raycast to detect the players around it
+	if $RayCast3D.is_colliding() and is_ai and planning:
+		if ai_level == 1:
+			var closest_player = find_closest_player()
+			look_at(closest_player.global_position)
+						
+		player_is_ready()
+		if playing_game:
+			$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
+	
+func find_closest_player() -> RigidBody3D:
+	var visible_targets = []
+	var closest_player = null
+	var closest_distance = INF
+	var collider = $RayCast3D.get_collider()
+	print(collider)
+	if !visible_targets.has(collider):
+				visible_targets.append(collider)
+				for target in visible_targets:
+					var distance = global_position.distance_squared_to(target.global_position)
+					if distance < closest_distance:
+						closest_distance = distance
+						closest_player = target
+								
+	return closest_player
+	
+	
 
 func planning_phase():
 	if is_multiplayer_authority():
@@ -103,9 +164,10 @@ func planning_phase():
 		$arrow_Bonkers.visible = true
 	
 func _input(event):
-	if !playing_game or not is_multiplayer_authority(): return
+	if !playing_game or !is_multiplayer_authority() or is_ai:
+		return
 	if event.is_action_pressed("confirm") && planning:
-		print(Input.mouse_mode)
+		#print(Input.mouse_mode)
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and !$"../..".card_menu.visible:
 			player_is_ready()
 		else:
@@ -121,7 +183,7 @@ func _input(event):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event.is_action_pressed("jump") and is_multiplayer_authority() and can_jump:
 		jump()
-	if event.is_action_pressed("weapon") and has_weapon and is_multiplayer_authority():
+	if event.is_action_pressed("weapon") and has_weapon and weapon != null and is_multiplayer_authority():
 		spawn_weapon.rpc(weapon.resource_path)
 		
 		
@@ -150,7 +212,7 @@ func _look_at_mouse(mouse) -> void:
 		
 		
 		# We only care about rotating from side to side,
-		# so when the "look_at" function changes any of the other rotaation axis
+		# so when the "look_at" function changes any of the other rotation axis
 		# we just change them back to normal before doing anything else
 		if rotation.x != 0 or rotation.z != 0:
 			rotation.x = 0
@@ -194,7 +256,8 @@ func recieve_knockback(direction: Vector3, force: float):
 
 func player_is_ready() -> void:
 	if not is_multiplayer_authority():
-		return
+		if !is_ai:
+			return
 	# Lock in the power and diriction of the player, and tell the server that they are ready.
 	locked_in_power = power * 100 + 500
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
