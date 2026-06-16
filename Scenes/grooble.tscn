@@ -9,6 +9,7 @@
 bounce = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(1, 0.99902344, 1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
 properties/0/path = NodePath(".:position")
@@ -27,7 +28,7 @@ properties/4/path = NodePath(".:scale")
 properties/4/spawn = true
 properties/4/replication_mode = 1
 
-[node name="Blue" type="RigidBody3D" unique_id=1792406894]
+[node name="Blue" type="RigidBody3D" unique_id=1792406894 groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4flbx")
@@ -37,10 +38,10 @@ cosmmetics_scene = ExtResource("2_fgg3u")
 is_ai = false
 ai_level = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1632624704]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1632624704 groups=["player"]]
 shape = SubResource("BoxShape3D_onrkg")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1308929247]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1308929247 groups=["player"]]
 replication_config = SubResource("SceneReplicationConfig_onrkg")
 
 [node name="arrow_Bonkers" type="Node3D" parent="." unique_id=183194121]
@@ -68,5 +69,8 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 target_position = Vector3(31.3, -1, 0)
 collision_mask = 2
 script = ExtResource("4_fgg3u")
+
+[node name="GhostPosition" type="Node3D" parent="." unique_id=819240163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010565668, -2.4160056)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

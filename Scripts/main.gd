@@ -52,7 +52,8 @@ func _on_something_fell(body: Node3D) -> void:
 		body.position = Vector3(0, 0.5, 0)
 	else:
 		# I don't know why this line of code is here. But it errors out when it's not there, so it stays
-		body.get_node("MultiplayerSynchronizer").public_visibility = false
+		if body.get_node_or_null("MultiplayerSynchronizer") != null:
+			body.get_node_or_null("MultiplayerSynchronizer").public_visibility = false
 		
 		remove_player(body.name.to_int())
 		if $Players.get_children().size() <= 1:

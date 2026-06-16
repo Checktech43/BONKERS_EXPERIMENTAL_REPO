@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="2_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cl2sh3gaoi4ji" path="res://Scenes/mutiplayer_hud.tscn" id="3_6iyac"]
 [ext_resource type="Script" uid="uid://b7nf02lqn6xlh" path="res://Scripts/all_players.gd" id="5_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Maps/grass.tscn" id="10_5rjnf"]
+[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Maps/grass.tscn" id="6_n12ux"]
 [ext_resource type="Script" uid="uid://eco64ciyc6ag" path="res://Scripts/map.gd" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cwm8w35h1fst" path="res://MainScenes/lobby.tscn" id="10_dc6gi"]
 [ext_resource type="PackedScene" uid="uid://ctau1fv0jjl81" path="res://Scenes/cards_menu.tscn" id="12_fdnlq"]
@@ -92,7 +92,7 @@ script = ExtResource("5_jkdf5")
 
 [node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671]
 script = ExtResource("10_d1ilt")
-loaded_map = ExtResource("10_5rjnf")
+loaded_map = ExtResource("6_n12ux")
 
 [node name="Lobby" parent="CurrentMap" unique_id=1003242740 instance=ExtResource("10_dc6gi")]
 
@@ -104,7 +104,7 @@ one_shot = true
 visible = false
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=1188206546]
-_spawnable_scenes = PackedStringArray("uid://cceu2uumlp16x", "uid://bwq5io572fslc")
+_spawnable_scenes = PackedStringArray("res://Scenes/arena_Grass.tscn", "res://Scenes/arena_temple.tscn")
 spawn_path = NodePath("../CurrentMap")
 
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]

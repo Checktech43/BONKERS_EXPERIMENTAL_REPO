@@ -49,6 +49,7 @@ var hammer: PackedScene = load("res://Scenes/hammer.tscn")
 ### ai related variables
 @export var is_ai = true
 @export_enum("Braindead", "Somewhat Competent", "Actually Kind of Good", "Older Brother") var ai_level: int
+var visible_players = []
 
 func _ready() -> void:
 	if is_ai:
@@ -110,17 +111,16 @@ func _process(state):
 		random = false
 	target_dir = (target - global_position).normalized()
 	
-	if is_ai:
-		pass
-		#print("IM HERE")
+	
 	
 	if is_ai and planning and $"..".get_child_count() > 1:
-		#print("REACHING FAR ACROSS THESE NEW FRONTIERS")
 		cpu_logic()
 		
 	
 	
 func cpu_logic():
+	
+	
 	if ai_level == 0:
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
@@ -130,31 +130,63 @@ func cpu_logic():
 	
 	
 	
-	### the ai uses a constantly rotating raycast to detect the players around it
+	### the ai uses a constantly rotating raycast to detect players around it
 	if $RayCast3D.is_colliding() and is_ai and planning:
-		if ai_level == 1:
-			var closest_player = find_closest_player()
-			look_at(closest_player.global_position)
+		var collider = $RayCast3D.get_collider()
+		if collider.is_in_group("player") and !visible_players.has(collider):
+			visible_players.append(collider)
+			print(visible_players)
+			
+		
+		var target = score_players()
+		#var closest_player = find_closest_player()
+		look_at(target.global_position)
+		send_ghost()
+		print("WHO YOU GONNA CALL")
 						
 		player_is_ready()
 		if playing_game:
 			$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
 	
 func find_closest_player() -> RigidBody3D:
-	var visible_targets = []
 	var closest_player = null
 	var closest_distance = INF
 	var collider = $RayCast3D.get_collider()
 	print(collider)
-	if !visible_targets.has(collider):
-				visible_targets.append(collider)
-				for target in visible_targets:
+	if !visible_players.has(collider):
+				visible_players.append(collider)
+				for target in visible_players:
 					var distance = global_position.distance_squared_to(target.global_position)
 					if distance < closest_distance:
 						closest_distance = distance
 						closest_player = target
 								
 	return closest_player
+	
+	
+### The AI scores players based on how close they are, how close they are to an edge, etc
+### The player with the highest score will be the on the AI targets
+func score_players() -> RigidBody3D:
+	var highest_score = 0
+	var highest_scorer
+	
+	for player in visible_players:
+		var score = 0
+		score += 100.0 / global_position.distance_to(player.global_position)
+		if score > highest_score:
+			highest_score = score
+			highest_scorer = player
+	
+	return highest_scorer
+	
+func send_ghost():
+	print("GHOST BUSTERS")
+	var ghost_cube = load("res://Scenes/ghost_grooble.tscn")
+	var cube_to_send = ghost_cube.instantiate()
+	
+	cube_to_send.inherited_power = power
+	cube_to_send.global_position = $GhostPosition.global_position 
+	add_child(cube_to_send)
 	
 	
 
@@ -190,6 +222,7 @@ func _input(event):
 func push():
 	var forward = -transform.basis.z
 	apply_force(forward * locked_in_power)
+	visible_players = []
 
 func jump():
 	apply_central_force(Vector3(0, 70, 0) * 10)

@@ -15,7 +15,7 @@ func _count_ready_players():
 		all_players_ready.emit()
 		
 func _process(delta: float) -> void:
-	print(number_of_cubes_ready)
+	pass
 
 func on_action_phase() -> void:
 	for player in get_children():
