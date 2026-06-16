@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr82x386djnm2"
-path="res://.godot/imported/hammer_model_bonkers.glb-075a470de88606c84bc56aa0bb2032db.scn"
+uid="uid://bd5tdpux7w052"
+path="res://.godot/imported/Dungeon_DungeonMap.glb-618fe152f8f9d617734280cb713ed524.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Hammer/source/hammer_model_bonkers.glb"
-dest_files=["res://.godot/imported/hammer_model_bonkers.glb-075a470de88606c84bc56aa0bb2032db.scn"]
+source_file="res://Assets/Maps/the_dungeon/source/Dungeon_DungeonMap.glb"
+dest_files=["res://.godot/imported/Dungeon_DungeonMap.glb-618fe152f8f9d617734280cb713ed524.scn"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgtabpbt5bu03"
-path.s3tc="res://.godot/imported/Clock_void_skybox_texture.png-0f57d8743e4e22ef39107d69edab0533.s3tc.ctex"
+uid="uid://bk11t7tpif7s2"
+path.s3tc="res://.godot/imported/barrel_model_sandstone2_texture.png-8a8d86a242a4c4803d5edc3de49816e5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "6c8b308b9c40776704058edcc778ba71"
+"md5": "9176a20270989a4a5ce5d4e655a8f4d0"
 }
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Clock_void_skybox_texture.png"
-dest_files=["res://.godot/imported/Clock_void_skybox_texture.png-0f57d8743e4e22ef39107d69edab0533.s3tc.ctex"]
+source_file="res://Assets/Prefabs/Misc/Barrel/source/barrel_model_sandstone2_texture.png"
+dest_files=["res://.godot/imported/barrel_model_sandstone2_texture.png-8a8d86a242a4c4803d5edc3de49816e5.s3tc.ctex"]
 
 [params]
 

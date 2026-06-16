@@ -1,7 +1,5 @@
 extends Node
 
-# ButterWort was here
-
 var game_start : bool = false
 
 signal action_phase_time
@@ -26,7 +24,6 @@ func _ready():
 # that only the host calls this function
 func add_player(id : int = 1):
 	# create the player and give it all the neceacery data
-	print("IM COMING, GABEN")
 	var player : RigidBody3D = player_scene.instantiate()
 	player.name = str(id)
 	player.position = Vector3(0, 0.25, 0)

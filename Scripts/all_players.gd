@@ -1,6 +1,5 @@
 extends Node
 
-## This is a sample edit
 
 var number_of_cubes_ready : int = 0
 signal all_players_ready
@@ -16,7 +15,8 @@ func _count_ready_players():
 		number_of_cubes_ready = 0
 		all_players_ready.emit()
 		
-
+func _process(delta: float) -> void:
+	pass
 
 func on_action_phase() -> void:
 	for player in get_children():

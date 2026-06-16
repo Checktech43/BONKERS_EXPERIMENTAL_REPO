@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://cxgyhh5t4xncf"]
 
 [ext_resource type="Script" uid="uid://dxh3egv5pkn7f" path="res://Scripts/playerPhysics.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/cosmetices.tscn" id="2_fgg3u"]
+[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_fgg3u"]
 [ext_resource type="PackedScene" uid="uid://cmeifivv5t7e3" path="res://Assets/Arrow/source/arrow_Bonkers.glb" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://da5yhcf41hish" path="res://Scripts/ray_cast_3d.gd" id="4_fgg3u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4flbx"]
 bounce = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_onrkg"]
+size = Vector3(1, 0.99902344, 1)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
 properties/0/path = NodePath(".:position")
@@ -19,17 +21,27 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath(".:linear_velocity")
 properties/2/spawn = true
 properties/2/replication_mode = 1
+properties/3/path = NodePath(".:is_ghost")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:scale")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
-[node name="Blue" type="RigidBody3D" unique_id=1792406894]
+[node name="Blue" type="RigidBody3D" unique_id=1792406894 groups=["player"]]
+collision_layer = 2
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_4flbx")
 contact_monitor = true
 script = ExtResource("1_onrkg")
 cosmmetics_scene = ExtResource("2_fgg3u")
+is_ai = false
+ai_level = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1632624704]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1632624704 groups=["player"]]
 shape = SubResource("BoxShape3D_onrkg")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1308929247]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1308929247 groups=["player"]]
 replication_config = SubResource("SceneReplicationConfig_onrkg")
 
 [node name="arrow_Bonkers" type="Node3D" parent="." unique_id=183194121]
@@ -51,5 +63,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055807948, 1.4804586, 3)
 [node name="Cloths" type="Node3D" parent="." unique_id=495836116]
 
 [node name="Cosmetics" parent="Cloths" unique_id=1564814120 instance=ExtResource("2_fgg3u")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=99226909]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.15, 0)
+target_position = Vector3(31.3, -1, 0)
+collision_mask = 2
+script = ExtResource("4_fgg3u")
+
+[node name="GhostPosition" type="Node3D" parent="." unique_id=819240163]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010565668, -2.4160056)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

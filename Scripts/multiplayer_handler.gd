@@ -1,6 +1,7 @@
 extends Node
 
-var net_mode : String = "ENet"
+# Use ENet for testing on one system, use Steam for everything else
+@export_enum("Steam", "ENet") var net_mode : String = "ENet"
 var peer
 var lobbies = {}
 var lobby_id : int
@@ -12,8 +13,8 @@ var is_joining: bool = false
 func _ready():
 	if net_mode == "ENet":
 		peer = ENetMultiplayerPeer.new()
-	else:
-		peer = SteamMultiplayerPeer.new()
+		print("THERE IS NO GABEN IN BA SING SE")
+	elif net_mode == "Steam":
 		print("Steam Initialized ", Steam.steamInit(480, true)) # 480 should be replaced with the games steam id once we have a steam page
 		Steam.initRelayNetworkAccess()
 		Steam.lobby_created.connect(_on_lobby_created)
@@ -154,4 +155,5 @@ func generate_lobby_code(length := 6) -> String:
 	return code
 	
 func go_to_lobby():
+	print("RBRBRRB")
 	get_tree().change_scene_to_file("res://MainScenes/main.tscn")

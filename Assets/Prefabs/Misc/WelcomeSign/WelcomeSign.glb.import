@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bdbkjwknivvdl"
-path="res://.godot/imported/WelcomeSign.glb-1ffef69e5a72ca52dc22bd43cd235917.scn"
+path="res://.godot/imported/WelcomeSign.glb-729ad37224007223e4fb52db5b160b92.scn"
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/WelcomeSign.glb"
-dest_files=["res://.godot/imported/WelcomeSign.glb-1ffef69e5a72ca52dc22bd43cd235917.scn"]
+source_file="res://Assets/Prefabs/Misc/WelcomeSign/WelcomeSign.glb"
+dest_files=["res://.godot/imported/WelcomeSign.glb-729ad37224007223e4fb52db5b160b92.scn"]
 
 [params]
 

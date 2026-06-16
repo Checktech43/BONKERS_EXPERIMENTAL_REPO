@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cioriysi3ub2o"
-path.s3tc="res://.godot/imported/WelcomeSign_sandstone2_texture.png-0a46e183b6fb6dba9cec68b36fd1ba89.s3tc.ctex"
+uid="uid://by88b1sfu40l3"
+path.s3tc="res://.godot/imported/hammer_model_bonkers_sandstone2_texture.png-848dc9b970de82e7155e1fba23fd48f5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/WelcomeSign_sandstone2_texture.png"
-dest_files=["res://.godot/imported/WelcomeSign_sandstone2_texture.png-0a46e183b6fb6dba9cec68b36fd1ba89.s3tc.ctex"]
+source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers_sandstone2_texture.png"
+dest_files=["res://.godot/imported/hammer_model_bonkers_sandstone2_texture.png-848dc9b970de82e7155e1fba23fd48f5.s3tc.ctex"]
 
 [params]
 

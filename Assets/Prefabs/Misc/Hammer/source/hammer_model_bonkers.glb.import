@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cbujwts4leiin"
-path="res://.godot/imported/Clock.glb-f35f2c7d944ed7ebcd80e776238be9de.scn"
+uid="uid://dr82x386djnm2"
+path="res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Clock.glb"
-dest_files=["res://.godot/imported/Clock.glb-f35f2c7d944ed7ebcd80e776238be9de.scn"]
+source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers.glb"
+dest_files=["res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"]
 
 [params]
 
