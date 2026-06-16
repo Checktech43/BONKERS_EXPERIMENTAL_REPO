@@ -28,4 +28,5 @@ func _on_game_end(data) -> void:
 
 
 func _on_victory_timeout() -> void:
+	if multiplayer.is_server():
 		start_agian_button.show()

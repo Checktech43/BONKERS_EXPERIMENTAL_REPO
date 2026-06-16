@@ -4,6 +4,7 @@ extends Node
 
 var number_of_cubes_ready : int = 0
 signal all_players_ready
+
 	
 func _player_ready():
 	rpc("_count_ready_players")
@@ -39,4 +40,4 @@ func _telaport_players(max_distance) -> void:
 
 ### I don't think this function is used for anything usefull
 func _on_restart() -> void:
-	number_of_cubes_ready = 0
+	pass

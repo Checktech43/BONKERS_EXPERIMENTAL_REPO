@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bwq5io572fslc"]
+
+[ext_resource type="PackedScene" uid="uid://8pd0tfomwh5j" path="res://Assets/Maps/dust_temple_map/source/temple.glb" id="1_5eyw8"]
+[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://Maps/temple_map_spawns.gd" id="1_5s0s7"]
+[ext_resource type="PackedScene" uid="uid://cv76vaybrw0fi" path="res://Assets/Maps/dust_temple_map/source/rocks.glb" id="2_ktr65"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5s0s7"]
+size = Vector3(20, 1.815918, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hjng"]
+size = Vector3(2, 12, 2)
+
+[node name="Map" type="Node3D" unique_id=526243022]
+script = ExtResource("1_5s0s7")
+size = 20.0
+
+[node name="Temple" parent="." unique_id=985378513 instance=ExtResource("1_5eyw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="rocks2" parent="Temple" unique_id=973606290 instance=ExtResource("2_ktr65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1895690174]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=237028288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -0.842041, 0)
+shape = SubResource("BoxShape3D_5s0s7")
+
+[node name="Pillers" type="Node3D" parent="." unique_id=1721832859]
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Pillers" unique_id=1645366755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D2" unique_id=1341779879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.275, 7)
+shape = SubResource("BoxShape3D_8hjng")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="Pillers" unique_id=1733819335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D3" unique_id=1438712127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.275, -7)
+shape = SubResource("BoxShape3D_8hjng")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Pillers" unique_id=335062095]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D4" unique_id=1490537654]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.275, 7)
+shape = SubResource("BoxShape3D_8hjng")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="Pillers" unique_id=1535186263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D5" unique_id=373898043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.275, 0)
+shape = SubResource("BoxShape3D_8hjng")
+
+[node name="StaticBody3D6" type="StaticBody3D" parent="Pillers" unique_id=1901702255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D6" unique_id=915369848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 6.275, -7)
+shape = SubResource("BoxShape3D_8hjng")
+
+[node name="StaticBody3D7" type="StaticBody3D" parent="Pillers" unique_id=2039374971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillers/StaticBody3D7" unique_id=1817237596]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 6.275, 0)
+shape = SubResource("BoxShape3D_8hjng")

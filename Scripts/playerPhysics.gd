@@ -14,6 +14,7 @@ var locked_in_target_dir : Vector3
 var planning : bool = true # planning makes it so that you can't get ready twice
 var random : bool = false
 var playing_game : bool = false
+var coloured : bool = false
 
 ### other stuff
 var is_pointing_at_floor : Dictionary
@@ -37,14 +38,15 @@ func _ready() -> void:
 	$SpringArm3D/Camera3D.current = false
 	$arrow_Bonkers.basis.z.z = -power / 2
 	# Connect all the signals between the players and everything else in the main scene.
-	if is_multiplayer_authority():
-		change_skin(1)
-		multiplayer.peer_connected.connect(change_skin)
-		is_ready.connect($".."._player_ready)
+	is_ready.connect($".."._player_ready)
 	#$"../../Camera3D".connect("mouse", _look_at_mouse)
 		
 		
 func _unhandled_input(event: InputEvent) -> void:
+	if coloured == false && is_multiplayer_authority():
+		change_skin(1)
+		multiplayer.peer_connected.connect(change_skin)
+		coloured = true
 	if !playing_game: return
 	if event is InputEventMouseMotion and planning:
 		target_yaw -= event.relative.x * mouse_sensitivity
@@ -60,13 +62,9 @@ func _physics_process(delta: float) -> void:
 		rotation_smoothness * delta
 		)
 	
-func go_to_random_position(max_radius):
-	var radius : float = randf_range(0, max_radius)
-	var angle : float = randf_range(0, 2 * PI)
-	var x : float = radius * cos(angle)
-	var z : float = radius * sin(angle)
+func go_to_random_position(new_pos):
+	starting_pos = new_pos
 	linear_velocity = Vector3(0, 0, 0)
-	starting_pos = Vector3(x, 0.25, z)
 	random = true
 
 
@@ -78,8 +76,9 @@ func _process(state):
 	# The cube just does not teleport to the new position.
 	# so you have to change the position here instead.
 	if random:
-		position = starting_pos
 		rotation = Vector3(0, 0, 0)
+		lock_rotation = true
+		position = starting_pos
 		random = false
 	target_dir = (target - global_position).normalized()
 	
@@ -92,7 +91,6 @@ func planning_phase():
 func _input(event):
 	if !playing_game or not is_multiplayer_authority(): return
 	if event.is_action_pressed("confirm") && planning:
-		print(Input.mouse_mode)
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and !$"../..".card_menu.visible:
 			player_is_ready()
 		else:
@@ -153,6 +151,8 @@ func toggle_ragdoll_mode(game_state):
 		$SpringArm3D/Camera3D.current = false
 		$"../../Camera3D".current = true
 		lock_rotation = false
+		
+		
 func change_arrow_size():
 	$arrow_Bonkers.basis.z.z = -power / 2
 
@@ -185,7 +185,7 @@ func player_is_ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player") and body.knockback_multiplier == 2:
+	if body.is_in_group("players") and body.knockback_multiplier == 2:
 		body.recieve_knockback(transform.basis.z, 5)
 	if body.is_in_group("hammer"):
 		knockback_multiplier = 2

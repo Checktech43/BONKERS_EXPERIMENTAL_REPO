@@ -24,7 +24,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0an3"]
-size = Vector3(1545.1, 1.9, 2471)
+size = Vector3(1545.1, 1.6014893, 2471)
 
 [node name="Main" type="Node3D" unique_id=1461552637 node_paths=PackedStringArray("hud", "card_menu")]
 script = ExtResource("1_hptm8")
@@ -49,31 +49,13 @@ wait_time = 3.0
 one_shot = true
 
 [node name="DeathPlane" type="Area3D" parent="." unique_id=1616572989]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.800002, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.100002, 0)
 shape = SubResource("BoxShape3D_e0an3")
 
 [node name="MutiplayerHud" parent="." unique_id=594535370 instance=ExtResource("3_6iyac")]
-mouse_filter = 2
-
-[node name="LobbyCode" type="Label" parent="MutiplayerHud" unique_id=1130166971]
-layout_mode = 0
-offset_left = 3.0
-offset_top = 321.0
-offset_right = 43.0
-offset_bottom = 344.0
-
-[node name="Button" type="Button" parent="MutiplayerHud/LobbyCode" unique_id=689407621]
-visible = false
-layout_mode = 0
-offset_left = -2.0
-offset_top = 44.0
-offset_right = 140.0
-offset_bottom = 75.0
-text = "Copy ID"
 
 [node name="VictoryTimer" type="Timer" parent="." unique_id=539655774]
 wait_time = 4.0
@@ -86,7 +68,6 @@ current = true
 [node name="Area3D" type="Area3D" parent="." unique_id=1257683726]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=746354692]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1000011, 0)
 shape = SubResource("BoxShape3D_e0an3")
 
 [node name="Players" type="Node3D" parent="." unique_id=1043772275]
@@ -111,13 +92,14 @@ spawn_path = NodePath("../CurrentMap")
 
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]
 [connection signal="change_game_state" from="." to="Players" method="_on_change_game_state"]
+[connection signal="game_over" from="." to="MutiplayerHud" method="_on_game_end"]
+[connection signal="restart" from="." to="MutiplayerHud" method="_on_rematch"]
 [connection signal="restart" from="." to="Players" method="_on_restart"]
 [connection signal="restart" from="." to="CurrentMap" method="_on_game_reset"]
 [connection signal="timeout" from="ActionPhaseTimer" to="." method="_on_finishing_action_phase"]
 [connection signal="timeout" from="ActionPhaseTimer" to="Players" method="_on_action_phase_end"]
 [connection signal="timeout" from="ActionPhaseTimer" to="CurrentMap" method="_on_round_end"]
 [connection signal="body_entered" from="DeathPlane" to="." method="_on_something_fell"]
-[connection signal="button_down" from="MutiplayerHud/LobbyCode/Button" to="." method="_on_button_button_down"]
 [connection signal="timeout" from="VictoryTimer" to="." method="_on_victory_timeout"]
 [connection signal="timeout" from="VictoryTimer" to="MutiplayerHud" method="_on_victory_timeout"]
 [connection signal="all_players_ready" from="Players" to="." method="_on_all_players_ready"]

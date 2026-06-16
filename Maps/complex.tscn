@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://clh1btnv63ccv"]
+
+[ext_resource type="PackedScene" uid="uid://cjd5cjfccon41" path="res://Assets/Maps/complex_map/source/MainPlatform.glb" id="1_gay6e"]
+[ext_resource type="PackedScene" uid="uid://k70co63trc2i" path="res://Assets/Maps/complex_map/source/cubelampobject.glb" id="2_fepel"]
+[ext_resource type="PackedScene" uid="uid://bx2r4r7lf2jr6" path="res://Assets/Maps/complex_map/source/skybox_void.glb" id="3_6iir7"]
+[ext_resource type="PackedScene" uid="uid://d2spmdwku441l" path="res://Assets/Maps/complex_map/source/unusedcomplexplatforms.glb" id="4_wh3p0"]
+
+[node name="Complex" type="Node3D" unique_id=2065508751]
+
+[node name="MainPlatform" parent="." unique_id=462786239 instance=ExtResource("1_gay6e")]
+
+[node name="cubelampobject" parent="." unique_id=340435353 instance=ExtResource("2_fepel")]
+
+[node name="skybox_void" parent="." unique_id=830996078 instance=ExtResource("3_6iir7")]
+
+[node name="unusedcomplexplatforms" parent="." unique_id=930870457 instance=ExtResource("4_wh3p0")]

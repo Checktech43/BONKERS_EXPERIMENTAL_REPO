@@ -4,6 +4,8 @@ signal game_has_started
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if multiplayer.is_server():
+		$LobbyMenu/Start.show()
 	game_has_started.connect($"..".on_game_start)
 	game_has_started.connect($"../..".on_start_button_getting_pressed)
 	# modifiers have yet to be added

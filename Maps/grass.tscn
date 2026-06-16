@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cceu2uumlp16x"]
+
+[ext_resource type="Script" uid="uid://bn3p1qg58u646" path="res://Maps/grass_map_spawns.gd" id="1_sj583"]
+[ext_resource type="PackedScene" uid="uid://bhf5js8w1dras" path="res://Assets/Maps/green_map/source_files/main_Island/mainIsland_Map_bonkers.glb" id="2_mwacj"]
+[ext_resource type="PackedScene" uid="uid://w4r6geraptbo" path="res://Assets/Maps/green_map/source_files/rocks_model/rocks_Map_bonkers.glb" id="3_kh45v"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yv24g"]
+height = 1.0500001
+radius = 20.0
+
+[node name="Map" type="Node3D" unique_id=1966486156]
+script = ExtResource("1_sj583")
+size = 20.0
+
+[node name="mainIsland_Map_bonkers" parent="." unique_id=732591826 instance=ExtResource("2_mwacj")]
+
+[node name="rocks_Map_bonkers" parent="mainIsland_Map_bonkers" unique_id=1432207400 instance=ExtResource("3_kh45v")]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=826744778]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=716116325]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5749999, 0)
+shape = SubResource("CylinderShape3D_yv24g")

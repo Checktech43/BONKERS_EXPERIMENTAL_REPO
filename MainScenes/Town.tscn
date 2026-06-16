@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj1e07p26mdlg" path="res://MenuScripts/Town.gd" id="1_qhv8w"]
 [ext_resource type="PackedScene" uid="uid://dic6dlxpnk0t" path="res://Scenes/wrodrobe_hud.tscn" id="1_x76ya"]
-[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_cqbca"]
+[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/cosmetices.tscn" id="2_cqbca"]
 [ext_resource type="PackedScene" uid="uid://bxifje32utmqh" path="res://Scenes/main_menu.tscn" id="2_fjvj7"]
 [ext_resource type="PackedScene" uid="uid://cey6h15jta155" path="res://Assets/Groobles/yellow_grooble/source/yellow_grooble_bonkers.glb" id="7_jmloc"]
 [ext_resource type="PackedScene" uid="uid://c7r2l08dyt4yc" path="res://Skins/green_grooble.glb" id="7_qhv8w"]

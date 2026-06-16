@@ -14,10 +14,10 @@ func _ready():
 		peer = ENetMultiplayerPeer.new()
 	else:
 		peer = SteamMultiplayerPeer.new()
-	print("Steam Initialized ", Steam.steamInit(480, true)) # 480 should be replaced with the games steam id once we have a steam page
-	Steam.initRelayNetworkAccess()
-	Steam.lobby_created.connect(_on_lobby_created)
-	Steam.lobby_joined.connect(_on_lobby_joined)
+		print("Steam Initialized ", Steam.steamInit(480, true)) # 480 should be replaced with the games steam id once we have a steam page
+		Steam.initRelayNetworkAccess()
+		Steam.lobby_created.connect(_on_lobby_created)
+		Steam.lobby_joined.connect(_on_lobby_joined)
 	
 	
 	#multiplayer.connected_to_server.connect(

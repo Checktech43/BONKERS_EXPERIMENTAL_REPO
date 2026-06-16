@@ -19,6 +19,7 @@ size = Vector3(18, 7.2460938, 18)
 [node name="LobbyMenu" type="CanvasLayer" parent="." unique_id=311810566]
 
 [node name="Start" type="Button" parent="LobbyMenu" unique_id=774443804]
+visible = false
 offset_left = 424.0
 offset_top = 490.0
 offset_right = 741.0

@@ -16,14 +16,10 @@ signal game_over
 
 
 func _ready():
-	if multiplayer.get_unique_id() == 1:
+	if multiplayer.is_server():
 		add_player()
 	if is_multiplayer_authority():
 		multiplayer.peer_connected.connect(add_player)
-	
-
-func player_disconnected(id):
-	_remove_player(id)
 
 
 # Keep in mind That when the cubes are first joining the game,
@@ -34,7 +30,7 @@ func add_player(id : int = 1):
 	var player : RigidBody3D = player_scene.instantiate()
 	player.name = str(id)
 	player.position = Vector3(0, 0.25, 0)
-	$Players.add_child(player)
+	$Players.add_child(player, true)
 
 
 func _on_all_players_ready() -> void:
@@ -46,40 +42,37 @@ func on_start_button_getting_pressed() -> void:
 	
 @rpc("call_local")
 func start_the_game():
+	print($Players.get_children())
 	game_start = true
 	change_game_state.emit(game_start)
 
 func _on_something_fell(body: Node3D) -> void:
+	if not body.is_class("RigidBody3D"): return
 	if not game_start:
 		body.linear_velocity = Vector3(0, 0, 0)
 		body.position = Vector3(0, 0.5, 0)
 	else:
-		# I don't know why this line of code is here. But it errors out when it's not there, so it stays
-		body.get_node("MultiplayerSynchronizer").public_visibility = false
+		body.get_node("MultiplayerSynchronizer").public_visibility = false # I don't know why this line of code is here. But it errors out when it's not there, so it stays
+		rpc_id(1, "remove_player", body.name.to_int())
+		$EndOfGameDelay.start()
 		
-		remove_player(body.name.to_int())
-		if $Players.get_children().size() <= 1:
-			$EndOfGameDelay.start()
-		
-func remove_player(id):
-	rpc_id(1, "_remove_player", id)
-	
 @rpc("any_peer", "call_local")
-func _remove_player(id):
+func remove_player(id):
 	print("man im dead")
 	var player : RigidBody3D = get_node_or_null("Players/" + str(id))
 	if player:
-		player.free()
-		print("The " + str(id) + " cube is dead!")
+		if is_multiplayer_authority():
+			player.get_node("MultiplayerSynchronizer").public_visibility = false
+			player.queue_free()
+	
+	print("The " + str(id) + " cube is dead!")
 	
  
 		
 func _check_for_winners() -> void:
 	if $Players.get_children().size() == 1:
-		for player in $Players.get_children():
-			if player != null:
-				rpc("_end_of_game", player.data)
-	if $Players.get_children().size() < 1:
+		rpc("_end_of_game", $Players.get_child(0).data)
+	elif $Players.get_children().size() < 1:
 		var no_one_wins : Dictionary = {"name" : "nobody", "colour" : Color.WHITE}
 		rpc("_end_of_game", no_one_wins)
 		
@@ -106,20 +99,23 @@ func _end_of_game(data):
 	game_over.emit(data)
 	game_start = false
 	change_game_state.emit(game_start)
-	restart.emit()
 	print("end_game")
 	$VictoryTimer.start()
 
 func start_rematch():
-	if multiplayer.get_unique_id() == 1:
-		add_player(multiplayer.get_unique_id())
-	else:
-		rpc_id(1, "rematch", multiplayer.get_unique_id())
+	add_player()
+	for player_id in multiplayer.get_peers():
+		add_player(player_id)
+	rpc("rematch")
+
 	
-@rpc("call_local", "any_peer")
-func rematch(id):
+@rpc("call_local", "authority")
+func rematch():
 	print("rematch")
-	add_player(id)
+	$CurrentMap.go_to_lobby()
+	#if is_multiplayer_authority():
+	restart.emit()
+
 	
 func _on_finishing_action_phase():
 	if !is_multiplayer_authority():
@@ -128,10 +124,9 @@ func _on_finishing_action_phase():
 	
 	
 func _on_victory_timeout() -> void:
-	for player in $Players.get_children():
-		if player != null && is_multiplayer_authority():
-			player.get_child(3).public_visibility = false
-			remove_player(player.name.to_int())
+	if $Players.get_children().size() > 0:
+		$Players.get_child(0).get_node("MultiplayerSynchronizer").public_visibility = false
+		rpc_id(1, "remove_player", $Players.get_child(0).name.to_int())
 
 ### I don't think this does anything
 func _on_button_button_down() -> void:

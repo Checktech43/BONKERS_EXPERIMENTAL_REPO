@@ -2,6 +2,7 @@ extends Node3D
 
 var round_counter : int
 var playes_started_with : int
+var lobby : Node3D
 @export var loaded_map : PackedScene
 signal players_message
 
@@ -10,8 +11,9 @@ func on_game_start() -> void:
 	rpc("rearange_all_things")
 	
 	
-@rpc("call_local")	
+@rpc("call_local")
 func rearange_all_things():
+	lobby = get_child(0)
 	var all_players = $"../Players"
 	var resizes_needed : int =  all_players.get_children().size()
 	instantiate_map()
@@ -33,12 +35,17 @@ func _on_round_end() -> void:
 	
 func set_players_at_random_positions():
 	var map : Node3D = get_child(-1)
-	var size : float = map.size * scale.x / 2
-	players_message.emit(size)
+	var size : float = scale.x
+	
+	players_message.emit(map.get_random_position(size))
 
 func instantiate_map():
 	remove_child(get_child(0))
 	add_child(loaded_map.instantiate())
+	
+func go_to_lobby():
+	get_child(0).queue_free()
+	add_child(lobby)
 	
 # I'm thinking of delating this if it's not going to be used by anyone
 func _on_game_reset() -> void:
