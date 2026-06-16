@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr82x386djnm2"
-path="res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"
+uid="uid://mebnyjaf6lu7"
+path="res://.godot/imported/SpookyParts_dungeonglb.glb-fac8c168f8830cac51cdd65d5bf3880a.scn"
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers.glb"
-dest_files=["res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"]
+source_file="res://Assets/Maps/the_dungeon/source/SpookyParts_dungeonglb.glb"
+dest_files=["res://.godot/imported/SpookyParts_dungeonglb.glb-fac8c168f8830cac51cdd65d5bf3880a.scn"]
 
 [params]
 

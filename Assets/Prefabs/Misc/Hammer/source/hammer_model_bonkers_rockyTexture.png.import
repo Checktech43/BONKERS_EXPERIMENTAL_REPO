@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://1usglqtrulpa"
-path.s3tc="res://.godot/imported/hammer_model_bonkers_rockyTexture.png-7177e14141c92c830edca3c4467369f3.s3tc.ctex"
+path.s3tc="res://.godot/imported/hammer_model_bonkers_rockyTexture.png-15ea40ed1359572fdfbed9ad00ec3809.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Models/Hammer/source/hammer_model_bonkers_rockyTexture.png"
-dest_files=["res://.godot/imported/hammer_model_bonkers_rockyTexture.png-7177e14141c92c830edca3c4467369f3.s3tc.ctex"]
+source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers_rockyTexture.png"
+dest_files=["res://.godot/imported/hammer_model_bonkers_rockyTexture.png-15ea40ed1359572fdfbed9ad00ec3809.s3tc.ctex"]
 
 [params]
 

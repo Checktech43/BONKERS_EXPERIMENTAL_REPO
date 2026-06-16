@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr82x386djnm2"
-path="res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"
+uid="uid://phprept5hf2r"
+path="res://.godot/imported/cauldron_model.glb-51e9048734414ea8ed2f218c5a181160.scn"
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers.glb"
-dest_files=["res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"]
+source_file="res://Assets/Prefabs/Misc/Cauldron/source/cauldron_model.glb"
+dest_files=["res://.godot/imported/cauldron_model.glb-51e9048734414ea8ed2f218c5a181160.scn"]
 
 [params]
 

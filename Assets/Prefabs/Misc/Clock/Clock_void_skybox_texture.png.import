@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgtabpbt5bu03"
-path.s3tc="res://.godot/imported/Clock_void_skybox_texture.png-0f57d8743e4e22ef39107d69edab0533.s3tc.ctex"
+uid="uid://ck0qjr0o6ouij"
+path.s3tc="res://.godot/imported/Clock_void_skybox_texture.png-60a57f453c0e1b0a7c36b9d38abdae52.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "6c8b308b9c40776704058edcc778ba71"
-}
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Clock_void_skybox_texture.png"
-dest_files=["res://.godot/imported/Clock_void_skybox_texture.png-0f57d8743e4e22ef39107d69edab0533.s3tc.ctex"]
+source_file="res://Assets/Prefabs/Misc/Clock/Clock_void_skybox_texture.png"
+dest_files=["res://.godot/imported/Clock_void_skybox_texture.png-60a57f453c0e1b0a7c36b9d38abdae52.s3tc.ctex"]
 
 [params]
 

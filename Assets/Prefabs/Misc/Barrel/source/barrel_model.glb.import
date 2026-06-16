@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr82x386djnm2"
-path="res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"
+uid="uid://bvh6o8d538slm"
+path="res://.godot/imported/barrel_model.glb-c77ff491362dcba6ff7758aaf6bc3259.scn"
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Hammer/source/hammer_model_bonkers.glb"
-dest_files=["res://.godot/imported/hammer_model_bonkers.glb-0bda4de903c03b8e008d2cea44eaa395.scn"]
+source_file="res://Assets/Prefabs/Misc/Barrel/source/barrel_model.glb"
+dest_files=["res://.godot/imported/barrel_model.glb-c77ff491362dcba6ff7758aaf6bc3259.scn"]
 
 [params]
 

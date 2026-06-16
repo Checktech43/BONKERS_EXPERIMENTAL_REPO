@@ -40,6 +40,6 @@ func instantiate_map():
 	remove_child(get_child(0))
 	add_child(loaded_map.instantiate())
 	
-# I'm thinking of delating this if it's not going to be used by anyone
+# I'm thinking of deleting this if it's not going to be used by anyone
 func _on_game_reset() -> void:
 	pass

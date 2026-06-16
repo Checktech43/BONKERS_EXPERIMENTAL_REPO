@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cioriysi3ub2o"
-path.s3tc="res://.godot/imported/WelcomeSign_sandstone2_texture.png-c58349aa2e860f46e5344b112e3b9fa5.s3tc.ctex"
+uid="uid://dt5kon2idrorn"
+path.s3tc="res://.godot/imported/Dungeon_DungeonMap_smooth_rock.png-2cb3addee5a4c475b5f8fa87184a0cf0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9176a20270989a4a5ce5d4e655a8f4d0"
+"md5": "6bdc8d64f1dbfeefd8b8af73ea847275"
 }
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/WelcomeSign/WelcomeSign_sandstone2_texture.png"
-dest_files=["res://.godot/imported/WelcomeSign_sandstone2_texture.png-c58349aa2e860f46e5344b112e3b9fa5.s3tc.ctex"]
+source_file="res://Assets/Maps/the_dungeon/source/Dungeon_DungeonMap_smooth_rock.png"
+dest_files=["res://.godot/imported/Dungeon_DungeonMap_smooth_rock.png-2cb3addee5a4c475b5f8fa87184a0cf0.s3tc.ctex"]
 
 [params]
 

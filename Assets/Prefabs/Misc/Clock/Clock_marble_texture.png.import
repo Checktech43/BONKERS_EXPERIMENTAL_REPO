@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctg7cch4s281w"
-path.s3tc="res://.godot/imported/Clock_marble_texture.png-c07d5ae36751b91ce13a16b41d902c89.s3tc.ctex"
+path.s3tc="res://.godot/imported/Clock_marble_texture.png-5ec2c219b0405ec7f420a1eb31485f13.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/Clock_marble_texture.png"
-dest_files=["res://.godot/imported/Clock_marble_texture.png-c07d5ae36751b91ce13a16b41d902c89.s3tc.ctex"]
+source_file="res://Assets/Prefabs/Misc/Clock/Clock_marble_texture.png"
+dest_files=["res://.godot/imported/Clock_marble_texture.png-5ec2c219b0405ec7f420a1eb31485f13.s3tc.ctex"]
 
 [params]
 

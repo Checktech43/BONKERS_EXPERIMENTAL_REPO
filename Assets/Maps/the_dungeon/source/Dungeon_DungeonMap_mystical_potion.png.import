@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cioriysi3ub2o"
-path.s3tc="res://.godot/imported/WelcomeSign_sandstone2_texture.png-c58349aa2e860f46e5344b112e3b9fa5.s3tc.ctex"
+uid="uid://jsu8wm1dmla6"
+path.s3tc="res://.godot/imported/Dungeon_DungeonMap_mystical_potion.png-3c6fb7e9ce195701ac1f515a98232c17.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9176a20270989a4a5ce5d4e655a8f4d0"
+"md5": "dfec160e968959ebca0438318e4e3ea0"
 }
 
 [deps]
 
-source_file="res://Assets/Prefabs/Misc/WelcomeSign/WelcomeSign_sandstone2_texture.png"
-dest_files=["res://.godot/imported/WelcomeSign_sandstone2_texture.png-c58349aa2e860f46e5344b112e3b9fa5.s3tc.ctex"]
+source_file="res://Assets/Maps/the_dungeon/source/Dungeon_DungeonMap_mystical_potion.png"
+dest_files=["res://.godot/imported/Dungeon_DungeonMap_mystical_potion.png-3c6fb7e9ce195701ac1f515a98232c17.s3tc.ctex"]
 
 [params]
 
