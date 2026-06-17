@@ -39,7 +39,7 @@ func host_game() -> void:
 	if net_mode == "ENet":
 		peer.create_server(6969)
 		multiplayer.multiplayer_peer = peer
-		go_to_lobby()
+		call_deferred("go_to_lobby")
 	elif net_mode == "Steam":
 		# create the host
 		Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, 4)
@@ -72,7 +72,7 @@ func _on_lobby_created(result: int, lobby_id: int):
 		
 		#$MutiplayerHud/LobbyCode.text = str(lobby_id)
 		#$MutiplayerHud/LobbyCode/Button.visible = true
-		go_to_lobby()
+		call_deferred("go_to_lobby")
 		
 
 
@@ -81,7 +81,7 @@ func join_game(entered_code = "123456789"):
 	if net_mode == "ENet":
 		peer.create_client("127.0.0.1", 6969)
 		multiplayer.multiplayer_peer = peer
-		go_to_lobby()
+		call_deferred("go_to_lobby")
 	elif net_mode == "Steam":
 		var code_entered : String = entered_code
 		print("Attempting to join lobby:", code_entered)
@@ -120,7 +120,7 @@ func _on_lobby_joined(lobby_id : int, permissions : int, locked : bool, response
 	
 	
 	is_joining = false
-	go_to_lobby()
+	call_deferred("go_to_lobby")
 	
 
 	
