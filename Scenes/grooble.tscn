@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxgyhh5t4xncf"]
 
-[ext_resource type="Script" uid="uid://dxh3egv5pkn7f" path="res://Scripts/playerPhysics.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_fgg3u"]
+[ext_resource type="Script" uid="uid://dxh3egv5pkn7f" path="res://Scripts/player_physics.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/cosmetices.tscn" id="2_fgg3u"]
 [ext_resource type="PackedScene" uid="uid://cmeifivv5t7e3" path="res://Assets/Arrow/source/arrow_Bonkers.glb" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://da5yhcf41hish" path="res://Scripts/ray_cast_3d.gd" id="4_fgg3u"]
 

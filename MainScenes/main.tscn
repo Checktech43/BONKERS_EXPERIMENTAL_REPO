@@ -24,7 +24,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0an3"]
-size = Vector3(1545.1, 1.6014893, 2471)
+size = Vector3(1545.1, 21.752666, 2471)
 
 [node name="Main" type="Node3D" unique_id=1461552637 node_paths=PackedStringArray("hud", "card_menu")]
 script = ExtResource("1_hptm8")
@@ -50,9 +50,12 @@ one_shot = true
 
 [node name="DeathPlane" type="Area3D" parent="." unique_id=1616572989]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+collision_layer = 15
+collision_mask = 15
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.075588, 0)
 shape = SubResource("BoxShape3D_e0an3")
 
 [node name="MutiplayerHud" parent="." unique_id=594535370 instance=ExtResource("3_6iyac")]
@@ -102,7 +105,6 @@ one_shot = true
 visible = false
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=1188206546]
-_spawnable_scenes = PackedStringArray("res://Scenes/arena_Grass.tscn", "res://Scenes/arena_temple.tscn")
 spawn_path = NodePath("../CurrentMap")
 
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]

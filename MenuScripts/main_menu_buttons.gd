@@ -2,11 +2,10 @@ extends Node
 
 signal went_to_cosmetics
 var peer = ENetMultiplayerPeer.new()
-var town : Node3D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	town = $".."
 	$Control/Play/HostButton.pressed.connect(MultiplayerHandler.host_game)
 	$Control/Play/JoinButton.pressed.connect(MultiplayerHandler.join_game)
 	$Control/Play/Join.pressed.connect(MultiplayerHandler.join_game)
