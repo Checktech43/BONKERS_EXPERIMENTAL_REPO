@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8gkleuvgtp4l"]
+
+[ext_resource type="Texture2D" uid="uid://b30o8epkor6qh" path="res://Assets/Groobles/blue_grooble/source/blue_grooble_bonkers_blue_grooble_body.png" id="1_478av"]
+
+[resource]
+resource_name = "blue_grooble_body"
+cull_mode = 2
+albedo_texture = ExtResource("1_478av")

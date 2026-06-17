@@ -6,9 +6,16 @@ var peer = ENetMultiplayerPeer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+<<<<<<< HEAD:MenuScripts/main_menu_buttons.gd
 	$Control/Play/HostButton.pressed.connect(MultiplayerHandler.host_game)
 	$Control/Play/JoinButton.pressed.connect(MultiplayerHandler.join_game)
 	$Control/Play/Join.pressed.connect(MultiplayerHandler.join_game)
+=======
+	var town : Node = $".."
+	$Control/HostButton.pressed.connect(MultiplayerHandler.host_game)
+	# $Control/JoinButton.pressed.connect(MultiplayerHandler.join_game)
+	$Control/Join.pressed.connect(MultiplayerHandler.join_game)
+>>>>>>> 5915587888421ce8fcded51ad1654454ba5b315d:Scripts/main_menu_buttons.gd
 	went_to_cosmetics.connect($".."._on_switch_to_customize)
 	
 	

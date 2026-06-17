@@ -27,3 +27,5 @@ size_of_hole = 5.0
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2145373798]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0187455, 0)
 shape = SubResource("ConcavePolygonShape3D_iyfig")
+
+[editable path="Lava_firepit"]
