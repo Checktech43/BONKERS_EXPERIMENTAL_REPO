@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwtx7ngmig6fs"]
 
-[ext_resource type="Script" uid="uid://cpvxgy3nipyvd" path="res://MenuScripts/cosmetics_change.gd" id="1_cnot8"]
+[ext_resource type="Script" uid="uid://cpvxgy3nipyvd" path="res://Scripts/cosmetics_change.gd" id="1_cnot8"]
 [ext_resource type="PackedScene" uid="uid://cdh1rmin1s1su" path="res://Skins/blue_grooble.glb" id="1_ulqje"]
 
 [node name="Cosmetics" type="Node3D" unique_id=1564814120]
