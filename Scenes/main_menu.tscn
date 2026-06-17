@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bxifje32utmqh"]
 
 [ext_resource type="Script" uid="uid://d0tiwtb3n3lyh" path="res://MenuScripts/main_menu_buttons.gd" id="1_tt5f1"]
+[ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Assets/GodotThemes/ui_theme1.tres" id="2_48xlc"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=2073516649]
 script = ExtResource("1_tt5f1")
@@ -91,12 +92,13 @@ anchor_left = 0.16100001
 anchor_top = 0.88400006
 anchor_right = 0.16100001
 anchor_bottom = 0.88400006
-offset_left = 183.74101
+offset_left = 184.741
 offset_top = -77.908005
-offset_right = 345.74103
+offset_right = 346.741
 offset_bottom = -34.908005
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 25
 text = "Host Game"
 

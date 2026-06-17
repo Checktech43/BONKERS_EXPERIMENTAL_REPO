@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfceuvfu405yt"]
+
+[ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://themes/ui_themes/ui_theme1.tres" id="1_y71ho"]
+[ext_resource type="Script" uid="uid://dw7m6ruj87qp" path="res://scripts/ButtonAnimationAndSoundHandler.gd" id="2_cqmua"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 450.0
+offset_top = 522.0
+offset_right = 731.6
+offset_bottom = 610.0
+theme = ExtResource("1_y71ho")
+text = "
+"
+autowrap_mode = 3
+script = ExtResource("2_cqmua")

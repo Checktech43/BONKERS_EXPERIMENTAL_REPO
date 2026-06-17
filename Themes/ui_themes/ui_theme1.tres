@@ -1,4 +1,9 @@
-[gd_resource type="Theme" format=3 uid="uid://bdmu51fs6vnpd"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bdmu51fs6vnpd"]
+
+[ext_resource type="FontFile" uid="uid://c203ljkmkrkgq" path="res://fonts/RubikMonoOne-Regular.ttf" id="1_7lfxq"]
+[ext_resource type="Texture2D" uid="uid://cw0y2akkrtd42" path="res://image_resources/UI/NormalButton.png" id="1_jbute"]
+[ext_resource type="Texture2D" uid="uid://cwukypeixbe7h" path="res://image_resources/UI/NormalButtonPressed.png" id="2_4fwjs"]
+[ext_resource type="Texture2D" uid="uid://djicaq4vp4n63" path="res://image_resources/UI/NormalButtonHover.png" id="2_vhhr3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhhr3"]
 content_margin_left = 4.0
@@ -15,10 +20,13 @@ corner_detail = 5
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhhr3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vhhr3"]
+texture = ExtResource("2_vhhr3")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbute"]
+texture = ExtResource("1_jbute")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bav8s"]
+texture = ExtResource("2_4fwjs")
 
 [resource]
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -39,7 +47,7 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 14
 Button/font_sizes/font_size = 38
-Button/fonts/font = null
+Button/fonts/font = ExtResource("1_7lfxq")
 Button/styles/disabled = SubResource("StyleBoxFlat_vhhr3")
 Button/styles/focus = SubResource("StyleBoxEmpty_vhhr3")
 Button/styles/hover = SubResource("StyleBoxTexture_vhhr3")
