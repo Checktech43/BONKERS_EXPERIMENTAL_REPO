@@ -9,4 +9,4 @@ func get_random_position(maps_scale) -> Vector3:
 	var x : float = radius * cos(angle)
 	var z : float = radius * sin(angle)
 	
-	return Vector3(x, 0.25, z)
+	return Vector3(x, 0, z)
