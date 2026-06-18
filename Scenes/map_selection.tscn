@@ -6,10 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bhf5js8w1dras" path="res://Assets/Maps/green_map/source_files/main_Island/mainIsland_Map_bonkers.glb" id="4_68n23"]
 [ext_resource type="PackedScene" uid="uid://ddx3nby6cqk85" path="res://Maps/fire_pit.tscn" id="4_vwpe3"]
 [ext_resource type="PackedScene" uid="uid://clh1btnv63ccv" path="res://Maps/complex.tscn" id="5_v7b5r"]
+[ext_resource type="PackedScene" uid="uid://jnajs8gn013r" path="res://Maps/pin_ball.tscn" id="5_xn5i6"]
+[ext_resource type="PackedScene" uid="uid://doe3lhmwxw64w" path="res://Maps/dungen.tscn" id="7_b1vtq"]
 
 [node name="MapSelection" type="CanvasLayer" unique_id=1685315093]
 script = ExtResource("1_vh24d")
-maps = Array[PackedScene]([ExtResource("2_3qh5j"), ExtResource("3_spraa"), ExtResource("4_vwpe3"), ExtResource("5_v7b5r")])
+maps = Array[PackedScene]([ExtResource("2_3qh5j"), ExtResource("3_spraa"), ExtResource("4_vwpe3"), ExtResource("5_xn5i6"), ExtResource("5_v7b5r"), ExtResource("7_b1vtq")])
 
 [node name="Button" type="Button" parent="." unique_id=225416907]
 anchors_preset = 1
