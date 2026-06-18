@@ -11,7 +11,7 @@ func _player_ready():
 @rpc("any_peer", "call_local")
 func _count_ready_players():
 	number_of_cubes_ready += 1
-	if number_of_cubes_ready == get_children().size():
+	if number_of_cubes_ready >= get_children().size():
 		number_of_cubes_ready = 0
 		all_players_ready.emit()
 		
@@ -34,10 +34,11 @@ func _on_change_game_state(new_state) -> void:
 		player.toggle_ragdoll_mode(new_state)
 
 
-func _telaport_players(max_distance) -> void:
-	for player in get_children():
-		player.go_to_random_position(max_distance)
+func _telaport_players(player, max_distance) -> void:
+	
+	player.go_to_random_position(max_distance)
+		
 
-### I don't think this function is used for anything usefull
+### I don't think this function is used for anything useful
 func _on_restart() -> void:
 	pass

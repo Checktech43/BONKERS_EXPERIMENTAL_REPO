@@ -37,7 +37,11 @@ func set_players_at_random_positions():
 	var map : Node3D = get_child(-1)
 	var size : float = scale.x
 	
-	players_message.emit(map.get_random_position(size))
+	var all_players = $"../Players".get_children()
+	
+	for player in all_players:
+		players_message.emit(player, map.get_random_position(size))
+		
 
 func instantiate_map():
 	remove_child(get_child(0))
@@ -47,6 +51,6 @@ func go_to_lobby():
 	get_child(0).queue_free()
 	add_child(lobby)
 	
-# I'm thinking of delating this if it's not going to be used by anyone
+# I'm thinking of deleting this if it's not going to be used by anyone
 func _on_game_reset() -> void:
 	pass

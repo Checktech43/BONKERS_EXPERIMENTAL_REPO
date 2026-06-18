@@ -124,7 +124,8 @@ func cpu_logic():
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
 		if playing_game:
-			$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
+			pass
+			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
 	
 	
 	
@@ -137,7 +138,7 @@ func cpu_logic():
 			print(visible_players)
 			
 		
-		var target = score_players()
+		var target = await score_players()
 		#var closest_player = find_closest_player()
 		look_at(target.global_position)
 		send_ghost()
@@ -145,7 +146,8 @@ func cpu_logic():
 						
 		player_is_ready()
 		if playing_game:
-			$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
+			pass
+			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
 	
 func find_closest_player() -> RigidBody3D:
 	var closest_player = null
@@ -169,14 +171,52 @@ func score_players() -> RigidBody3D:
 	var highest_score = 0
 	var highest_scorer
 	
+	
 	for player in visible_players:
 		var score = 0
 		score += 100.0 / global_position.distance_to(player.global_position)
+		if ai_level >= 2:
+			
+			var target_danger = await check_target_danger(player)
+			if target_danger < 2:
+				score += 50
+			
+		
 		if score > highest_score:
 			highest_score = score
 			highest_scorer = player
 	
 	return highest_scorer
+	
+	
+### To check how much danger the target is in, the AI sends a ghost cube on it's position.
+### The ghost cube has five raycasts pointing down from it colliding with the ground.
+### The less raycasts which are colliding, the more danger the target is in.
+func check_target_danger(player: RigidBody3D) -> float:
+	var ghost_cube = load("res://Scenes/ghost_grooble.tscn")
+	var cube_to_send = ghost_cube.instantiate()
+	
+	add_child(cube_to_send)
+	cube_to_send.global_position = player.global_position
+	
+	await get_tree().physics_frame
+		
+	var ghost_rays = cube_to_send.ghost_rays
+	print("THE RAYS WHICH EXIST ARE:" + str(ghost_rays))
+	var support = 0
+	
+		
+	
+	
+	for ray in ghost_rays:
+		ray.force_raycast_update()
+		print(ray.enabled)
+		if ray.is_colliding():
+			support += 1
+	
+	print("THIS CUBE HAS " + str(support) + " / 5 SAFENESS")
+	
+	return support
 	
 func send_ghost():
 	print("GHOST BUSTERS")
@@ -251,7 +291,9 @@ func _look_at_mouse(mouse) -> void:
 		
 
 func toggle_ragdoll_mode(game_state):
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority() and !is_ai:
+		return
+		
 	if game_state:
 		$arrow_Bonkers.visible = true
 		$SpringArm3D/Camera3D.current = true
@@ -291,8 +333,9 @@ func player_is_ready() -> void:
 	if not is_multiplayer_authority():
 		if !is_ai:
 			return
+			
 	# Lock in the power and diriction of the player, and tell the server that they are ready.
-	locked_in_power = power * 100 + 500
+	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
 	if playing_game:
 		is_ready.emit()

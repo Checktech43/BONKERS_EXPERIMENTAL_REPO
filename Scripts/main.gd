@@ -58,7 +58,7 @@ func remove_player(id):
 	print("man im dead")
 	var player : RigidBody3D = get_node_or_null("Players/" + str(id))
 	if player:
-		if is_multiplayer_authority():
+		if is_multiplayer_authority() and player.get_node("MultiplayerSynchronizer") != null:
 			player.get_node("MultiplayerSynchronizer").public_visibility = false
 			player.queue_free()
 	

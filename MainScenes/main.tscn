@@ -50,6 +50,8 @@ one_shot = true
 
 [node name="DeathPlane" type="Area3D" parent="." unique_id=1616572989]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
+collision_layer = 3
+collision_mask = 3
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
@@ -102,7 +104,6 @@ one_shot = true
 visible = false
 
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=1188206546]
-_spawnable_scenes = PackedStringArray("res://Scenes/arena_Grass.tscn", "res://Scenes/arena_temple.tscn")
 spawn_path = NodePath("../CurrentMap")
 
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]

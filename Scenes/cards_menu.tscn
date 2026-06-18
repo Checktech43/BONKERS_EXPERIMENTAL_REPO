@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctau1fv0jjl81"]
 
 [ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://MenuScripts/cards_menu.gd" id="1_6crrv"]
+[ext_resource type="Script" uid="uid://dw7m6ruj87qp" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_bavps"]
 [ext_resource type="Texture2D" uid="uid://dm86g84ldrr3g" path="res://Assets/Cards/card_sprites/HammerCard.png" id="2_xsxi4"]
 [ext_resource type="Texture2D" uid="uid://bl7b20clcoj82" path="res://Assets/Cards/card_sprites/ReverseCard.png" id="3_bavps"]
 [ext_resource type="Texture2D" uid="uid://b1ef74bwiv6bj" path="res://Assets/Cards/card_sprites/Ghost_Card.png" id="4_xby2v"]
@@ -48,6 +49,7 @@ grow_vertical = 2
 tooltip_text = "Gives a single use hammer. Enemies bonked with the hammer will take more knockback for one turn."
 text = "Queen of Hearts"
 autowrap_mode = 2
+script = ExtResource("2_bavps")
 
 [node name="HammerCard" type="Sprite2D" parent="QueenHearts" unique_id=1642637596]
 position = Vector2(47.5, 95.5)
@@ -133,14 +135,14 @@ offset_bottom = 76.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Bigger" type="Sprite2D" parent="." unique_id=269753144]
-position = Vector2(1028, 301.00003)
+[node name="Bigger" type="Sprite2D" parent="BigCard" unique_id=269753144]
+position = Vector2(43, 97.00003)
 scale = Vector2(4.875003, 6.265625)
 texture = ExtResource("5_kb5n8")
 
 [connection signal="pressed" from="JackSpades" to="." method="_on_jack_spades_pressed"]
-[connection signal="pressed" from="QueenHearts" to="." method="_on_queen_hearts_pressed"]
 [connection signal="pressed" from="QueenHearts" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="QueenHearts" to="." method="_on_queen_hearts_pressed"]
 [connection signal="pressed" from="TwoClubs" to="." method="_on_two_clubs_pressed"]
 [connection signal="pressed" from="AceDiamonds" to="." method="_on_ace_diamonds_pressed"]
 [connection signal="button_down" from="GhostCard" to="." method="_on_ghost_card_button_down"]
