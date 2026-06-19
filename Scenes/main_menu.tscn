@@ -1,16 +1,27 @@
 [gd_scene format=3 uid="uid://bxifje32utmqh"]
 
-[ext_resource type="Script" uid="uid://d0tiwtb3n3lyh" path="res://Scripts/main_menu_buttons.gd" id="1_tt5f1"]
-[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_1ehe0"]
+[ext_resource type="Script" path="res://Scripts/main_menu_buttons.gd" id="1_tt5f1"]
+[ext_resource type="Script" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_1ehe0"]
 [ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="3_n45e2"]
 [ext_resource type="Texture2D" uid="uid://csu1t62pnrvku" path="res://image_resources/UI/ui_window.png" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://cwwq6053yswk3" path="res://image_resources/UI/CloseButton.png" id="5_n45e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
 texture = ExtResource("4_ce3w2")
 
+[sub_resource type="Theme" id="Theme_ce3w2"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
 texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
+texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=2073516649]
 script = ExtResource("1_tt5f1")
@@ -45,7 +56,7 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Host Game"
-script = ExtResource("2_1ehe0")
+script = ExtResource("3_n45e2")
 
 [node name="Settings" type="Button" parent="Control" unique_id=438663567]
 layout_mode = 1
@@ -63,7 +74,6 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Settings"
-script = ExtResource("2_1ehe0")
 
 [node name="Cosmetics" type="Button" parent="Control" unique_id=1068252592]
 layout_mode = 1
@@ -81,7 +91,6 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Cosmetics"
-script = ExtResource("2_1ehe0")
 
 [node name="Join" type="Button" parent="Control" unique_id=918928382]
 layout_mode = 0
@@ -92,7 +101,6 @@ offset_bottom = 625.0
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Join Game"
-script = ExtResource("2_1ehe0")
 
 [node name="Quit" type="Button" parent="Control" unique_id=1606253942]
 layout_mode = 0
@@ -104,7 +112,6 @@ theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Quit
 "
-script = ExtResource("2_1ehe0")
 
 [node name="JoinCodePanel" type="Panel" parent="Control" unique_id=1748966447]
 layout_mode = 0
@@ -136,11 +143,14 @@ theme = ExtResource("2_48xlc")
 
 [node name="CloseButton" type="Button" parent="Control/JoinCodePanel" unique_id=1740487736]
 layout_mode = 0
-offset_left = 336.0
-offset_right = 387.0
+offset_left = 339.0
+offset_right = 390.0
 offset_bottom = 51.0
-theme = ExtResource("2_48xlc")
+theme = SubResource("Theme_ce3w2")
 theme_override_styles/normal = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yhxw7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cp0ys")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yhxw7")
 
 [node name="JoinGameButton" type="Button" parent="Control/JoinCodePanel" unique_id=106166527]
 layout_mode = 1
