@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cwm8w35h1fst"]
 
-[ext_resource type="Script" uid="uid://ci818j3cuogqb" path="res://Scripts/lobby.gd" id="1_pfjfr"]
+[ext_resource type="Script" uid="uid://ci818j3cuogqb" path="res://MainScripts/lobby.gd" id="1_pfjfr"]
 [ext_resource type="PackedScene" uid="uid://d0s2pmyctqiav" path="res://Scenes/map_selection.tscn" id="3_2avy7"]
 
 [node name="Lobby" type="Node3D" unique_id=1003242740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
 script = ExtResource("1_pfjfr")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=665664289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, -7, -3.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, 0, -3.349)
 use_collision = true
 size = Vector3(20, 11.45813, 20)
 
@@ -63,5 +64,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="MapSelection" parent="." unique_id=2026862486 instance=ExtResource("3_2avy7")]
+map_offset = Vector3(0, 10, 0)
 
 [connection signal="pressed" from="LobbyMenu/Start" to="." method="_on_start_pressed"]

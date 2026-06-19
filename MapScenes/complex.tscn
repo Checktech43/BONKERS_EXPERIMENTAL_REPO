@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://clh1btnv63ccv"]
+
+[ext_resource type="Script" uid="uid://lnevfn62x4n0" path="res://MapScenes/complex_map_spawns.gd" id="1_fepel"]
+[ext_resource type="PackedScene" uid="uid://cjd5cjfccon41" path="res://Assets/Maps/complex_map/source/MainPlatform.glb" id="2_6iir7"]
+[ext_resource type="PackedScene" uid="uid://k70co63trc2i" path="res://Assets/Maps/complex_map/source/cubelampobject.glb" id="2_fepel"]
+[ext_resource type="PackedScene" uid="uid://bx2r4r7lf2jr6" path="res://Assets/Maps/complex_map/source/skybox_void.glb" id="3_6iir7"]
+[ext_resource type="PackedScene" uid="uid://d2spmdwku441l" path="res://Assets/Maps/complex_map/source/unusedcomplexplatforms.glb" id="4_wh3p0"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wh3p0"]
+height = 3.0
+radius = 5.8291016
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id7ie"]
+size = Vector3(2.3, 3, 23.090393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fepel"]
+size = Vector3(2.3, 3, 14.242204)
+
+[node name="Complex" type="Node3D" unique_id=2065508751]
+script = ExtResource("1_fepel")
+size = 5.7
+
+[node name="MainPlatform" parent="." unique_id=462786239 instance=ExtResource("2_6iir7")]
+
+[node name="cubelampobject" parent="." unique_id=340435353 instance=ExtResource("2_fepel")]
+
+[node name="skybox_void" parent="." unique_id=830996078 instance=ExtResource("3_6iir7")]
+
+[node name="unusedcomplexplatforms" parent="." unique_id=930870457 instance=ExtResource("4_wh3p0")]
+
+[node name="Floor" type="Node3D" parent="." unique_id=16465729]
+
+[node name="Circles" type="Node3D" parent="Floor" unique_id=2031489961]
+
+[node name="Circle" type="StaticBody3D" parent="Floor/Circles" unique_id=1433209842]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Circles/Circle" unique_id=1653805973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("CylinderShape3D_wh3p0")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor/Circles/Circle" unique_id=106384356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -2.5, 12.5)
+shape = SubResource("CylinderShape3D_wh3p0")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor/Circles/Circle" unique_id=2095841145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -2.5, 12.5)
+shape = SubResource("CylinderShape3D_wh3p0")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floor/Circles/Circle" unique_id=1162242651]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -2.5, -12.5)
+shape = SubResource("CylinderShape3D_wh3p0")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Floor/Circles/Circle" unique_id=1985601183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -2.5, -12.5)
+shape = SubResource("CylinderShape3D_wh3p0")
+debug_color = Color(0, 1, 0, 1)
+
+[node name="Bars" type="Node3D" parent="Floor" unique_id=240755053]
+
+[node name="ShortBar" type="StaticBody3D" parent="Floor/Bars" unique_id=132994122]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Bars/ShortBar" unique_id=2085398289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_id7ie")
+debug_color = Color(0, 0.6431373, 1, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor/Bars/ShortBar" unique_id=1862951630]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -2.5, 0)
+shape = SubResource("BoxShape3D_id7ie")
+debug_color = Color(0, 0.6431373, 1, 1)
+
+[node name="LongBar" type="StaticBody3D" parent="Floor/Bars" unique_id=1639315067]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/Bars/LongBar" unique_id=1391194406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -2.5, 0)
+shape = SubResource("BoxShape3D_fepel")
+debug_color = Color(0.9843137, 0, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Floor/Bars/LongBar" unique_id=103206434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, -2.5, 0)
+shape = SubResource("BoxShape3D_fepel")
+debug_color = Color(0.9843137, 0, 0, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Floor/Bars/LongBar" unique_id=2003358864]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.011310577, -2.5, 12.5)
+shape = SubResource("BoxShape3D_fepel")
+debug_color = Color(0.9843137, 0, 0, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Floor/Bars/LongBar" unique_id=70344831]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.104011945, -2.5, -12.5)
+shape = SubResource("BoxShape3D_fepel")
+debug_color = Color(0.9843137, 0, 0, 1)

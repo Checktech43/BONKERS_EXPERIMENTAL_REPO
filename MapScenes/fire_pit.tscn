@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ddx3nby6cqk85"]
 
-[ext_resource type="Script" uid="uid://dymgte0tja5n1" path="res://Maps/fire_pit_map_spawns.gd" id="1_iyfig"]
+[ext_resource type="Script" uid="uid://dymgte0tja5n1" path="res://MapScenes/fire_pit_map_spawns.gd" id="1_iyfig"]
 [ext_resource type="PackedScene" uid="uid://dpn2w1sf680kr" path="res://Assets/Maps/firepit_map/source/BackgroundRocks_firepit.glb" id="1_m712d"]
 [ext_resource type="PackedScene" uid="uid://cuye0l58owvvu" path="res://Assets/Maps/firepit_map/source/IslandRocks_firepit.glb" id="2_wedhe"]
 [ext_resource type="PackedScene" uid="uid://bdihgc2agp4hx" path="res://Assets/Maps/firepit_map/source/Lava_firepit.glb" id="3_4d532"]

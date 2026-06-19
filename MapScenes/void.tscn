@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://eokmpn45akvr"]
+
+[ext_resource type="Script" uid="uid://yeo8dx86qxrw" path="res://MapScenes/void_map_spawns.gd" id="1_ke785"]
+[ext_resource type="PackedScene" uid="uid://c7xv3jhtt5dyd" path="res://Assets/Maps/void_map/source/platform_voidglb.glb" id="2_7erc7"]
+[ext_resource type="PackedScene" uid="uid://cmans7sjhb1in" path="res://Assets/Maps/void_map/source/skybox_voidglb.glb" id="3_1yh4l"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5mm2b"]
+radius = 5.588379
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4eklw"]
+size = Vector3(10.640692, 2, 2)
+
+[node name="Void" type="Node3D" unique_id=1761780192]
+script = ExtResource("1_ke785")
+size = 11.0
+
+[node name="platform_voidglb" parent="." unique_id=928375889 instance=ExtResource("2_7erc7")]
+metadata/_edit_group_ = true
+
+[node name="skybox_voidglb" parent="." unique_id=241048092 instance=ExtResource("3_1yh4l")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=601317749]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1906041045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, 0)
+shape = SubResource("CylinderShape3D_5mm2b")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1891570643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1, 0)
+shape = SubResource("CylinderShape3D_5mm2b")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1723265740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01604271, -1, 0)
+shape = SubResource("BoxShape3D_4eklw")
+debug_color = Color(0.99607843, 0, 0, 1)
