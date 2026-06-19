@@ -1,8 +1,27 @@
 [gd_scene format=3 uid="uid://bxifje32utmqh"]
 
-[ext_resource type="Script" uid="uid://d0tiwtb3n3lyh" path="res://Scripts/main_menu_buttons.gd" id="1_tt5f1"]
-[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_1ehe0"]
+[ext_resource type="Script" path="res://Scripts/main_menu_buttons.gd" id="1_tt5f1"]
+[ext_resource type="Script" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_1ehe0"]
 [ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="2_48xlc"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="3_n45e2"]
+[ext_resource type="Texture2D" uid="uid://csu1t62pnrvku" path="res://image_resources/UI/ui_window.png" id="4_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://cwwq6053yswk3" path="res://image_resources/UI/CloseButton.png" id="5_n45e2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = ExtResource("4_ce3w2")
+
+[sub_resource type="Theme" id="Theme_ce3w2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
+texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = ExtResource("5_n45e2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=2073516649]
 script = ExtResource("1_tt5f1")
@@ -21,16 +40,6 @@ offset_bottom = 323.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="JoinCodeBox" type="TextEdit" parent="Control" unique_id=456602207]
-layout_mode = 0
-offset_left = 840.5
-offset_top = 533.0
-offset_right = 1122.1
-offset_bottom = 621.0
-theme = ExtResource("2_48xlc")
-placeholder_text = "Enter Lobby ID"
-wrap_mode = 1
-
 [node name="HostButton" type="Button" parent="Control" unique_id=810145442]
 layout_mode = 1
 anchors_preset = -1
@@ -47,7 +56,7 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Host Game"
-script = ExtResource("2_1ehe0")
+script = ExtResource("3_n45e2")
 
 [node name="Settings" type="Button" parent="Control" unique_id=438663567]
 layout_mode = 1
@@ -65,7 +74,6 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Settings"
-script = ExtResource("2_1ehe0")
 
 [node name="Cosmetics" type="Button" parent="Control" unique_id=1068252592]
 layout_mode = 1
@@ -83,7 +91,6 @@ grow_vertical = 2
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Cosmetics"
-script = ExtResource("2_1ehe0")
 
 [node name="Join" type="Button" parent="Control" unique_id=918928382]
 layout_mode = 0
@@ -94,7 +101,6 @@ offset_bottom = 625.0
 theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Join Game"
-script = ExtResource("2_1ehe0")
 
 [node name="Quit" type="Button" parent="Control" unique_id=1606253942]
 layout_mode = 0
@@ -106,6 +112,64 @@ theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Quit
 "
+
+[node name="JoinCodePanel" type="Panel" parent="Control" unique_id=1748966447]
+layout_mode = 0
+offset_left = 375.5
+offset_top = 190.0
+offset_right = 761.1
+offset_bottom = 431.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_n45e2")
+
+[node name="JoinCodeLabel" type="Label" parent="Control/JoinCodePanel" unique_id=1214157192]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 109.0
+theme = ExtResource("2_48xlc")
+text = "Enter Lobby Code:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="JoinCodeInput" type="TextEdit" parent="Control/JoinCodePanel" unique_id=788395989]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 123.0
+offset_right = 339.0
+offset_bottom = 158.0
+theme = ExtResource("2_48xlc")
+
+[node name="CloseButton" type="Button" parent="Control/JoinCodePanel" unique_id=1740487736]
+layout_mode = 0
+offset_left = 339.0
+offset_right = 390.0
+offset_bottom = 51.0
+theme = SubResource("Theme_ce3w2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_opfnp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_yhxw7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_cp0ys")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yhxw7")
+
+[node name="JoinGameButton" type="Button" parent="Control/JoinCodePanel" unique_id=106166527]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16100001
+anchor_top = 0.88400006
+anchor_right = 0.16100001
+anchor_bottom = 0.88400006
+offset_left = 43.918385
+offset_top = -41.04402
+offset_right = 197.51837
+offset_bottom = 6.9559784
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_48xlc")
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 15
+text = "Join game"
+autowrap_mode = 3
 script = ExtResource("2_1ehe0")
 
 [connection signal="pressed" from="Control/HostButton" to="." method="_on_pressing_host"]
@@ -113,3 +177,4 @@ script = ExtResource("2_1ehe0")
 [connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_host"]
 [connection signal="pressed" from="Control/Join" to="." method="_on_pressing_join"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_pressing_join"]
+[connection signal="pressed" from="Control/JoinCodePanel/JoinGameButton" to="." method="_on_pressing_host"]
