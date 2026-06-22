@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="2_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cl2sh3gaoi4ji" path="res://Scenes/mutiplayer_hud.tscn" id="3_6iyac"]
 [ext_resource type="Script" uid="uid://b7nf02lqn6xlh" path="res://MainScripts/all_players.gd" id="5_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Maps/grass.tscn" id="6_n12ux"]
+[ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://MapScenes/grass.tscn" id="6_n12ux"]
 [ext_resource type="Script" uid="uid://eco64ciyc6ag" path="res://MainScripts/map.gd" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cwm8w35h1fst" path="res://MainScenes/lobby.tscn" id="10_dc6gi"]
 [ext_resource type="PackedScene" uid="uid://ctau1fv0jjl81" path="res://Scenes/cards_menu.tscn" id="12_fdnlq"]
@@ -80,7 +80,7 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1612360976]
-transform = Transform3D(0.7071068, -0.32978517, 0.6254932, 0, 0.88458097, 0.46638668, -0.7071068, -0.32978517, 0.6254932, 20, 10, 20)
+transform = Transform3D(0.7071068, -0.32978517, 0.6254932, 0, 0.88458097, 0.46638668, -0.7071068, -0.32978517, 0.6254932, 14.227097, 16.61362, 15.359293)
 current = true
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1257683726]

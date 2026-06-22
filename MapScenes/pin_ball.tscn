@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://jnajs8gn013r"]
+
+[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://MapScenes/temple_map_spawns.gd" id="1_5tpkj"]
+[ext_resource type="PackedScene" uid="uid://dk8f4yv6s71c0" path="res://Assets/Maps/pinball_map/source/pinball_map_bonkers.glb" id="1_8oire"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ev2jt"]
+size = Vector3(25.25, 2.875, 25.25)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a8qbw"]
+height = 8.065643
+radius = 0.7583008
+
+[node name="PinBall" type="Node3D" unique_id=653352705]
+script = ExtResource("1_5tpkj")
+size = 25.25
+
+[node name="pinball_map_bonkers" parent="." unique_id=1292099373 instance=ExtResource("1_8oire")]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1805010897]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=835730296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042419434, -1.0002441, 0.0071105957)
+shape = SubResource("BoxShape3D_ev2jt")
+
+[node name="Pins" type="Node3D" parent="." unique_id=1197191758]
+
+[node name="Pin" type="StaticBody3D" parent="Pins" unique_id=1528787488]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pins/Pin" unique_id=510034597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8885627, 4, 5.087731)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Pins/Pin" unique_id=518473456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.142015, 4, 4.6156554)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Pins/Pin" unique_id=1846383458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.180917, 4, 4.415655)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Pins/Pin" unique_id=978018659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.392367, 4, -5.3929524)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Pins/Pin" unique_id=335881993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.482723, 4, 4.7794414)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Pins/Pin" unique_id=829353740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7546115, 4, 10.067178)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Pins/Pin" unique_id=1540220175]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.496477, 4, -10.903091)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Pins/Pin" unique_id=943279127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.382002, 4, 9.858704)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Pins/Pin" unique_id=1414149620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.651069, 3.946457, -5.786189)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Pins/Pin" unique_id=408392189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.666929, 4, -0.20921326)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Pins/Pin" unique_id=1678363045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.179847, 4, -5.5326467)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Pins/Pin" unique_id=1998631210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.386551, 4, -5.184413)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Pins/Pin" unique_id=854768535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.116433, 4, -10.967134)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Pins/Pin" unique_id=933486435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.119613, 4, -10.801569)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Pins/Pin" unique_id=1611259007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8123217, 4, 10.143071)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Pins/Pin" unique_id=1330763313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84887135, 4, 10.3590355)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="Pins/Pin" unique_id=918084879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.469276, 4, -0.56067514)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="Pins/Pin" unique_id=1082746248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017945766, 4, -11.081572)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="Pins/Pin" unique_id=2139274140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.730663, 4, 10.155849)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="Pins/Pin" unique_id=1406651386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.103643, 4, -10.511812)
+shape = SubResource("CylinderShape3D_a8qbw")
+debug_color = Color(0.98758215, 0, 0.31647542, 0.41960785)
