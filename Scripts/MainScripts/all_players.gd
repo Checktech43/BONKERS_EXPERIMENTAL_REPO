@@ -10,10 +10,18 @@ func _player_ready():
 	
 @rpc("any_peer", "call_local")
 func _count_ready_players():
-	number_of_cubes_ready += 1
+	var players = get_children()
+	print("THESE ARE THE IDIOTS PLAYING THE GAME: " + str(players))
+	for player in players:
+		if player.is_player_ready:
+			number_of_cubes_ready += 1
+	print("GOOBERS READY ARE " + str(number_of_cubes_ready))
 	if number_of_cubes_ready >= get_children().size():
 		number_of_cubes_ready = 0
 		all_players_ready.emit()
+		for player in players:
+			player.is_player_ready = false
+		
 		
 func _process(delta: float) -> void:
 	pass
@@ -35,7 +43,6 @@ func _on_change_game_state(new_state) -> void:
 
 
 func _telaport_players(player, max_distance) -> void:
-	
 	player.go_to_random_position(max_distance)
 		
 

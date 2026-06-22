@@ -1,30 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://qspujc8g8h52"]
+[gd_scene format=3 uid="uid://qspujc8g8h52"]
 
-[ext_resource type="Theme" path="res://themes/ui_themes/ui_theme1.tres" id="1_to1el"]
-[ext_resource type="Script" uid="uid://dw7m6ruj87qp" path="res://scripts/ButtonAnimationAndSoundHandler.gd" id="2_g4lvm"]
+[ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="1_to1el"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="2_qr8uu"]
 [ext_resource type="Texture2D" uid="uid://cw0y2akkrtd42" path="res://image_resources/UI/NormalButton.png" id="2_quo7f"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=527785423]
 
-[node name="PlayButton" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="." unique_id=1093527508]
 offset_left = 474.0
 offset_top = 519.0
 offset_right = 721.632
 offset_bottom = 586.0
 theme = ExtResource("1_to1el")
 text = "play"
-script = ExtResource("2_g4lvm")
+script = ExtResource("2_qr8uu")
 
-[node name="Button2" type="Button" parent="."]
+[node name="Button2" type="Button" parent="." unique_id=1394402030]
 offset_left = 46.0
 offset_top = 268.0
 offset_right = 293.63202
 offset_bottom = 335.0
 theme = ExtResource("1_to1el")
 text = "Options"
-script = ExtResource("2_g4lvm")
+script = ExtResource("2_qr8uu")
 
-[node name="Button5" type="Button" parent="."]
+[node name="Button5" type="Button" parent="." unique_id=1127996107]
 offset_left = 46.0
 offset_top = 351.0
 offset_right = 293.63202
@@ -32,18 +32,18 @@ offset_bottom = 418.0
 theme = ExtResource("1_to1el")
 theme_override_font_sizes/font_size = 22
 text = "Custimzation"
-script = ExtResource("2_g4lvm")
+script = ExtResource("2_qr8uu")
 
-[node name="Button3" type="Button" parent="."]
+[node name="Button3" type="Button" parent="." unique_id=1759119525]
 offset_left = 46.0
 offset_top = 432.0
 offset_right = 293.63202
 offset_bottom = 499.0
 theme = ExtResource("1_to1el")
 text = "Mods"
-script = ExtResource("2_g4lvm")
+script = ExtResource("2_qr8uu")
 
-[node name="Button4" type="Button" parent="."]
+[node name="Button4" type="Button" parent="." unique_id=1105661822]
 offset_left = 46.0
 offset_top = 515.0
 offset_right = 293.63202
@@ -51,8 +51,8 @@ offset_bottom = 582.0
 theme = ExtResource("1_to1el")
 text = "quit
 "
-script = ExtResource("2_g4lvm")
+script = ExtResource("2_qr8uu")
 
-[node name="NormalButton" type="Sprite2D" parent="."]
+[node name="NormalButton" type="Sprite2D" parent="." unique_id=238940374]
 position = Vector2(-580, 834)
 texture = ExtResource("2_quo7f")

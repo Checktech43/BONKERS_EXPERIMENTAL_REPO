@@ -16,6 +16,7 @@ var random : bool = false
 var playing_game : bool = false
 var coloured : bool = false
 var can_jump : bool = false
+var is_player_ready : bool
 
 
 ### other stuff
@@ -56,7 +57,7 @@ func _ready() -> void:
 	if is_ai:
 		$SpringArm3D/Camera3D.current = false
 		
-	#$arrow_Bonkers.visible = false
+	$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
 	$arrow_Bonkers.basis.z.z = -power / 2
 	# Connect all the signals between the players and everything else in the main scene.
@@ -113,11 +114,14 @@ func _process(state):
 	
 	
 	if is_ai and planning and $"..".get_child_count() > 1:
-		cpu_logic()
+		cpu_logic.rpc()
 		
 	
-	
+@rpc("any_peer", "call_local")	
 func cpu_logic():
+	if !multiplayer.is_server():
+		return
+	
 	if ai_level == 0:
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
@@ -135,11 +139,13 @@ func cpu_logic():
 		var target = await score_players()
 		#var closest_player = find_closest_player()
 		look_at(target.global_position)
-		send_ghost()
-		check_direction_safety()
-		print("WHO YOU GONNA CALL")
 		
-		player_is_ready()
+		var direction_safety = check_direction_safety()
+		send_ghost()
+		if direction_safety == true:
+			player_is_ready()
+		else:
+			return
 	
 func find_closest_player() -> RigidBody3D:
 	var closest_player = null
@@ -213,7 +219,7 @@ func check_target_danger(player: RigidBody3D) -> float:
 	
 ### There are raycasts underneath the arrow used for choosing player power.
 ### If any of the raycasts returns nothing, it's probably not safe to move in the current direction.
-func check_direction_safety():
+func check_direction_safety() -> bool:
 	var arrow_rays = $arrow_Bonkers.get_children()
 	for object in arrow_rays:
 		if !object.is_in_group("raycast"):
@@ -228,7 +234,11 @@ func check_direction_safety():
 			rays_colliding += 1
 			
 	print("THIS DIRECTION HAS " + str(rays_colliding) + " / 6 SAFETY")
-		
+	
+	if rays_colliding >= 5:
+		return true
+	else:
+		return false
 		
 		
 func send_ghost():
@@ -238,7 +248,8 @@ func send_ghost():
 	
 	cube_to_send.inherited_power = power
 	add_child(cube_to_send)
-	cube_to_send.global_position = $GhostPosition.global_position 
+	cube_to_send.rotation.y = rotation.y
+	cube_to_send.global_position = self.global_position 
 	
 	
 	
@@ -246,6 +257,7 @@ func send_ghost():
 func planning_phase():
 	if is_multiplayer_authority():
 		planning = true
+		is_player_ready = false
 		$arrow_Bonkers.visible = true
 	
 func _input(event):
@@ -316,7 +328,7 @@ func toggle_ragdoll_mode(game_state):
 		$"../../Camera3D".current = false
 		lock_rotation = true
 	else:
-		#$arrow_Bonkers.visible = false
+		$arrow_Bonkers.visible = false
 		$SpringArm3D/Camera3D.current = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		$SpringArm3D/Camera3D.current = false
@@ -352,9 +364,10 @@ func player_is_ready() -> void:
 	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
 	if playing_game:
+		is_player_ready = true
 		is_ready.emit()
 		planning = false
-		#$arrow_Bonkers.visible = false
+		$arrow_Bonkers.visible = false
 	else:
 		push()
 
