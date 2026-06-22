@@ -56,7 +56,7 @@ func _ready() -> void:
 	if is_ai:
 		$SpringArm3D/Camera3D.current = false
 		
-	$arrow_Bonkers.visible = false
+	#$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
 	$arrow_Bonkers.basis.z.z = -power / 2
 	# Connect all the signals between the players and everything else in the main scene.
@@ -99,7 +99,7 @@ func go_to_random_position(new_pos):
 
 	
 		
-func _process(state):
+func _process(state):	
 	# For some reason when trying to change the position of the cube in the "go_to_random_position" function
 	# The cube just does not teleport to the new position.
 	# so you have to change the position here instead.
@@ -118,16 +118,10 @@ func _process(state):
 	
 	
 func cpu_logic():
-	
-	
 	if ai_level == 0:
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
-		if playing_game:
-			pass
-			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
-	
-	
+		
 	
 	
 	### the ai uses a constantly rotating raycast to detect players around it
@@ -142,12 +136,10 @@ func cpu_logic():
 		#var closest_player = find_closest_player()
 		look_at(target.global_position)
 		send_ghost()
+		check_direction_safety()
 		print("WHO YOU GONNA CALL")
-						
+		
 		player_is_ready()
-		if playing_game:
-			pass
-			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
 	
 func find_closest_player() -> RigidBody3D:
 	var closest_player = null
@@ -218,14 +210,36 @@ func check_target_danger(player: RigidBody3D) -> float:
 	
 	return support
 	
+	
+### There are raycasts underneath the arrow used for choosing player power.
+### If any of the raycasts returns nothing, it's probably not safe to move in the current direction.
+func check_direction_safety():
+	var arrow_rays = $arrow_Bonkers.get_children()
+	for object in arrow_rays:
+		if !object.is_in_group("raycast"):
+			arrow_rays.erase(object)
+			
+			
+	var rays_colliding = 0
+	for ray in arrow_rays:
+		if ray.is_colliding():
+			print(ray.get_collider())
+			ray.force_raycast_update()
+			rays_colliding += 1
+			
+	print("THIS DIRECTION HAS " + str(rays_colliding) + " / 6 SAFETY")
+		
+		
+		
 func send_ghost():
 	print("GHOST BUSTERS")
 	var ghost_cube = load("res://Scenes/ghost_grooble.tscn")
 	var cube_to_send = ghost_cube.instantiate()
 	
 	cube_to_send.inherited_power = power
-	cube_to_send.global_position = $GhostPosition.global_position 
 	add_child(cube_to_send)
+	cube_to_send.global_position = $GhostPosition.global_position 
+	
 	
 	
 
@@ -267,7 +281,7 @@ func jump():
 	can_jump = false
 
 
-# Let the other clients control there cube.
+# Let the other clients control their cube.
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	position = Vector3(0, 0.5, 0)
@@ -302,7 +316,7 @@ func toggle_ragdoll_mode(game_state):
 		$"../../Camera3D".current = false
 		lock_rotation = true
 	else:
-		$arrow_Bonkers.visible = false
+		#$arrow_Bonkers.visible = false
 		$SpringArm3D/Camera3D.current = false
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		$SpringArm3D/Camera3D.current = false
@@ -340,7 +354,7 @@ func player_is_ready() -> void:
 	if playing_game:
 		is_ready.emit()
 		planning = false
-		$arrow_Bonkers.visible = false
+		#$arrow_Bonkers.visible = false
 	else:
 		push()
 

@@ -93,6 +93,9 @@ shape = SubResource("BoxShape3D_e0an3")
 [node name="Players" type="Node3D" parent="." unique_id=1043772275]
 script = ExtResource("5_jkdf5")
 
+[node name="Blue" parent="Players" unique_id=1792406894 instance=ExtResource("2_d1ilt")]
+is_ai = true
+
 [node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671]
 script = ExtResource("10_d1ilt")
 loaded_map = ExtResource("6_n12ux")

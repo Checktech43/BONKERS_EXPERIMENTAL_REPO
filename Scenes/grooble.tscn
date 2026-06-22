@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dxh3egv5pkn7f" path="res://Scripts/player_physics.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_fgg3u"]
 [ext_resource type="PackedScene" uid="uid://cmeifivv5t7e3" path="res://Assets/Arrow/source/arrow_Bonkers.glb" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://bd3cfb2gqe323" path="res://Scenes/ray_cast_3d.gd" id="4_8rc7s"]
 [ext_resource type="Script" uid="uid://da5yhcf41hish" path="res://MainScripts/ray_cast_3d.gd" id="4_fgg3u"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4flbx"]
@@ -45,12 +46,54 @@ shape = SubResource("BoxShape3D_onrkg")
 replication_config = SubResource("SceneReplicationConfig_onrkg")
 
 [node name="arrow_Bonkers" type="Node3D" parent="." unique_id=183194121]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.245, 0, 0, -0.85999995)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -0.85999995)
 rotation_edit_mode = 2
 
 [node name="arrow_Bonkers" parent="arrow_Bonkers" unique_id=477219635 instance=ExtResource("3_sweqy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 rotation_edit_mode = 2
+
+[node name="RayCast3D" type="RayCast3D" parent="arrow_Bonkers" unique_id=1287735539 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2612331)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
+
+[node name="RayCast3D2" type="RayCast3D" parent="arrow_Bonkers" unique_id=743195710 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5701725)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
+
+[node name="RayCast3D3" type="RayCast3D" parent="arrow_Bonkers" unique_id=1043011531 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8607228)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
+
+[node name="RayCast3D4" type="RayCast3D" parent="arrow_Bonkers" unique_id=1418879267 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.93932176)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
+
+[node name="RayCast3D5" type="RayCast3D" parent="arrow_Bonkers" unique_id=714911888 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6144407)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
+
+[node name="RayCast3D6" type="RayCast3D" parent="arrow_Bonkers" unique_id=662540829 groups=["raycast"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.28709602)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_8rc7s")
 
 [node name="WeaponSpawn" type="Node3D" parent="." unique_id=1418959906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.7415586)
