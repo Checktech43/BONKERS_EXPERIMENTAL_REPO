@@ -56,6 +56,8 @@ var visible_players = []
 func _ready() -> void:
 	if is_ai:
 		$SpringArm3D/Camera3D.current = false
+		$arrow_Bonkers.visible = false
+		print("AI RIGHTS = " + str(get_multiplayer_authority()))
 		
 	$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
@@ -114,14 +116,10 @@ func _process(state):
 	
 	
 	if is_ai and planning and $"..".get_child_count() > 1:
-		cpu_logic.rpc()
+		cpu_logic()
 		
-	
-@rpc("any_peer", "call_local")	
+
 func cpu_logic():
-	if !multiplayer.is_server():
-		return
-	
 	if ai_level == 0:
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
@@ -255,7 +253,7 @@ func send_ghost():
 	
 
 func planning_phase():
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() or is_ai:
 		planning = true
 		is_player_ready = false
 		$arrow_Bonkers.visible = true
@@ -284,9 +282,17 @@ func _input(event):
 		
 		
 func push():
+	if is_multiplayer_authority():
+		update_rotation.rpc(rotation.y) 
 	var forward = -transform.basis.z
 	apply_force(forward * locked_in_power)
 	visible_players = []
+	
+
+# Rotation is only synched when all players are moving
+@rpc("authority", "call_remote")
+func update_rotation(y_rotation: float):
+	rotation.y = y_rotation
 
 func jump():
 	apply_central_force(Vector3(0, 70, 0) * 10)
