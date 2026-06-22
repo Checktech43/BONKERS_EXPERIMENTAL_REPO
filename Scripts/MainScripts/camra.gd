@@ -1,11 +1,10 @@
 extends Camera3D
 
-####################################
+#########################################
 
 # Unused Camera script
 # for when the game was suposed to be viewed
 # from an orthaganel position.
-
 
 #########################################
 signal mouse(mouse_pos)
