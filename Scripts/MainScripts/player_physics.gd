@@ -16,6 +16,7 @@ var random : bool = false
 var playing_game : bool = false
 var coloured : bool = false
 var can_jump : bool = false
+var is_player_ready : bool
 
 
 ### other stuff
@@ -55,6 +56,8 @@ var visible_players = []
 func _ready() -> void:
 	if is_ai:
 		$SpringArm3D/Camera3D.current = false
+		$arrow_Bonkers.visible = false
+		print("AI RIGHTS = " + str(get_multiplayer_authority()))
 		
 	$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
@@ -99,7 +102,7 @@ func go_to_random_position(new_pos):
 
 	
 		
-func _process(state):
+func _process(state):	
 	# For some reason when trying to change the position of the cube in the "go_to_random_position" function
 	# The cube just does not teleport to the new position.
 	# so you have to change the position here instead.
@@ -115,19 +118,12 @@ func _process(state):
 	if is_ai and planning and $"..".get_child_count() > 1:
 		cpu_logic()
 		
-	
-	
+
 func cpu_logic():
-	
-	
 	if ai_level == 0:
 		rotation.y = randi_range(0, 360)
 		player_is_ready()
-		if playing_game:
-			pass
-			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
-	
-	
+		
 	
 	
 	### the ai uses a constantly rotating raycast to detect players around it
@@ -141,13 +137,13 @@ func cpu_logic():
 		var target = await score_players()
 		#var closest_player = find_closest_player()
 		look_at(target.global_position)
+		
+		var direction_safety = check_direction_safety()
 		send_ghost()
-		print("WHO YOU GONNA CALL")
-						
-		player_is_ready()
-		if playing_game:
-			pass
-			#$"..".number_of_cubes_ready += 1 # number of cubes ready must be increased manually when using ai cubes
+		if direction_safety == true:
+			player_is_ready()
+		else:
+			return
 	
 func find_closest_player() -> RigidBody3D:
 	var closest_player = null
@@ -218,20 +214,48 @@ func check_target_danger(player: RigidBody3D) -> float:
 	
 	return support
 	
+	
+### There are raycasts underneath the arrow used for choosing player power.
+### If any of the raycasts returns nothing, it's probably not safe to move in the current direction.
+func check_direction_safety() -> bool:
+	var arrow_rays = $arrow_Bonkers.get_children()
+	for object in arrow_rays:
+		if !object.is_in_group("raycast"):
+			arrow_rays.erase(object)
+			
+			
+	var rays_colliding = 0
+	for ray in arrow_rays:
+		if ray.is_colliding():
+			print(ray.get_collider())
+			ray.force_raycast_update()
+			rays_colliding += 1
+			
+	print("THIS DIRECTION HAS " + str(rays_colliding) + " / 6 SAFETY")
+	
+	if rays_colliding >= 5:
+		return true
+	else:
+		return false
+		
+		
 func send_ghost():
 	print("GHOST BUSTERS")
 	var ghost_cube = load("res://Scenes/ghost_grooble.tscn")
 	var cube_to_send = ghost_cube.instantiate()
 	
 	cube_to_send.inherited_power = power
-	cube_to_send.global_position = $GhostPosition.global_position 
 	add_child(cube_to_send)
+	cube_to_send.rotation.y = rotation.y
+	cube_to_send.global_position = self.global_position 
+	
 	
 	
 
 func planning_phase():
-	if is_multiplayer_authority():
+	if is_multiplayer_authority() or is_ai:
 		planning = true
+		is_player_ready = false
 		$arrow_Bonkers.visible = true
 	
 func _input(event):
@@ -258,16 +282,24 @@ func _input(event):
 		
 		
 func push():
+	if is_multiplayer_authority():
+		update_rotation.rpc(rotation.y) 
 	var forward = -transform.basis.z
 	apply_force(forward * locked_in_power)
 	visible_players = []
+	
+
+# Rotation is only synched when all players are moving
+@rpc("authority", "call_remote")
+func update_rotation(y_rotation: float):
+	rotation.y = y_rotation
 
 func jump():
 	apply_central_force(Vector3(0, 70, 0) * 10)
 	can_jump = false
 
 
-# Let the other clients control there cube.
+# Let the other clients control their cube.
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	position = Vector3(0, 0.5, 0)
@@ -338,6 +370,7 @@ func player_is_ready() -> void:
 	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
 	if playing_game:
+		is_player_ready = true
 		is_ready.emit()
 		planning = false
 		$arrow_Bonkers.visible = false

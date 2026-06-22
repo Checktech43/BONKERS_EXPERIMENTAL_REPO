@@ -36,7 +36,7 @@ func _on_submit_join_code() -> void:
 	if entered_code.strip_edges() != "":
 		MultiplayerHandler.join_game(entered_code)
 	else:
-		print("Lobby code cannot be empty!")
+		print("NO CODE, NO SERVICE")
 
 func _on_pressing_cosmetics() -> void:
 	went_to_cosmetics.emit()
@@ -44,5 +44,6 @@ func _on_pressing_cosmetics() -> void:
 func _on_pressing_settings() -> void:
 	pass # Replace with function body.
 
-func _on_pressing_quit() -> void:
-	pass # Replace with function body.
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

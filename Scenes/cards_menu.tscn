@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctau1fv0jjl81"]
 
-[ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://MenuScripts/cards_menu.gd" id="1_6crrv"]
-[ext_resource type="Script" uid="uid://dw7m6ruj87qp" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_bavps"]
+[ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://Scripts/MainScripts/cards_menu.gd" id="1_6crrv"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="2_bavps"]
 [ext_resource type="Texture2D" uid="uid://dm86g84ldrr3g" path="res://Assets/Cards/card_sprites/HammerCard.png" id="2_xsxi4"]
 [ext_resource type="Texture2D" uid="uid://bl7b20clcoj82" path="res://Assets/Cards/card_sprites/ReverseCard.png" id="3_bavps"]
 [ext_resource type="Texture2D" uid="uid://b1ef74bwiv6bj" path="res://Assets/Cards/card_sprites/Ghost_Card.png" id="4_xby2v"]
