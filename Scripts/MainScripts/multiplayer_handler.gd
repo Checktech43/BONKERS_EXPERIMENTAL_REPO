@@ -156,4 +156,4 @@ func generate_lobby_code(length := 6) -> String:
 	
 func go_to_lobby():
 	print("RBRBRRB")
-	get_tree().change_scene_to_file("res://MainScenes/main.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainScenes/main.tscn")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwq5io572fslc"]
 
 [ext_resource type="PackedScene" uid="uid://8pd0tfomwh5j" path="res://Assets/Maps/dust_temple_map/source/temple.glb" id="1_5eyw8"]
-[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://MapScenes/temple_map_spawns.gd" id="1_5s0s7"]
+[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://Scenes/MapScenes/temple_map_spawns.gd" id="1_5s0s7"]
 [ext_resource type="PackedScene" uid="uid://cv76vaybrw0fi" path="res://Assets/Maps/dust_temple_map/source/rocks.glb" id="2_ktr65"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s0s7"]

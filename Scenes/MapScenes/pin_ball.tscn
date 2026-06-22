@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jnajs8gn013r"]
 
-[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://MapScenes/temple_map_spawns.gd" id="1_5tpkj"]
+[ext_resource type="Script" uid="uid://cii3j2fl8x1u6" path="res://Scenes/MapScenes/temple_map_spawns.gd" id="1_5tpkj"]
 [ext_resource type="PackedScene" uid="uid://dk8f4yv6s71c0" path="res://Assets/Maps/pinball_map/source/pinball_map_bonkers.glb" id="1_8oire"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ev2jt"]

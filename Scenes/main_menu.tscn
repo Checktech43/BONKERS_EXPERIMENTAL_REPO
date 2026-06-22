@@ -174,6 +174,7 @@ script = ExtResource("3_n45e2")
 [connection signal="pressed" from="Control/HostButton" to="." method="_on_pressing_host"]
 [connection signal="pressed" from="Control/Settings" to="." method="_on_pressing_host"]
 [connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_host"]
+[connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_cosmetics"]
 [connection signal="pressed" from="Control/Join" to="." method="_on_pressing_join"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/JoinCodePanel/JoinGameButton" to="." method="_on_pressing_host"]

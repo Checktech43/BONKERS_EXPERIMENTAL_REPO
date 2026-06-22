@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://eokmpn45akvr"]
 
-[ext_resource type="Script" uid="uid://yeo8dx86qxrw" path="res://MapScenes/void_map_spawns.gd" id="1_ke785"]
+[ext_resource type="Script" uid="uid://yeo8dx86qxrw" path="res://Scenes/MapScenes/void_map_spawns.gd" id="1_ke785"]
 [ext_resource type="PackedScene" uid="uid://c7xv3jhtt5dyd" path="res://Assets/Maps/void_map/source/platform_voidglb.glb" id="2_7erc7"]
 [ext_resource type="PackedScene" uid="uid://cmans7sjhb1in" path="res://Assets/Maps/void_map/source/skybox_voidglb.glb" id="3_1yh4l"]
 
