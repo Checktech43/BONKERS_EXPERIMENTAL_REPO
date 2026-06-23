@@ -10,7 +10,12 @@ func _ready() -> void:
 	
 	# 2. Connect the main menu buttons
 	$Control/HostButton.pressed.connect(MultiplayerHandler.host_game)
-	$Control/Join.pressed.connect(_on_open_join_panel)
+	if MultiplayerHandler.net_mode == "ENet":
+		# For testing perposes we skip the part we enter in a code,
+		# and just call the MultiplayerHandlers "join_game" function directly.
+		$Control/JoinButton.pressed.connect(MultiplayerHandler.join_game)
+	else:
+		$Control/JoinButton.pressed.connect(_on_open_join_panel)
 	
 	# 3. Connect the buttons INSIDE the JoinCodePanel
 	$Control/JoinCodePanel/CloseButton.pressed.connect(_on_close_join_panel)

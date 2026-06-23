@@ -91,7 +91,7 @@ theme = ExtResource("2_48xlc")
 theme_override_font_sizes/font_size = 33
 text = "Cosmetics"
 
-[node name="Join" type="Button" parent="Control" unique_id=918928382]
+[node name="JoinButton" type="Button" parent="Control" unique_id=918928382]
 layout_mode = 0
 offset_left = 414.5
 offset_top = 537.0
@@ -175,6 +175,6 @@ script = ExtResource("3_n45e2")
 [connection signal="pressed" from="Control/Settings" to="." method="_on_pressing_host"]
 [connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_host"]
 [connection signal="pressed" from="Control/Cosmetics" to="." method="_on_pressing_cosmetics"]
-[connection signal="pressed" from="Control/Join" to="." method="_on_pressing_join"]
+[connection signal="pressed" from="Control/JoinButton" to="." method="_on_pressing_join"]
 [connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Control/JoinCodePanel/JoinGameButton" to="." method="_on_pressing_host"]
