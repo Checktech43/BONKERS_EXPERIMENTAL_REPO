@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlqq0aso7lffe"]
+
+[ext_resource type="PackedScene" uid="uid://n603d0ibmmi6" path="res://Assets/Maps/firepit_map/source/skybox_firepit.glb" id="1_o4olx"]
+
+[node name="skybox_firepit" unique_id=1637938689 instance=ExtResource("1_o4olx")]
+
+[node name="MainIsland" parent="." index="0" unique_id=910397219]
+visible = false
+
+[node name="IslandRocks" parent="." index="1" unique_id=1266353007]
+visible = false
+
+[node name="Lava" parent="." index="2" unique_id=277838323]
+visible = false
+
+[node name="BackgroundRocks" parent="." index="3" unique_id=351860375]
+visible = false

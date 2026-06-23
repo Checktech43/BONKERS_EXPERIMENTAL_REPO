@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bdy5gamdr7fjq"]
 
-[ext_resource type="Script" uid="uid://bj1e07p26mdlg" path="res://Scripts/Town.gd" id="1_qhv8w"]
+[ext_resource type="Script" uid="uid://bj1e07p26mdlg" path="res://Scripts/MainScripts/Town.gd" id="1_qhv8w"]
 [ext_resource type="PackedScene" uid="uid://dic6dlxpnk0t" path="res://Scenes/wrodrobe_hud.tscn" id="1_x76ya"]
 [ext_resource type="PackedScene" uid="uid://cwtx7ngmig6fs" path="res://Scenes/Cosmetices.tscn" id="2_cqbca"]
 [ext_resource type="PackedScene" uid="uid://bxifje32utmqh" path="res://Scenes/main_menu.tscn" id="2_fjvj7"]
@@ -26,8 +26,8 @@ script = ExtResource("1_qhv8w")
 main_menu_buttons = NodePath("MainMenu")
 Change_skin_hud = NodePath("WrodrobeHud")
 camera = NodePath("Camera3D")
-camera_offset_for_customisation = Vector3(0, 1, -5)
-defalut_camera_offset = Vector3(0, 2, -10)
+camera_offset_for_customisation = Vector3(0, 0, -5)
+defalut_camera_offset = Vector3(0, 1, -15)
 
 [node name="Cosmetics" parent="." unique_id=1745468065 instance=ExtResource("2_cqbca")]
 
@@ -40,7 +40,7 @@ shadow_enabled = true
 environment = SubResource("Environment_0cbdn")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1162152686]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.17001629, 1.3746719, -10.406788)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.5, -15)
 current = true
 fov = 32.2
 
