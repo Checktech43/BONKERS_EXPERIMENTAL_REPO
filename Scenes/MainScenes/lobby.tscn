@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwm8w35h1fst"]
 
-[ext_resource type="Script" uid="uid://ci818j3cuogqb" path="res://MainScripts/lobby.gd" id="1_pfjfr"]
+[ext_resource type="Script" uid="uid://ci818j3cuogqb" path="res://Scripts/MainScripts/lobby.gd" id="1_pfjfr"]
 [ext_resource type="PackedScene" uid="uid://d0s2pmyctqiav" path="res://Scenes/map_selection.tscn" id="3_2avy7"]
 
 [node name="Lobby" type="Node3D" unique_id=1003242740]
@@ -67,3 +67,4 @@ layout_mode = 2
 map_offset = Vector3(0, 10, 0)
 
 [connection signal="pressed" from="LobbyMenu/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="LobbyMenu/Start" to="MapSelection" method="_on_start_pressed"]

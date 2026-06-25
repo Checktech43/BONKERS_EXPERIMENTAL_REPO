@@ -1,7 +1,7 @@
 extends Node
 
 var game_start : bool = false
-
+var dead_boys : Array[RigidBody3D]
 signal action_phase_time
 signal restart
 signal change_game_state
@@ -23,6 +23,7 @@ func _ready():
 # Keep in mind That when the cubes are first joining the game,
 # that only the host calls this function
 func add_player(id : int = 1):
+	if game_start: return
 	# create the player and give it all the neceacery data
 	var player : RigidBody3D = player_scene.instantiate()
 	player.name = str(id)
@@ -35,7 +36,7 @@ func _on_all_players_ready() -> void:
 	$ActionPhaseTimer.start()
 
 func on_start_button_getting_pressed() -> void:
-	rpc("start_the_game")
+	call_deferred("rpc", "start_the_game")
 	
 @rpc("call_local")
 func start_the_game():

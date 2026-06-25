@@ -8,7 +8,8 @@ signal players_message
 
 
 func on_game_start() -> void:
-	rpc("rearange_all_things")
+	multiplayer.peer_connected.connect(joining_late)
+	call_deferred("rpc", "rearange_all_things")
 	
 	
 @rpc("call_local")
@@ -42,15 +43,29 @@ func set_players_at_random_positions():
 	for player in all_players:
 		players_message.emit(player, map.get_random_position(size))
 		
-
+@rpc("authority")
 func instantiate_map():
 	remove_child(get_child(0))
 	add_child(loaded_map.instantiate())
 	
+func joining_late(id):
+	rpc_id(id, "update_late_client_on_things")
+	var all_players = $"../Players"
+	var resizes_needed : int =  all_players.get_children().size()
+	resize_map(resizes_needed)
+	
+@rpc()
+func update_late_client_on_things():
+	var all_players = $"../Players"
+	var resizes_needed : int =  all_players.get_children().size()
+	resize_map(resizes_needed)
+	instantiate_map()
+	
+	
 func go_to_lobby():
 	get_child(0).queue_free()
 	add_child(lobby)
-	
-# I'm thinking of deleting this if it's not going to be used by anyone
+
+
 func _on_game_reset() -> void:
-	pass
+	multiplayer.peer_connected.disconnect(joining_late)

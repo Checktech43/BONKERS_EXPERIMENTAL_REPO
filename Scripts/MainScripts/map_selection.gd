@@ -8,7 +8,8 @@ var map_index : int
 func _ready() -> void:
 	if multiplayer.get_unique_id() == 1:
 		multiplayer.peer_connected.connect(call_map_change_rpc)
-	seleacted_map.connect($".."._on_picking_map)
+	if !seleacted_map.is_connected($".."._on_picking_map):
+		seleacted_map.connect($".."._on_picking_map)
 
 
 
@@ -27,6 +28,7 @@ func _on_button_2_button_down() -> void:
 	
 # id is an argument that the "peer_connected" signal allways passes, so it's just kind of there
 func call_map_change_rpc(id):
+	#map_change(map_index)
 	rpc("map_change", map_index)
 	
 @rpc("authority", "call_local")
@@ -44,3 +46,9 @@ func map_change(index):
 	add_child(map_to_spawn)
 	
 	
+
+
+func _on_start_pressed() -> void:
+	print(multiplayer)
+	if multiplayer.peer_connected.is_connected(call_map_change_rpc):
+		multiplayer.peer_connected.disconnect(call_map_change_rpc)
