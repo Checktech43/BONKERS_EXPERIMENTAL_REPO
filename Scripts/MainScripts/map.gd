@@ -68,4 +68,5 @@ func go_to_lobby():
 
 
 func _on_game_reset() -> void:
-	multiplayer.peer_connected.disconnect(joining_late)
+	if multiplayer.is_server():
+		multiplayer.peer_connected.disconnect(joining_late)

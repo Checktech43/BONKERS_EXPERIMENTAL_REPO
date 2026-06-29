@@ -1,9 +1,9 @@
 extends Node
 
 
+
 var number_of_cubes_ready : int = 0
 signal all_players_ready
-
 	
 func _player_ready():
 	rpc("_count_ready_players")
@@ -34,10 +34,10 @@ func _on_change_game_state(new_state) -> void:
 		player.toggle_ragdoll_mode(new_state)
 
 
-func _telaport_players(player, max_distance) -> void:
-	player.go_to_random_position(max_distance)
-		
+func _telaport_players(max_distance) -> void:
+	for player in get_children():
+		player.go_to_random_position(max_distance)
 
-### I don't think this function is used for anything useful
+### I don't think this function is used for anything usefull
 func _on_restart() -> void:
-	pass
+	number_of_cubes_ready = 0

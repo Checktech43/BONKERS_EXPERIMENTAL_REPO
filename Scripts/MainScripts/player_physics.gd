@@ -68,7 +68,7 @@ func _ready() -> void:
 		
 		
 func _unhandled_input(event: InputEvent) -> void:
-	if coloured == false && is_multiplayer_authority():
+	if coloured == false && is_multiplayer_authority() && NOTIFICATION_SCENE_INSTANTIATED:
 		change_skin(1)
 		multiplayer.peer_connected.connect(change_skin)
 		coloured = true

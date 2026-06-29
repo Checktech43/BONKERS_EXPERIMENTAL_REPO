@@ -24,7 +24,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0an3"]
-size = Vector3(1545.1, 21.752666, 2471)
+size = Vector3(1596.8915, 104.39489, 2471)
 
 [node name="Main" type="Node3D" unique_id=1461552637 node_paths=PackedStringArray("hud", "card_menu")]
 script = ExtResource("1_hptm8")
@@ -55,7 +55,7 @@ collision_mask = 15
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.075588, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.179565, -51.396698, 0)
 shape = SubResource("BoxShape3D_e0an3")
 
 [node name="MutiplayerHud" parent="." unique_id=594535370 instance=ExtResource("3_6iyac")]
