@@ -2,7 +2,7 @@ extends Node3D
 
 var round_counter : int
 var playes_started_with : int
-var lobby : Node3D
+@export var lobby : Node3D
 @export var loaded_map : PackedScene
 signal players_message
 

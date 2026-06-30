@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://shshvj6ldc0o"]
 
-[ext_resource type="Script" uid="uid://mcbbfpd3ffh0" path="res://Scripts/MainScripts/main.gd" id="1_hptm8"]
+[ext_resource type="Script" uid="uid://dmie75tnppoyd" path="res://Scripts/MainScripts/main.gd" id="1_hptm8"]
 [ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="2_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cl2sh3gaoi4ji" path="res://Scenes/mutiplayer_hud.tscn" id="3_6iyac"]
 [ext_resource type="Script" uid="uid://b7nf02lqn6xlh" path="res://Scripts/MainScripts/all_players.gd" id="5_jkdf5"]
@@ -93,8 +93,9 @@ shape = SubResource("BoxShape3D_e0an3")
 [node name="Players" type="Node3D" parent="." unique_id=1043772275]
 script = ExtResource("5_jkdf5")
 
-[node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671]
+[node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671 node_paths=PackedStringArray("lobby")]
 script = ExtResource("10_d1ilt")
+lobby = NodePath("Lobby")
 loaded_map = ExtResource("6_n12ux")
 
 [node name="Lobby" parent="CurrentMap" unique_id=1003242740 instance=ExtResource("10_dc6gi")]
