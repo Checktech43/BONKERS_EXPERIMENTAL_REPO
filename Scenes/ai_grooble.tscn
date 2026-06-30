@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://5p5up7681qql"]
+
+[ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="1_wuvdo"]
+[ext_resource type="Script" uid="uid://dojoid8wyk1f4" path="res://Scripts/MainScripts/ai_grooble.gd" id="2_am8hu"]
+
+[node name="Blue" unique_id=1792406894 groups=["ai"] instance=ExtResource("1_wuvdo")]
+script = ExtResource("2_am8hu")
+ai_level = 2
+cosmmetics_scene = null

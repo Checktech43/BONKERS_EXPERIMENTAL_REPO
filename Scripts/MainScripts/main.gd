@@ -20,8 +20,8 @@ func _ready():
 		multiplayer.peer_connected.connect(add_player)
 
 
-# Keep in mind That when the cubes are first joining the game,
-# that only the host calls this function
+# Keep in mind that when the cubes are first joining the game,
+# only the host calls this function
 func add_player(id : int = 1):
 	if game_start: return
 	# create the player and give it all the neceacery data
@@ -126,6 +126,5 @@ func _on_victory_timeout() -> void:
 		$Players.get_child(0).get_node("MultiplayerSynchronizer").public_visibility = false
 		rpc_id(1, "remove_player", $Players.get_child(0).name.to_int())
 
-### I don't think this does anything
 func _on_button_button_down() -> void:
 	DisplayServer.clipboard_set($MutiplayerHud/LobbyCode.text)

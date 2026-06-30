@@ -1,23 +1,26 @@
 extends Node
 
+signal all_players_ready
+var ready_players = []
 
 var number_of_cubes_ready : int = 0
-signal all_players_ready
 
-	
 func _player_ready():
-	rpc("_count_ready_players")
+	_count_ready_players.rpc()
 	
 @rpc("any_peer", "call_local")
 func _count_ready_players():
 	var players = get_children()
-	print("THESE ARE THE IDIOTS PLAYING THE GAME: " + str(players))
+	number_of_cubes_ready += 1
+	var human_players = []
+
 	for player in players:
-		if player.is_player_ready:
-			number_of_cubes_ready += 1
-	print("GOOBERS READY ARE " + str(number_of_cubes_ready))
-	if number_of_cubes_ready >= get_children().size():
+		if !player.is_in_group("ai"):
+			human_players.append(player)
+			
+	if number_of_cubes_ready == human_players.size():
 		number_of_cubes_ready = 0
+		ready_players = []
 		all_players_ready.emit()
 		for player in players:
 			player.is_player_ready = false
