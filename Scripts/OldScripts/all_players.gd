@@ -1,26 +1,19 @@
 extends Node
 
-signal all_players_ready
-var ready_players = []
+
 
 var number_of_cubes_ready : int = 0
-
+signal all_players_ready
+	
 func _player_ready():
-	_count_ready_players.rpc()
+	rpc("_count_ready_players")
 	
 @rpc("any_peer", "call_local")
 func _count_ready_players():
-	var players = get_children()
 	number_of_cubes_ready += 1
-	var human_players = []
-
-	for player in players:
-		if !player.is_in_group("ai"):
-			human_players.append(player)
-			
-	if number_of_cubes_ready == human_players.size():
+	if number_of_cubes_ready == get_children().size():
 		number_of_cubes_ready = 0
-		ready_players = []
+		# Goes to the "Main Node"
 		all_players_ready.emit()
 		
 
@@ -41,10 +34,10 @@ func _on_change_game_state(new_state) -> void:
 		player.toggle_ragdoll_mode(new_state)
 
 
-func _telaport_players(player, max_distance) -> void:
-	player.go_to_random_position(max_distance)
-		
+func _telaport_players(max_distance) -> void:
+	for player in get_children():
+		player.go_to_random_position(max_distance)
 
-### I don't think this function is used for anything useful
+### I don't think this function is used for anything usefull
 func _on_restart() -> void:
-	pass
+	number_of_cubes_ready = 0

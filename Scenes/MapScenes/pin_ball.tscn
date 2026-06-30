@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dk8f4yv6s71c0" path="res://Assets/Maps/pinball_map/source/pinball_map_bonkers.glb" id="1_8oire"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ev2jt"]
-size = Vector3(25.25, 2.875, 25.25)
+size = Vector3(25.25, 4.7612305, 25.25)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_a8qbw"]
 height = 8.065643
@@ -19,7 +19,7 @@ size = 25.25
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1805010897]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=835730296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042419434, -1.0002441, 0.0071105957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0042419434, -1.9433594, 0.0071105957)
 shape = SubResource("BoxShape3D_ev2jt")
 
 [node name="Pins" type="Node3D" parent="." unique_id=1197191758]
