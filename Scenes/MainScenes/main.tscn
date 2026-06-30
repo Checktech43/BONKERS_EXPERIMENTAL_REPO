@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="2_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cl2sh3gaoi4ji" path="res://Scenes/mutiplayer_hud.tscn" id="3_6iyac"]
 [ext_resource type="Script" uid="uid://b7nf02lqn6xlh" path="res://Scripts/MainScripts/all_players.gd" id="5_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://5p5up7681qql" path="res://Scenes/ai_grooble.tscn" id="5_osum8"]
 [ext_resource type="PackedScene" uid="uid://cceu2uumlp16x" path="res://Scenes/MapScenes/grass.tscn" id="6_n12ux"]
 [ext_resource type="Script" uid="uid://eco64ciyc6ag" path="res://Scripts/MainScripts/map.gd" id="10_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cwm8w35h1fst" path="res://Scenes/MainScenes/lobby.tscn" id="10_dc6gi"]
@@ -30,7 +31,7 @@ size = Vector3(1596.8915, 104.39489, 2471)
 script = ExtResource("1_hptm8")
 player_scene = ExtResource("2_d1ilt")
 hud = NodePath("MutiplayerHud")
-card_menu = NodePath("Control")
+card_menu = NodePath("Cards")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800759605]
 environment = SubResource("Environment_urblq")
@@ -93,6 +94,8 @@ shape = SubResource("BoxShape3D_e0an3")
 [node name="Players" type="Node3D" parent="." unique_id=1043772275]
 script = ExtResource("5_jkdf5")
 
+[node name="Blue" parent="Players" unique_id=1792406894 instance=ExtResource("5_osum8")]
+
 [node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671 node_paths=PackedStringArray("lobby")]
 script = ExtResource("10_d1ilt")
 lobby = NodePath("Lobby")
@@ -104,11 +107,11 @@ loaded_map = ExtResource("6_n12ux")
 wait_time = 2.0
 one_shot = true
 
-[node name="Control" parent="." unique_id=1923754249 instance=ExtResource("12_fdnlq")]
-visible = false
-
 [node name="MultiplayerSpawner2" type="MultiplayerSpawner" parent="." unique_id=1188206546]
 spawn_path = NodePath("../CurrentMap")
+
+[node name="Cards" parent="." unique_id=459148731 instance=ExtResource("12_fdnlq")]
+visible = false
 
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]
 [connection signal="change_game_state" from="." to="Players" method="_on_change_game_state"]

@@ -2,8 +2,61 @@
 
 [ext_resource type="PackedScene" uid="uid://cxgyhh5t4xncf" path="res://Scenes/grooble.tscn" id="1_wuvdo"]
 [ext_resource type="Script" uid="uid://dojoid8wyk1f4" path="res://Scripts/MainScripts/ai_grooble.gd" id="2_am8hu"]
+[ext_resource type="Script" uid="uid://bd3cfb2gqe323" path="res://Scenes/ray_cast_3d.gd" id="4_dbq01"]
+[ext_resource type="Script" uid="uid://bqu0m1la5bexm" path="res://Scripts/MainScripts/ray_cast_3d.gd" id="5_dbq01"]
 
 [node name="Blue" unique_id=1792406894 groups=["ai"] instance=ExtResource("1_wuvdo")]
 script = ExtResource("2_am8hu")
 ai_level = 2
 cosmmetics_scene = null
+
+[node name="GhostPosition" type="Node3D" parent="." index="5" unique_id=806980703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.010565668, -2.4160056)
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="6" unique_id=1343965937]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.15, 0)
+target_position = Vector3(31.3, -1, 0)
+collision_mask = 2
+script = ExtResource("5_dbq01")
+
+[node name="RayCast3D" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="1" unique_id=452634113 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -1.1942267)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")
+
+[node name="RayCast3D2" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="2" unique_id=2079510487 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -1.2760956)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")
+
+[node name="RayCast3D3" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="3" unique_id=17792805 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -1.3530912)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")
+
+[node name="RayCast3D4" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="4" unique_id=825236524 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -1.1089201)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")
+
+[node name="RayCast3D5" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="5" unique_id=1270447104 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -1.0228267)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")
+
+[node name="RayCast3D6" type="RayCast3D" parent="arrow_Bonkers" parent_id_path=PackedInt32Array(265189683) index="6" unique_id=819291140 groups=["raycast"]]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -0.265, 0, 0, -0.9360802)
+rotation_edit_mode = 2
+target_position = Vector3(0, -2, 0)
+hit_from_inside = true
+script = ExtResource("4_dbq01")

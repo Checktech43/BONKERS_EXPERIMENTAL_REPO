@@ -9,8 +9,8 @@ signal game_over
 
 
 @export var player_scene : PackedScene
-@export var hud : Control
-@export var card_menu: Control
+@export var hud : CanvasLayer
+@export var card_menu: CanvasLayer
 
 
 func _ready():
