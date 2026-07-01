@@ -1,159 +1,153 @@
 [gd_scene format=3 uid="uid://ctau1fv0jjl81"]
 
-[ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://Scripts/MenuScripts/cards_menu.gd" id="1_6crrv"]
-[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MenuScripts/ButtonAnimationAndSoundHandler.gd" id="2_bavps"]
-[ext_resource type="Texture2D" uid="uid://dm86g84ldrr3g" path="res://Assets/Cards/card_sprites/HammerCard.png" id="2_xsxi4"]
-[ext_resource type="Texture2D" uid="uid://bl7b20clcoj82" path="res://Assets/Cards/card_sprites/ReverseCard.png" id="3_bavps"]
-[ext_resource type="Texture2D" uid="uid://b1ef74bwiv6bj" path="res://Assets/Cards/card_sprites/Ghost_Card.png" id="4_xby2v"]
-[ext_resource type="Texture2D" uid="uid://d37xvfjfor1fc" path="res://Assets/Cards/card_sprites/Bigger.png" id="5_kb5n8"]
+[ext_resource type="Script" uid="uid://cd2tohnrdo60" path="res://Scripts/MainScripts/cards_menu.gd" id="1_6crrv"]
+[ext_resource type="PackedScene" uid="uid://g5jmhvaplqyp" path="res://Scenes/Cards/jack_spades.tscn" id="2_kb5n8"]
+[ext_resource type="PackedScene" uid="uid://cxosbkhqgpnw" path="res://Scenes/Cards/queen_hearts.tscn" id="3_utd6w"]
+[ext_resource type="PackedScene" uid="uid://ud6qmujw0h5p" path="res://Scenes/Cards/two_clubs.tscn" id="4_nyi1o"]
+[ext_resource type="PackedScene" uid="uid://b4ycgehbu015i" path="res://Scenes/Cards/ace_diamonds.tscn" id="5_xv4qr"]
+[ext_resource type="PackedScene" uid="uid://d0ho7o5bvv3sr" path="res://Scenes/Cards/ghost_card.tscn" id="6_pj1oh"]
+[ext_resource type="PackedScene" uid="uid://ca5ncd7604iiy" path="res://Scenes/Cards/jump_card.tscn" id="7_ppkta"]
+[ext_resource type="PackedScene" uid="uid://c8lrh43iogb2s" path="res://Scenes/Cards/big_card.tscn" id="8_bxoo1"]
 
 [node name="Control" type="CanvasLayer" unique_id=663478970]
 script = ExtResource("1_6crrv")
 
-[node name="AllCards" type="Control" parent="." unique_id=2031646809]
-visible = false
-layout_mode = 3
+[node name="CardSlots" type="Control" parent="." unique_id=859839069]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="Control" parent="CardSlots" unique_id=1352529381]
+anchors_preset = 0
+offset_left = -150.0
+offset_top = -22.0
+offset_right = -110.0
+offset_bottom = 18.0
+
+[node name="2" type="Control" parent="CardSlots" unique_id=2134912952]
+anchors_preset = 0
+offset_left = 124.0
+offset_top = -23.0
+offset_right = 164.0
+offset_bottom = 17.0
+
+[node name="Cards" type="Control" parent="." unique_id=1647577606]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="JackSpades" type="Button" parent="AllCards" unique_id=588109701]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 400.0
-offset_top = 183.0
-offset_right = 488.0
-offset_bottom = 371.5
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "Gives a projectile to shoot at enemies. (Fire with Right Click)"
-text = "Jack of Spades"
-autowrap_mode = 2
-
-[node name="QueenHearts" type="Button" parent="AllCards" unique_id=732476067]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 527.0
-offset_top = 183.0
-offset_right = 615.0
-offset_bottom = 371.5
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "Gives a single use hammer. Enemies bonked with the hammer will take more knockback for one turn."
-text = "Queen of Hearts"
-autowrap_mode = 2
-script = ExtResource("2_bavps")
-
-[node name="HammerCard" type="Sprite2D" parent="AllCards/QueenHearts" unique_id=1642637596]
-position = Vector2(47.5, 95.5)
-scale = Vector2(4.458332, 5.843751)
-texture = ExtResource("2_xsxi4")
-
-[node name="TwoClubs" type="Button" parent="AllCards" unique_id=125598863]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 656.0
-offset_top = 183.0
-offset_right = 754.0
-offset_bottom = 371.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Two of Clubs"
-autowrap_mode = 2
-
-[node name="ReverseCard" type="Sprite2D" parent="AllCards/TwoClubs" unique_id=571548922]
-position = Vector2(55, 95)
-scale = Vector2(4.916666, 6.03125)
-texture = ExtResource("3_bavps")
-
-[node name="AceDiamonds" type="Button" parent="AllCards" unique_id=1007067228]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 276.0
-offset_top = 183.0
-offset_right = 364.0
-offset_bottom = 371.5
-grow_horizontal = 2
-grow_vertical = 2
-tooltip_text = "Become immovable for one turn."
-text = "Ace of Diamonds"
-autowrap_mode = 2
-
-[node name="GhostCard" type="Button" parent="AllCards" unique_id=1280652390]
+[node name="JackSpades" parent="Cards" unique_id=1384175801 instance=ExtResource("2_kb5n8")]
 layout_mode = 0
-offset_left = 820.0
-offset_top = 199.0
-offset_right = 946.0
-offset_bottom = 403.0
-
-[node name="GhostCardSprite" type="Sprite2D" parent="AllCards/GhostCard" unique_id=1700994796]
-position = Vector2(62, 100)
-scale = Vector2(5.3749967, 6.1562495)
-texture = ExtResource("4_xby2v")
-
-[node name="JumpCard" type="Button" parent="AllCards" unique_id=1994892809]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 166.0
-offset_top = 190.0
-offset_right = 241.0
-offset_bottom = 374.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Jump"
-
-[node name="BigCard" type="Button" parent="AllCards" unique_id=1242873690]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 965.0
-offset_top = 184.0
-offset_right = 1063.0
-offset_bottom = 380.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Bigger" type="Sprite2D" parent="AllCards/BigCard" unique_id=269753144]
-position = Vector2(43, 97.00003)
-scale = Vector2(4.875003, 6.265625)
-texture = ExtResource("5_kb5n8")
-
-[node name="Hand" type="Control" parent="." unique_id=1839314797]
-layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 88.0
+offset_bottom = 188.5
+grow_horizontal = 1
+grow_vertical = 1
 
-[connection signal="pressed" from="AllCards/JackSpades" to="." method="_on_jack_spades_pressed"]
-[connection signal="pressed" from="AllCards/QueenHearts" to="." method="_on_queen_hearts_pressed"]
-[connection signal="pressed" from="AllCards/TwoClubs" to="." method="_on_two_clubs_pressed"]
-[connection signal="pressed" from="AllCards/AceDiamonds" to="." method="_on_ace_diamonds_pressed"]
-[connection signal="button_down" from="AllCards/GhostCard" to="." method="_on_ghost_card_button_down"]
-[connection signal="button_down" from="AllCards/JumpCard" to="." method="_on_jump_button_down"]
-[connection signal="button_down" from="AllCards/BigCard" to="." method="_on_big_card_button_down"]
+[node name="QueenHearts" parent="Cards" unique_id=853935315 instance=ExtResource("3_utd6w")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 88.0
+offset_bottom = 188.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TwoClubs" parent="Cards" unique_id=493909930 instance=ExtResource("4_nyi1o")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 98.0
+offset_bottom = 188.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="AceDiamonds" parent="Cards" unique_id=1876958689 instance=ExtResource("5_xv4qr")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 88.0
+offset_bottom = 188.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GhostCard" parent="Cards" unique_id=811101238 instance=ExtResource("6_pj1oh")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 126.0
+offset_bottom = 204.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="JumpCard" parent="Cards" unique_id=1052658815 instance=ExtResource("7_ppkta")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 75.0
+offset_bottom = 184.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="BigCard" parent="Cards" unique_id=1993573167 instance=ExtResource("8_bxoo1")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 98.0
+offset_bottom = 196.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="Cards/JackSpades" to="." method="_on_jack_spades_pressed"]
+[connection signal="pressed" from="Cards/QueenHearts" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Cards/QueenHearts" to="." method="_on_queen_hearts_pressed"]
+[connection signal="pressed" from="Cards/TwoClubs" to="." method="_on_two_clubs_pressed"]
+[connection signal="pressed" from="Cards/AceDiamonds" to="." method="_on_ace_diamonds_pressed"]
+[connection signal="button_down" from="Cards/GhostCard" to="." method="_on_ghost_card_button_down"]
+[connection signal="button_down" from="Cards/JumpCard" to="." method="_on_jump_button_down"]
+[connection signal="button_down" from="Cards/BigCard" to="." method="_on_big_card_button_down"]

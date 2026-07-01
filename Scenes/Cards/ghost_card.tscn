@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://d0ho7o5bvv3sr"]
+
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="1_mlukj"]
+[ext_resource type="Texture2D" uid="uid://b1ef74bwiv6bj" path="res://Assets/Cards/card_sprites/Ghost_Card.png" id="2_dbsad"]
+
+[node name="GhostCard" type="Button" unique_id=811101238]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -102.0
+offset_right = 63.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlukj")
+
+[node name="GhostCardSprite" type="Sprite2D" parent="." unique_id=1678526337]
+position = Vector2(62, 100)
+scale = Vector2(5.3749967, 6.1562495)
+texture = ExtResource("2_dbsad")

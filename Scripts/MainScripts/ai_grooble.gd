@@ -22,6 +22,9 @@ func _physics_process(delta: float) -> void:
 				$RayCast3D.rotation.y = 0 # this is to prevent the game from crashing if the raycast rotates for too long
 	
 func cpu_logic():
+	
+	### AI level zero means braindead difficulty
+	### All it does is pick a random direction and goes.
 	if ai_level == 0 and planning:
 		rotation.y = randi_range(0, 360)
 		print("GOTTA MAKE A MOVE TO A TOWN THAT'S RIGHT FOR ME")
