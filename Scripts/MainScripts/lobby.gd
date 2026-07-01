@@ -1,6 +1,7 @@
 extends Node
-var modifiers : Dictionary[String, bool]
+
 signal game_has_started
+signal pass_modifiers_to_main
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,10 +9,7 @@ func _ready() -> void:
 		$LobbyMenu/Start.show()
 	game_has_started.connect($"..".on_game_start)
 	game_has_started.connect($"../..".on_start_button_getting_pressed)
-	# modifiers have yet to be added
-	modifiers = {"cards": true,
-	"one_second_chaos": false,
-	}
+	pass_modifiers_to_main.connect($"../.."._on_switching_modifier)
 	
 	## Kim jon un is a master of goon
 # all this function does is pass the map choosen by the "MapSelection" scene
@@ -23,5 +21,7 @@ func _on_picking_map(map_on_screen):
 func _on_start_pressed() -> void:
 	game_has_started.emit()
 	
+func _on_switching_modifier(switch_name, new_state):
+	pass_modifiers_to_main.emit(switch_name, new_state)
 	
 	

@@ -12,12 +12,23 @@ signal game_over
 @export var hud : CanvasLayer
 @export var card_menu: CanvasLayer
 
+### game modifers
+var fast_pace : bool = false
+var cards : bool = true
+var free_movement = false
+var modifiers : Dictionary[String, bool]
+
 
 func _ready():
 	if multiplayer.is_server():
 		add_player()
 	if is_multiplayer_authority():
 		multiplayer.peer_connected.connect(add_player)
+	# modifiers have yet to be added
+	modifiers = {"Cards": true,
+	"FastPace": false,
+	"FreeMovement": false,
+	}
 
 
 # Keep in mind That when the cubes are first joining the game,
@@ -31,16 +42,19 @@ func add_player(id : int = 1):
 	$Players.add_child(player, true)
 
 
+func _on_switching_modifier(switch_name, new_state):
+	modifiers[switch_name] = new_state
+	print(modifiers)
+	
 func _on_all_players_ready() -> void:
 	action_phase_time.emit()
 	$ActionPhaseTimer.start()
 
 func on_start_button_getting_pressed() -> void:
-	call_deferred("rpc", "start_the_game")
+	rpc("start_the_game")
 	
 @rpc("call_local")
 func start_the_game():
-	print($Players.get_children())
 	game_start = true
 	change_game_state.emit(game_start)
 

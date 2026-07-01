@@ -39,6 +39,9 @@ func _on_change_game_state(new_state) -> void:
 	for player in get_children():
 		player.playing_game = new_state
 		player.toggle_ragdoll_mode(new_state)
+	for player in get_children():
+		player.unlimited_power = $"..".modifiers["FreeMovement"]
+		
 
 
 func _telaport_players(player, max_distance) -> void:

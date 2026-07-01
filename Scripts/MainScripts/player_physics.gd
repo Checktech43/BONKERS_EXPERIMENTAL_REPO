@@ -18,6 +18,9 @@ var playing_game : bool = false
 var coloured : bool = false
 var can_jump : bool = false
 var is_player_ready : bool
+var unlimited_power : bool
+
+
 
 
 ### other stuff
@@ -221,9 +224,7 @@ func player_is_ready() -> void:
 	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
 	if playing_game:
-		is_player_ready = true
-		
-		
+		is_player_ready = true	
 		is_ready.emit()
 		planning = false
 		$arrow_Bonkers.visible = false
