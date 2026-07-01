@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ca5ncd7604iiy"]
+
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="1_yhg7l"]
+
+[node name="JumpCard" type="Button" unique_id=1052658815]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -92.0
+offset_right = 37.5
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jump"
+script = ExtResource("1_yhg7l")

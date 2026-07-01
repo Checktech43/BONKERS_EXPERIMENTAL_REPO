@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b4ycgehbu015i"]
+
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="1_dw8vd"]
+
+[node name="AceDiamonds" type="Button" unique_id=1876958689]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -94.25
+offset_right = 44.0
+offset_bottom = 94.25
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Become immovable for one turn."
+text = "Ace of Diamonds"
+autowrap_mode = 2
+script = ExtResource("1_dw8vd")

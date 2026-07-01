@@ -34,6 +34,8 @@ func _ready() -> void:
 	var parent_ui = get_parent()
 	_setup_buttons_recursive(parent_ui)
 
+
+
 func _setup_buttons_recursive(node: Node) -> void:
 	if node is Button:
 		# SAFETY GUARD: Prevent duplicate connections

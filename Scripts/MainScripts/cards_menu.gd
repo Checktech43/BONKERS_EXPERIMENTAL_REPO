@@ -1,9 +1,10 @@
 extends Control
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +20,28 @@ func _process(delta: float) -> void:
 		if players.size() <= 1:
 			visible = false
 		
+
+func on_visible():
+	var cards = $Cards.get_children()
+	
+	for card in cards:
+		card.visible = false
+	
+	var shuffled = cards.duplicate()
+	shuffled.shuffle()
+	
+	var count = 2
+	
+	var cards_to_show = shuffled.slice(0, count)
+	
+	
+	
+	for card in cards_to_show:
+		card.visible = true
+		card.global_position = $CardSlots.get_child(cards_to_show.find(card)).global_position
+	
+	
+	
 
 func _on_queen_hearts_pressed() -> void:
 	var players = $"../Players".get_children()
@@ -81,8 +104,9 @@ func request_swap():
 	var player_2_pos = target_player.global_position
 	
 	# the switching of players is performed on the owner of each player due to authority shenanigans
-	move_player.rpc_id(target_id, player_1_pos, target_id)
-	move_player.rpc_id(sender_id, player_2_pos, sender_id)
+	move_player.rpc(player_1_pos, target_id)
+	move_player.rpc(player_2_pos, sender_id)
+	
 	
 @rpc("authority", "call_local")
 func move_player(new_position, id):

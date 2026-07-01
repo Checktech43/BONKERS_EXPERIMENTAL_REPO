@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cxosbkhqgpnw"]
+
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="1_0kurh"]
+[ext_resource type="Texture2D" uid="uid://dm86g84ldrr3g" path="res://Assets/Cards/card_sprites/HammerCard.png" id="2_mdaku"]
+
+[node name="QueenHearts" type="Button" unique_id=853935315]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.0
+offset_top = -94.25
+offset_right = 44.0
+offset_bottom = 94.25
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Gives a single use hammer. Enemies bonked with the hammer will take more knockback for one turn."
+text = "Queen of Hearts"
+autowrap_mode = 2
+script = ExtResource("1_0kurh")
+
+[node name="HammerCard" type="Sprite2D" parent="." unique_id=1954287214]
+position = Vector2(47.5, 95.5)
+scale = Vector2(4.458332, 5.843751)
+texture = ExtResource("2_mdaku")

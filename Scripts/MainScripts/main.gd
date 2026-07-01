@@ -84,6 +84,7 @@ func _check_for_winners() -> void:
 	
 @rpc("authority", "call_local")
 func card_menu_show():
+	card_menu.on_visible()
 	card_menu.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if $Players.get_children().size() < 1:
