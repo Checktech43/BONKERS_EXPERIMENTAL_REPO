@@ -52,7 +52,6 @@ var hammer: PackedScene = load("res://Scenes/hammer.tscn")
 
 
 func _ready() -> void:
-	
 		
 	$arrow_Bonkers.visible = false
 	$SpringArm3D/Camera3D.current = false
@@ -208,6 +207,8 @@ func spawn_weapon(weapon_id: String):
 	has_weapon = false
 	
 func recieve_knockback(direction: Vector3, force: float):
+	
+	
 	var final_force = force * knockback_multiplier
 	
 	apply_impulse(direction.normalized() * final_force)
@@ -231,6 +232,16 @@ func player_is_ready() -> void:
 
 
 func _on_body_entered(body: Node) -> void:
+	var enemy_force : float = abs(body.linear_velocity.x) + abs(body.linear_velocity.z)
+	var your_force : float = abs(linear_velocity.x) + abs(linear_velocity.z)
+	if your_force > enemy_force:
+		body.recieve_knockback(transform.basis.z, your_force)
+	elif your_force == enemy_force:
+		body.recieve_knockback(transform.basis.z, your_force)
+		recieve_knockback(transform.basis.z, enemy_force)
+	else:
+		recieve_knockback(transform.basis.z, enemy_force)
+		
 	if body.is_in_group("players") and body.knockback_multiplier == 2:
 		body.recieve_knockback(transform.basis.z, 5)
 	if body.is_in_group("hammer"):
