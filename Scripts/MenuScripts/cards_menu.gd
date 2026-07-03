@@ -1,29 +1,19 @@
 extends CanvasLayer
 
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if visible:
-		var players = $"../Players".get_children()
-		for player in players:
-			player.freeze = false
-			player.is_ghost = false
-			player.scale = Vector3(1, 1, 1)
-			if player.knockback_multiplier == 2:
-				player.knockback_multiplier = 1
-		if players.size() <= 1:
-			visible = false
-	else:
-		$Reroll.visible = true
 		
 
 func on_visible():
+	var players = $"../Players".get_children()
+	for player in players:
+		player.freeze = false
+		player.is_ghost = false
+		player.scale = Vector3(1, 1, 1)
+		if player.knockback_multiplier == 2:
+			player.knockback_multiplier = 1
+	if players.size() <= 1:
+		visible = false
+	$Reroll.visible = true
 	var cards = $Cards.get_children()
 	
 	# every card is in the main scene, they're just invisible until further notice.
@@ -124,7 +114,6 @@ func move_player(new_position, id):
 		
 	await get_tree().process_frame # a single frame delay is needed to prevent synchronization issues
 	player_to_move.global_position = new_position
-	print(player_to_move.global_position)
 	
 	
 	
@@ -173,3 +162,7 @@ func _on_jump_button_down() -> void:
 func _on_reroll_button_down() -> void:
 	on_visible()
 	$Reroll.visible = false
+
+
+func _on_planning_timeout() -> void:
+	visible = false

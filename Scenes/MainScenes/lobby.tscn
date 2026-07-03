@@ -56,18 +56,21 @@ grow_horizontal = 2
 
 [node name="Cards" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1003993930]
 layout_mode = 2
+disabled = true
 button_pressed = true
 text = "Cards"
 script = ExtResource("2_gij67")
 
 [node name="FastPace" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=753007176]
 layout_mode = 2
+disabled = true
 text = "FastPace"
 script = ExtResource("2_gij67")
 
 [node name="FreeMovement" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1072962634]
 layout_mode = 2
-text = "FreeMovement"
+disabled = true
+text = "SuperSane"
 script = ExtResource("2_gij67")
 
 [node name="MapSelection" parent="." unique_id=2026862486 instance=ExtResource("3_2avy7")]

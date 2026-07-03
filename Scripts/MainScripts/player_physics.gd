@@ -90,7 +90,6 @@ func _physics_process(delta: float) -> void:
 			rotation_smoothness * delta
 			), deg_to_rad(-60.0), deg_to_rad(60.0))
 			#rotation_degrees.x = clampf(rotation_degrees.x, -45, 45)
-			print(target_pitch)
 		rotation.y = lerp_angle(
 		rotation.y,
 		target_yaw,
@@ -106,7 +105,7 @@ func go_to_random_position(new_pos):
 
 	
 		
-func _process(state):	
+func _process(state):
 	# For some reason when trying to change the position of the cube in the "go_to_random_position" function
 	# The cube just does not teleport to the new position.
 	# so you have to change the position here instead.
@@ -241,6 +240,7 @@ func player_is_ready() -> void:
 		is_ready.emit()
 		planning = false
 		$arrow_Bonkers.visible = false
+		$"../../PlanningTimer".stop()
 	else:
 		push()
 

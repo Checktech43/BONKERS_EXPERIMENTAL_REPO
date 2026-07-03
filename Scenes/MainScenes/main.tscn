@@ -110,6 +110,10 @@ spawn_path = NodePath("../CurrentMap")
 [node name="Cards" parent="." unique_id=459148731 instance=ExtResource("12_fdnlq")]
 visible = false
 
+[node name="PlanningTimer" type="Timer" parent="." unique_id=1582047712]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="action_phase_time" from="." to="Players" method="on_action_phase"]
 [connection signal="change_game_state" from="." to="Players" method="_on_change_game_state"]
 [connection signal="game_over" from="." to="MutiplayerHud" method="_on_game_end"]
@@ -125,3 +129,5 @@ visible = false
 [connection signal="all_players_ready" from="Players" to="." method="_on_all_players_ready"]
 [connection signal="players_message" from="CurrentMap" to="Players" method="_telaport_players"]
 [connection signal="timeout" from="EndOfGameDelay" to="." method="_check_for_winners"]
+[connection signal="timeout" from="PlanningTimer" to="Players" method="_on_planning_timeout"]
+[connection signal="timeout" from="PlanningTimer" to="Cards" method="_on_planning_timeout"]

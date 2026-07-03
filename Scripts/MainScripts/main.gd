@@ -48,13 +48,17 @@ func _on_switching_modifier(switch_name, new_state):
 	
 func _on_all_players_ready() -> void:
 	action_phase_time.emit()
-	$ActionPhaseTimer.start()
+	if modifiers["FastPace"] == true:
+		$ActionPhaseTimer.start(1)
+	else:
+		$ActionPhaseTimer.start()
 
 func on_start_button_getting_pressed() -> void:
 	rpc("start_the_game")
 	
 @rpc("call_local")
 func start_the_game():
+	$PlanningTimer.start()
 	game_start = true
 	change_game_state.emit(game_start)
 
@@ -131,9 +135,14 @@ func rematch():
 
 	
 func _on_finishing_action_phase():
+	if modifiers["FastPace"] == true:
+		$PlanningTimer.start(1)
+	else:
+		$PlanningTimer.start()
 	if !is_multiplayer_authority():
 		return
-	card_menu_show.rpc()
+	if modifiers["Cards"] == true:
+		card_menu_show.rpc()
 	
 	
 func _on_victory_timeout() -> void:

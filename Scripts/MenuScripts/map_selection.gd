@@ -8,6 +8,12 @@ var map_index : int
 func _ready() -> void:
 	if multiplayer.get_unique_id() == 1:
 		multiplayer.peer_connected.connect(call_map_change_rpc)
+		
+		# Checktech43 if you are reading this and trying to fixing the UI,
+		# make sure to change the path of the buttons below so the game does not crash.
+		get_node("LeftButton").disabled = false 
+		get_node("RightButton").disabled = false
+		
 	if !seleacted_map.is_connected($".."._on_picking_map):
 		seleacted_map.connect($".."._on_picking_map)
 
