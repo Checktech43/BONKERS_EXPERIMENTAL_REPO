@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://di2gwsl4n6x7o"]
+
+[ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="1_0kpiu"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="2_smycg"]
+
+[node name="Button" type="Button" unique_id=724658446]
+offset_left = 450.0
+offset_top = 522.0
+offset_right = 731.6
+offset_bottom = 610.04
+theme = ExtResource("1_0kpiu")
+text = "
+"
+autowrap_mode = 3
+script = ExtResource("2_smycg")

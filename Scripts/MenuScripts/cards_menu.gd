@@ -19,11 +19,14 @@ func _process(delta: float) -> void:
 				player.knockback_multiplier = 1
 		if players.size() <= 1:
 			visible = false
+	else:
+		$Reroll.visible = true
 		
 
 func on_visible():
 	var cards = $Cards.get_children()
 	
+	# every card is in the main scene, they're just invisible until further notice.
 	for card in cards:
 		card.visible = false
 	
@@ -35,10 +38,10 @@ func on_visible():
 	var cards_to_show = shuffled.slice(0, count)
 	
 	
-	
 	for card in cards_to_show:
 		card.visible = true
 		card.global_position = $CardSlots.get_child(cards_to_show.find(card)).global_position
+		card.set_meta("original_pos", card.position) # this prevents the cards going to the corner of the screen
 	
 	
 	
@@ -62,6 +65,8 @@ func _on_jack_spades_pressed() -> void:
 
 
 func _on_two_clubs_pressed() -> void:
+	if !visible:
+		return
 	visible = false
 	
 	if multiplayer.is_server():
@@ -161,3 +166,10 @@ func _on_jump_button_down() -> void:
 	var players = $"../Players".get_children()
 	for player in players:
 		player.can_jump = true
+
+
+
+
+func _on_reroll_button_down() -> void:
+	on_visible()
+	$Reroll.visible = false
