@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qspujc8g8h52"]
 
 [ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="1_to1el"]
-[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="2_qr8uu"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MenuScripts/ButtonAnimationAndSoundHandler.gd" id="2_qr8uu"]
 [ext_resource type="Texture2D" uid="uid://cw0y2akkrtd42" path="res://image_resources/UI/NormalButton.png" id="2_quo7f"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=527785423]
