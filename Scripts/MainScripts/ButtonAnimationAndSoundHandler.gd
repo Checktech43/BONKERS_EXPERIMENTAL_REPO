@@ -39,7 +39,9 @@ func _ready() -> void:
 func _setup_buttons_recursive(node: Node) -> void:
 	if node is Button:
 		# SAFETY GUARD: Prevent duplicate connections
-		if node.has_meta("juiced"): return
+		if node.has_meta("juiced"):
+			return
+			
 		node.set_meta("juiced", true)
 		
 		# CRUCIAL: Remember the exact layout position of this button before any animations touch it

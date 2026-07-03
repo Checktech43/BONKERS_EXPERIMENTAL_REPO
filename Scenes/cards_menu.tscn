@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://d0ho7o5bvv3sr" path="res://Scenes/Cards/ghost_card.tscn" id="6_pj1oh"]
 [ext_resource type="PackedScene" uid="uid://ca5ncd7604iiy" path="res://Scenes/Cards/jump_card.tscn" id="7_ppkta"]
 [ext_resource type="PackedScene" uid="uid://c8lrh43iogb2s" path="res://Scenes/Cards/big_card.tscn" id="8_bxoo1"]
+[ext_resource type="PackedScene" uid="uid://di2gwsl4n6x7o" path="res://Scenes/button.tscn" id="9_utd6w"]
 
 [node name="Control" type="CanvasLayer" unique_id=663478970]
 script = ExtResource("1_6crrv")
 
 [node name="CardSlots" type="Control" parent="." unique_id=859839069]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -41,6 +42,7 @@ offset_right = 164.0
 offset_bottom = 17.0
 
 [node name="Cards" type="Control" parent="." unique_id=1647577606]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -143,6 +145,14 @@ offset_bottom = 196.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="Reroll" parent="." unique_id=724658446 instance=ExtResource("9_utd6w")]
+offset_left = 867.0
+offset_top = 6.0
+offset_right = 1148.6
+offset_bottom = 94.03998
+text = "REROLL
+"
+
 [connection signal="pressed" from="Cards/JackSpades" to="." method="_on_jack_spades_pressed"]
 [connection signal="pressed" from="Cards/QueenHearts" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Cards/QueenHearts" to="." method="_on_queen_hearts_pressed"]
@@ -151,3 +161,4 @@ grow_vertical = 1
 [connection signal="button_down" from="Cards/GhostCard" to="." method="_on_ghost_card_button_down"]
 [connection signal="button_down" from="Cards/JumpCard" to="." method="_on_jump_button_down"]
 [connection signal="button_down" from="Cards/BigCard" to="." method="_on_big_card_button_down"]
+[connection signal="button_down" from="Reroll" to="." method="_on_reroll_button_down"]

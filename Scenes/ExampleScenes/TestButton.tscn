@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cfceuvfu405yt"]
 
 [ext_resource type="Theme" uid="uid://bdmu51fs6vnpd" path="res://Themes/ui_themes/ui_theme1.tres" id="1_y71ho"]
-[ext_resource type="Script" uid="uid://dw7m6ruj87qp" path="res://Scripts/ButtonAnimationAndSoundHandler.gd" id="2_cqmua"]
+[ext_resource type="Script" uid="uid://8invi0oerl2a" path="res://Scripts/MainScripts/ButtonAnimationAndSoundHandler.gd" id="2_cqmua"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1689836325]
 
