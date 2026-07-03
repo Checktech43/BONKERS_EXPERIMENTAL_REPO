@@ -41,6 +41,7 @@ func _on_change_game_state(new_state) -> void:
 		player.toggle_ragdoll_mode(new_state)
 	for player in get_children():
 		player.unlimited_power = $"..".modifiers["FreeMovement"]
+		player.lock_rotation = false
 		
 
 

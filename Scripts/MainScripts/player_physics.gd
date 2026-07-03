@@ -17,7 +17,7 @@ var random : bool = false
 var playing_game : bool = false
 var coloured : bool = false
 var can_jump : bool = false
-var is_player_ready : bool
+#var is_player_ready : bool
 var unlimited_power : bool
 
 
@@ -48,6 +48,7 @@ var knockback_multiplier = 1
 		set_collision_mask_value(2, !value)
 
 var target_yaw = 0
+var target_pitch = 0
 
 var spade: PackedScene = load("res://Scenes/spade_projectile.tscn")
 var hammer: PackedScene = load("res://Scenes/hammer.tscn")
@@ -73,11 +74,23 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseMotion and planning:
 		target_yaw -= event.relative.x * mouse_sensitivity
-
+		target_pitch -= event.relative.y * mouse_sensitivity
+		if target_pitch >= 1.2:
+			target_pitch = 1.2
+		if target_pitch <= -1.2:
+			target_pitch = -1.2
 
 func _physics_process(delta: float) -> void:
 	if planning and is_multiplayer_authority():
-		target_dir = (target - global_position).normalized()
+		if unlimited_power:
+			target_dir = (target - global_position).normalized()
+			rotation.x = clampf(lerpf(
+			rotation.x,
+			target_pitch,
+			rotation_smoothness * delta
+			), deg_to_rad(-60.0), deg_to_rad(60.0))
+			#rotation_degrees.x = clampf(rotation_degrees.x, -45, 45)
+			print(target_pitch)
 		rotation.y = lerp_angle(
 		rotation.y,
 		target_yaw,
@@ -102,13 +115,13 @@ func _process(state):
 		lock_rotation = true
 		position = starting_pos
 		random = false
-	target_dir = (target - global_position).normalized()
+	#target_dir = (target - global_position).normalized()
 	
 
 func planning_phase():
 	if is_multiplayer_authority():
 		planning = true
-		is_player_ready = false
+		#is_player_ready = false
 		$arrow_Bonkers.visible = true
 	
 func _input(event):
@@ -157,7 +170,7 @@ func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	position = Vector3(0, 0.5, 0)
 	
-
+### unused function
 func _look_at_mouse(mouse) -> void:
 	if not is_multiplayer_authority():
 		return
@@ -223,8 +236,8 @@ func player_is_ready() -> void:
 	# Lock in the power and diriction of the player, and tell the server that they are ready.
 	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
-	if playing_game:
-		is_player_ready = true	
+	if !unlimited_power:
+		#is_player_ready = true	
 		is_ready.emit()
 		planning = false
 		$arrow_Bonkers.visible = false
