@@ -13,6 +13,7 @@ radius = 0.7583008
 [node name="PinBall" type="Node3D" unique_id=653352705]
 script = ExtResource("1_5tpkj")
 size = 25.25
+boarder_size = 24.0
 
 [node name="pinball_map_bonkers" parent="." unique_id=1292099373 instance=ExtResource("1_8oire")]
 

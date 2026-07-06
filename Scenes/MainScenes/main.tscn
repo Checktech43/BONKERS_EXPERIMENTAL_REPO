@@ -23,8 +23,8 @@ sky = SubResource("Sky_p5pve")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e0an3"]
-size = Vector3(1596.8915, 104.39489, 2471)
+[sub_resource type="SphereShape3D" id="SphereShape3D_vcdch"]
+radius = 19.0
 
 [node name="Main" type="Node3D" unique_id=1461552637 node_paths=PackedStringArray("hud", "card_menu")]
 script = ExtResource("1_hptm8")
@@ -49,14 +49,14 @@ wait_time = 3.0
 one_shot = true
 
 [node name="DeathPlane" type="Area3D" parent="." unique_id=1616572989]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15, 0)
 collision_layer = 15
 collision_mask = 15
 input_ray_pickable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane" unique_id=1819638400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.179565, -51.396698, 0)
-shape = SubResource("BoxShape3D_e0an3")
+shape = SubResource("SphereShape3D_vcdch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DeathPlane" unique_id=2031420371]
 
 [node name="MutiplayerHud" parent="." unique_id=594535370 instance=ExtResource("3_6iyac")]
 
@@ -83,18 +83,12 @@ one_shot = true
 transform = Transform3D(0.7071068, -0.32978517, 0.6254932, 0, 0.88458097, 0.46638668, -0.7071068, -0.32978517, 0.6254932, 14.227097, 16.61362, 15.359293)
 current = true
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1257683726]
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=746354692]
-shape = SubResource("BoxShape3D_e0an3")
-
 [node name="Players" type="Node3D" parent="." unique_id=1043772275]
 script = ExtResource("5_jkdf5")
 
-[node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671 node_paths=PackedStringArray("lobby")]
+[node name="CurrentMap" type="Node3D" parent="." unique_id=1365735671 node_paths=PackedStringArray("death_plane", "lobby")]
 script = ExtResource("10_d1ilt")
+death_plane = NodePath("../DeathPlane")
 lobby = NodePath("Lobby")
 loaded_map = ExtResource("6_n12ux")
 
@@ -123,7 +117,7 @@ one_shot = true
 [connection signal="timeout" from="ActionPhaseTimer" to="." method="_on_finishing_action_phase"]
 [connection signal="timeout" from="ActionPhaseTimer" to="Players" method="_on_action_phase_end"]
 [connection signal="timeout" from="ActionPhaseTimer" to="CurrentMap" method="_on_round_end"]
-[connection signal="body_entered" from="DeathPlane" to="." method="_on_something_fell"]
+[connection signal="body_exited" from="DeathPlane" to="." method="_on_something_fell"]
 [connection signal="timeout" from="VictoryTimer" to="." method="_on_victory_timeout"]
 [connection signal="timeout" from="VictoryTimer" to="MutiplayerHud" method="_on_victory_timeout"]
 [connection signal="all_players_ready" from="Players" to="." method="_on_all_players_ready"]

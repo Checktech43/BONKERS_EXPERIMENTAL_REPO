@@ -18,7 +18,10 @@ size = Vector3(2.3, 3, 13.765381)
 
 [node name="Complex" type="Node3D" unique_id=2065508751]
 script = ExtResource("1_fepel")
+boarder_size = 30.0
 size = 5.7
+size = 5.7
+boarder_size = 30.0
 
 [node name="MainPlatform" parent="." unique_id=462786239 instance=ExtResource("2_6iir7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00047302246, -2.3841858e-07, -0.012890816)

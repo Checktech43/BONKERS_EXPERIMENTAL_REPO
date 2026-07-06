@@ -11,6 +11,7 @@ radius = 20.0
 [node name="Map" type="Node3D" unique_id=1966486156]
 script = ExtResource("1_sj583")
 size = 20.0
+boarder_size = 15.0
 
 [node name="mainIsland_Map_bonkers" parent="." unique_id=732591826 instance=ExtResource("2_mwacj")]
 

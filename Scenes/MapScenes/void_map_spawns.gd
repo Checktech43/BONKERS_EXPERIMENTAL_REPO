@@ -1,6 +1,6 @@
-extends Node
+extends "res://Scenes/MapScenes/map_spawns.gd"
 
-@export var size : float
+
 var random_circle : int
 func _ready():
 	random_circle = randi_range(0, 1)

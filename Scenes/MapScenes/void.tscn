@@ -13,6 +13,7 @@ size = Vector3(10.640692, 2, 2)
 [node name="Void" type="Node3D" unique_id=1761780192]
 script = ExtResource("1_ke785")
 size = 11.0
+boarder_size = 19.0
 
 [node name="platform_voidglb" parent="." unique_id=928375889 instance=ExtResource("2_7erc7")]
 metadata/_edit_group_ = true

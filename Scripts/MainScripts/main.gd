@@ -24,10 +24,10 @@ func _ready():
 		add_player()
 	if is_multiplayer_authority():
 		multiplayer.peer_connected.connect(add_player)
-	# modifiers have yet to be added
 	modifiers = {"Cards": true,
 	"FastPace": false,
 	"FreeMovement": false,
+	"UnlimitedTime": false,
 	}
 
 
@@ -46,6 +46,13 @@ func _on_switching_modifier(switch_name, new_state):
 	modifiers[switch_name] = new_state
 	print(modifiers)
 	
+func _on_player_joining():
+	update_modifiers_for_joining_player.rpc(modifiers)
+
+@rpc("authority")
+func update_modifiers_for_joining_player(host_modifiers):
+	modifiers = host_modifiers
+	
 func _on_all_players_ready() -> void:
 	action_phase_time.emit()
 	if modifiers["FastPace"] == true:
@@ -58,7 +65,8 @@ func on_start_button_getting_pressed() -> void:
 	
 @rpc("call_local")
 func start_the_game():
-	$PlanningTimer.start()
+	if modifiers["UnlimitedTime"] == false:
+		$PlanningTimer.start()
 	game_start = true
 	change_game_state.emit(game_start)
 
@@ -135,7 +143,9 @@ func rematch():
 
 	
 func _on_finishing_action_phase():
-	if modifiers["FastPace"] == true:
+	if modifiers["UnlimitedTime"] == true:
+		pass
+	elif modifiers["FastPace"] == true:
 		$PlanningTimer.start(1)
 	else:
 		$PlanningTimer.start()

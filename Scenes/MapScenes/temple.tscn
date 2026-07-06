@@ -13,6 +13,7 @@ size = Vector3(2, 12, 2)
 [node name="Map" type="Node3D" unique_id=526243022]
 script = ExtResource("1_5s0s7")
 size = 20.0
+boarder_size = 20.0
 
 [node name="Temple" parent="." unique_id=985378513 instance=ExtResource("1_5eyw8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006852627, -1.0000005, -0.014432669)

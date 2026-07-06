@@ -1,8 +1,9 @@
-extends Node
+extends "res://Scenes/MapScenes/map_spawns.gd"
 
 
-@export var size : float
+
 @export var size_of_hole : float
+
 enum number_type {POSITIVE, NEGATIVE}
 func get_random_position(maps_scale) -> Vector3:
 	var x : float = randf_range(maps_scale / 2 * size_of_hole, maps_scale / 2 * size)

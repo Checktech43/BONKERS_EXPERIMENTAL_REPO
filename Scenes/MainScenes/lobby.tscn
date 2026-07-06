@@ -9,7 +9,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
 script = ExtResource("1_pfjfr")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=665664289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, 0, -3.349)
 use_collision = true
 size = Vector3(20, 11.45813, 20)
 
@@ -73,6 +72,12 @@ disabled = true
 text = "SuperSane"
 script = ExtResource("2_gij67")
 
+[node name="UnlimitedTime" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1412694930]
+layout_mode = 2
+disabled = true
+text = "UnlimitedTime"
+script = ExtResource("2_gij67")
+
 [node name="MapSelection" parent="." unique_id=2026862486 instance=ExtResource("3_2avy7")]
 map_offset = Vector3(0, 10, 0)
 
@@ -81,3 +86,4 @@ map_offset = Vector3(0, 10, 0)
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/Cards" to="." method="_on_switching_modifier"]
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/FastPace" to="." method="_on_switching_modifier"]
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/FreeMovement" to="." method="_on_switching_modifier"]
+[connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/UnlimitedTime" to="." method="_on_switching_modifier"]
