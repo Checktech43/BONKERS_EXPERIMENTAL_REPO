@@ -44,7 +44,7 @@ func _on_change_game_state(new_state) -> void:
 		
 
 
-func _telaport_players(player, max_distance) -> void:
+func _teleport_players(player, max_distance) -> void:
 	player.go_to_random_position(max_distance)
 		
 

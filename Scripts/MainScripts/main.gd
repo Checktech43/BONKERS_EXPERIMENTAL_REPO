@@ -24,10 +24,10 @@ func _ready():
 		add_player()
 	if is_multiplayer_authority():
 		multiplayer.peer_connected.connect(add_player)
-	# modifiers have yet to be added
 	modifiers = {"Cards": true,
 	"FastPace": false,
 	"FreeMovement": false,
+	"UnlimitedTime": false,
 	}
 
 
@@ -46,9 +46,19 @@ func _on_switching_modifier(switch_name, new_state):
 	modifiers[switch_name] = new_state
 	print(modifiers)
 	
+func _on_player_joining():
+	update_modifiers_for_joining_player.rpc(modifiers)
+
+@rpc("authority")
+func update_modifiers_for_joining_player(host_modifiers):
+	modifiers = host_modifiers
+	
 func _on_all_players_ready() -> void:
 	action_phase_time.emit()
-	$ActionPhaseTimer.start()
+	if modifiers["FastPace"] == true:
+		$ActionPhaseTimer.start(1)
+	else:
+		$ActionPhaseTimer.start()
 
 func on_start_button_getting_pressed() -> void:
 	rpc("start_the_game")
@@ -80,6 +90,19 @@ func remove_player(id):
 	print("The " + str(id) + " cube is dead!")
 	
  
+@rpc("authority", "call_local")		
+func add_bot():
+	var bot = load("res://Scenes/ai_grooble.tscn").instantiate()
+	$Players.add_child(bot)
+	
+@rpc("authority", "call_local")
+func remove_bot():
+	for player in $Players.get_children():
+		if player.is_in_group("ai"):
+			player.queue_free()
+			break
+		
+		
 		
 func _check_for_winners() -> void:
 	if $Players.get_children().size() == 1:
@@ -89,7 +112,7 @@ func _check_for_winners() -> void:
 		rpc("_end_of_game", no_one_wins)
 		
 	
-@rpc("authority", "call_local")
+@rpc("any_peer", "call_local")
 func card_menu_show():
 	card_menu.on_visible()
 	card_menu.visible = true
@@ -131,9 +154,8 @@ func rematch():
 
 	
 func _on_finishing_action_phase():
-	if !is_multiplayer_authority():
-		return
-	card_menu_show.rpc()
+	if modifiers["Cards"] == true:
+		card_menu_show.rpc()
 	
 	
 func _on_victory_timeout() -> void:
@@ -142,6 +164,6 @@ func _on_victory_timeout() -> void:
 		$Players.get_child(0).queue_free()
 		#rpc("remove_player", $Players.get_child(0).name.to_int())
 
-### I don't think this does anything
+
 func _on_button_button_down() -> void:
 	DisplayServer.clipboard_set($MutiplayerHud/LobbyCode.text)

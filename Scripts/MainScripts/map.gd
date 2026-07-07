@@ -4,12 +4,13 @@ var round_counter : int
 var playes_started_with : int
 @export var lobby : Node3D
 @export var loaded_map : PackedScene
-signal players_message
+signal players_random_pos
 
 
 func on_game_start() -> void:
 	multiplayer.peer_connected.connect(joining_late)
 	call_deferred("rpc", "rearange_all_things")
+	
 	
 	
 @rpc("call_local")
@@ -20,6 +21,8 @@ func rearange_all_things():
 	instantiate_map()
 	resize_map(resizes_needed)
 	set_players_at_random_positions()
+	
+	
 		
 	
 		
@@ -41,7 +44,7 @@ func set_players_at_random_positions():
 	var all_players = $"../Players".get_children()
 	
 	for player in all_players:
-		players_message.emit(player, map.get_random_position(size))
+		players_random_pos.emit(player, map.get_random_position(size))
 		
 @rpc("authority")
 func instantiate_map():
@@ -54,7 +57,7 @@ func joining_late(id):
 	var resizes_needed : int =  all_players.get_children().size()
 	resize_map(resizes_needed)
 	
-@rpc()
+@rpc
 func update_late_client_on_things():
 	var all_players = $"../Players"
 	var resizes_needed : int =  all_players.get_children().size()

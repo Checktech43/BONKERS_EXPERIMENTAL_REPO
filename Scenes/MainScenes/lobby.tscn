@@ -70,6 +70,14 @@ layout_mode = 2
 text = "FreeMovement"
 script = ExtResource("2_gij67")
 
+[node name="AddBot" type="Button" parent="LobbyMenu/VBoxContainer" unique_id=723792701]
+layout_mode = 2
+text = "Add Bot"
+
+[node name="RemoveBot" type="Button" parent="LobbyMenu/VBoxContainer" unique_id=835456475]
+layout_mode = 2
+text = "Remove Bot"
+
 [node name="MapSelection" parent="." unique_id=2026862486 instance=ExtResource("3_2avy7")]
 map_offset = Vector3(0, 10, 0)
 
@@ -78,3 +86,5 @@ map_offset = Vector3(0, 10, 0)
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/Cards" to="." method="_on_switching_modifier"]
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/FastPace" to="." method="_on_switching_modifier"]
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/FreeMovement" to="." method="_on_switching_modifier"]
+[connection signal="button_down" from="LobbyMenu/VBoxContainer/AddBot" to="." method="_on_add_bot_button_down"]
+[connection signal="button_down" from="LobbyMenu/VBoxContainer/RemoveBot" to="." method="_on_remove_bot_button_down"]

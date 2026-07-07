@@ -14,7 +14,8 @@ func _process(delta: float) -> void:
 		for player in players:
 			player.freeze = false
 			player.is_ghost = false
-			player.scale = Vector3(1, 1, 1)
+			if player.scale != Vector3(1, 1, 1):
+				player.scale = Vector3(1, 1, 1)
 			if player.knockback_multiplier == 2:
 				player.knockback_multiplier = 1
 		if players.size() <= 1:

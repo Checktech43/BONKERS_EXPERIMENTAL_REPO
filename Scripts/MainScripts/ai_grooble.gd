@@ -10,10 +10,36 @@ func _process(state):
 	if random:
 		rotation = Vector3(0, 0, 0)
 		lock_rotation = true
-		position = starting_pos
 		random = false
+		if !multiplayer.is_server():
+			return
+		position = starting_pos
+		sync_position.rpc(starting_pos)
+		print(starting_pos)
+		
+	if !planning:
+		sync_position.rpc(position)	
+		sync_rotation.rpc(rotation.y)
+	
 	target_dir = (target - global_position).normalized()
-	cpu_logic()
+	if multiplayer.is_server():
+		cpu_logic()
+	
+	
+func go_to_random_position(new_pos):
+	linear_velocity = Vector3(0, 0, 0)
+	random = true
+	starting_pos = new_pos
+	
+
+@rpc("any_peer", "call_remote")
+func sync_position(pos : Vector3):
+	position = pos
+	
+@rpc("any_peer", "call_remote")
+func sync_rotation(y_rotation : float):
+	rotation.y = y_rotation
+	
 	
 func _physics_process(delta: float) -> void:
 		if planning:
@@ -21,13 +47,23 @@ func _physics_process(delta: float) -> void:
 			if $RayCast3D.rotation.y > 99999:
 				$RayCast3D.rotation.y = 0 # this is to prevent the game from crashing if the raycast rotates for too long
 	
-func cpu_logic():
+
+func toggle_ragdoll_mode(game_state):
+	if game_state:
+		rotation = Vector3(0, 0, 0)
+		lock_rotation = true
+	else:
+		
+		lock_rotation = false
+
 	
-	### AI level zero means braindead difficulty
+	
+	
+func cpu_logic():
+	### AI level zero means braindead difficulty.
 	### All it does is pick a random direction and goes.
 	if ai_level == 0 and planning:
 		rotation.y = randi_range(0, 360)
-		print("GOTTA MAKE A MOVE TO A TOWN THAT'S RIGHT FOR ME")
 		player_is_ready()
 		
 	
@@ -73,18 +109,20 @@ func score_players() -> RigidBody3D:
 	
 	
 	for player in visible_players:
-		var score = 0
-		score += 100.0 / global_position.distance_to(player.global_position)
-		if ai_level >= 2:
+		if player:
+			var score = 0
+			if player != null:
+				score += 100.0 / global_position.distance_to(player.global_position)
+			if ai_level >= 2:
+				
+				var target_danger = await check_target_danger(player)
+				if target_danger < 2:
+					score += 50
+				
 			
-			var target_danger = await check_target_danger(player)
-			if target_danger < 2:
-				score += 50
-			
-		
-		if score > highest_score:
-			highest_score = score
-			highest_scorer = player
+			if score > highest_score:
+				highest_score = score
+				highest_scorer = player
 	
 	return highest_scorer
 	

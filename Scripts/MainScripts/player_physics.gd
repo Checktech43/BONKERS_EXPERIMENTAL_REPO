@@ -179,6 +179,7 @@ func toggle_ragdoll_mode(game_state):
 	if not is_multiplayer_authority():
 		return
 		
+		
 	if game_state:
 		$arrow_Bonkers.visible = true
 		$SpringArm3D/Camera3D.current = true
