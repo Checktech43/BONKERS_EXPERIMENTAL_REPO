@@ -9,7 +9,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7683716e-07, 0)
 script = ExtResource("1_pfjfr")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=665664289]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.417, 0, -3.349)
 use_collision = true
 size = Vector3(20, 11.45813, 20)
 
@@ -56,18 +55,27 @@ grow_horizontal = 2
 
 [node name="Cards" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1003993930]
 layout_mode = 2
+disabled = true
 button_pressed = true
 text = "Cards"
 script = ExtResource("2_gij67")
 
 [node name="FastPace" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=753007176]
 layout_mode = 2
+disabled = true
 text = "FastPace"
 script = ExtResource("2_gij67")
 
 [node name="FreeMovement" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1072962634]
 layout_mode = 2
-text = "FreeMovement"
+disabled = true
+text = "SuperSane"
+script = ExtResource("2_gij67")
+
+[node name="UnlimitedTime" type="CheckButton" parent="LobbyMenu/VBoxContainer" unique_id=1412694930]
+layout_mode = 2
+disabled = true
+text = "UnlimitedTime"
 script = ExtResource("2_gij67")
 
 [node name="AddBot" type="Button" parent="LobbyMenu/VBoxContainer" unique_id=723792701]
@@ -88,3 +96,4 @@ map_offset = Vector3(0, 10, 0)
 [connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/FreeMovement" to="." method="_on_switching_modifier"]
 [connection signal="button_down" from="LobbyMenu/VBoxContainer/AddBot" to="." method="_on_add_bot_button_down"]
 [connection signal="button_down" from="LobbyMenu/VBoxContainer/RemoveBot" to="." method="_on_remove_bot_button_down"]
+[connection signal="toggle_switch" from="LobbyMenu/VBoxContainer/UnlimitedTime" to="." method="_on_switching_modifier"]

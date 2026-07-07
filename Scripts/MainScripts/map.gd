@@ -2,6 +2,7 @@ extends Node3D
 
 var round_counter : int
 var playes_started_with : int
+@export var death_plane : Area3D
 @export var lobby : Node3D
 @export var loaded_map : PackedScene
 signal players_random_pos
@@ -29,13 +30,18 @@ func rearange_all_things():
 func resize_map(number_of_changes):
 	scale = Vector3(0.5, 0.5, 0.5)
 	for change_in_size in number_of_changes:
-		scale = scale * 1.2
+		scale *= 1.2
+		death_plane.scale *= 1.2
+		
+		
 		
 
 
 func _on_round_end() -> void:
-	var resizes_needed : int = $"../Players".get_children().size()
-	resize_map(resizes_needed)
+	round_counter += 1
+	print(round_counter % 3)
+	if round_counter % 3 == 0:
+		death_plane.scale /= 1.2
 	
 func set_players_at_random_positions():
 	var map : Node3D = get_child(-1)

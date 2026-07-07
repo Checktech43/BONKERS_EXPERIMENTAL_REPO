@@ -6,10 +6,10 @@ var ready_players = []
 var number_of_cubes_ready : int = 0
 
 func _player_ready():
-	_count_ready_players.rpc()
+	count_ready_players.rpc()
 	
 @rpc("any_peer", "call_local")
-func _count_ready_players():
+func count_ready_players():
 	var players = get_children()
 	number_of_cubes_ready += 1
 	var human_players = []
@@ -18,7 +18,7 @@ func _count_ready_players():
 		if !player.is_in_group("ai"):
 			human_players.append(player)
 			
-	if number_of_cubes_ready == human_players.size():
+	if number_of_cubes_ready >= human_players.size():
 		number_of_cubes_ready = 0
 		ready_players = []
 		all_players_ready.emit()
@@ -41,6 +41,7 @@ func _on_change_game_state(new_state) -> void:
 		player.toggle_ragdoll_mode(new_state)
 	for player in get_children():
 		player.unlimited_power = $"..".modifiers["FreeMovement"]
+		player.lock_rotation = false
 		
 
 
@@ -51,3 +52,9 @@ func _teleport_players(player, max_distance) -> void:
 ### I don't think this function is used for anything useful
 func _on_restart() -> void:
 	pass
+
+
+func _on_planning_timeout() -> void:
+	for player in get_children():
+		if player.planning:
+			player.player_is_ready()

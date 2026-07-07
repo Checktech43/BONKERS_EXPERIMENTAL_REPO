@@ -10,6 +10,8 @@ signal remove_bot
 func _ready() -> void:
 	if multiplayer.is_server():
 		$LobbyMenu/Start.show()
+		for switch in $LobbyMenu/VBoxContainer.get_children():
+			switch.disabled = false
 	game_has_started.connect($"..".on_game_start)
 	game_has_started.connect($"../..".on_start_button_getting_pressed)
 	pass_modifiers_to_main.connect($"../.."._on_switching_modifier)

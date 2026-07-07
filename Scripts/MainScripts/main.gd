@@ -65,6 +65,8 @@ func on_start_button_getting_pressed() -> void:
 	
 @rpc("call_local")
 func start_the_game():
+	if modifiers["UnlimitedTime"] == false:
+		$PlanningTimer.start()
 	game_start = true
 	change_game_state.emit(game_start)
 
@@ -154,6 +156,14 @@ func rematch():
 
 	
 func _on_finishing_action_phase():
+	if modifiers["UnlimitedTime"] == true:
+		pass
+	elif modifiers["FastPace"] == true:
+		$PlanningTimer.start(1)
+	else:
+		$PlanningTimer.start()
+	if !is_multiplayer_authority():
+		return
 	if modifiers["Cards"] == true:
 		card_menu_show.rpc()
 	

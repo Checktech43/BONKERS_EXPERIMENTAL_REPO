@@ -1,6 +1,4 @@
-extends Node
-
-@export var size : float
+extends "res://Scenes/MapScenes/map_spawns.gd"
 
 
 func get_random_position(maps_scale) -> Vector3:

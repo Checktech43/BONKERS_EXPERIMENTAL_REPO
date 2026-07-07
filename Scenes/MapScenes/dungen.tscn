@@ -12,8 +12,9 @@ size = Vector3(0.68652344, 11.340332, 16.06739)
 
 [node name="TheDungen" type="Node3D" unique_id=1151115798]
 script = ExtResource("1_uf4sr")
-size = 40.0
 size_of_hole = 16.0
+size = 40.0
+boarder_size = 30.0
 
 [node name="Dungeon_DungeonMap" parent="." unique_id=1109660436 instance=ExtResource("2_o3k7a")]
 

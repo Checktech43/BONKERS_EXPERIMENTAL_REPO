@@ -131,7 +131,7 @@ func player_is_ready() -> void:
 	locked_in_power = power * 100 + 275
 	locked_in_target_dir = Vector3(target_dir.x, 0, target_dir.z)
 	if playing_game:
-		is_player_ready = true
+		#is_player_ready = true
 		planning = false
 		$arrow_Bonkers.visible = false
 	else:
@@ -205,4 +205,4 @@ func send_ghost():
 	
 func planning_phase():
 	planning = true
-	is_player_ready = false
+	#is_player_ready = false
